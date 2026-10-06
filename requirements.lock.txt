@@ -1,0 +1,13 @@
+# Exact versions this repository's offline gate (538+ tests) was last run against: Python 3.14.3 on macOS, 5 October 2026.
+# requirements.txt keeps compatible ranges (CI runs Python 3.11 and the Streamlit-in-Snowflake runtime brings its own packages);
+# use this file to reproduce a local run exactly:  pip install -r requirements.lock.txt
+jsonschema==4.26.0
+markdown-it-py==4.2.0
+pandas==3.0.6
+pytest==9.1.1
+python-dotenv==1.2.4
+PyYAML==6.0.3
+requests==2.34.2
+snowflake-connector-python==4.8.0
+snowflake-snowpark-python==1.55.0
+streamlit==1.65.0

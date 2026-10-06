@@ -1,0 +1,14 @@
+Live proof of scripts/load_feed.py against the clean-room Snowflake environment, run 2026-10-06 as the owner role (synthetic data).
+
+What it did: opened ONE transaction, loaded the canonical sample feed, the TM-export sample feed (through its mapping file) and the canonical feed a second
+time (a re-run is an upsert), read the rows back, then ROLLED BACK. The demo alerts were never changed (16 rows before, 16 after).
+
+connected: FIU_COPILOT_CR2 FIU_ADMIN_ROLE_CR2
+loaded into FIU_COPILOT_CR2.AML as FIU_ADMIN_ROLE_CR2: 3 alert(s), 13 transaction row(s)        <- canonical feed
+loaded into FIU_COPILOT_CR2.AML as FIU_ADMIN_ROLE_CR2: 3 alert(s), 7 transaction row(s)         <- TM export (3 bad rows refused before loading)
+loaded into FIU_COPILOT_CR2.AML as FIU_ADMIN_ROLE_CR2: 3 alert(s), 13 transaction row(s)        <- canonical feed again
+feed alerts (rows, distinct, with suspicion time): (6, 6, 2)          six distinct alerts: the re-run did not duplicate
+feed txns (rows, distinct, flagged): (20, 20, 1)                       13 + 7, all distinct; one watch-list flag (TM export row R-6, "Y")
+('TM-7001', 2026-09-26, 460000.00, '2026-09-29 10:30:00.000 +0530', 'FEED')     DD/MM/YYYY date, Indian digit grouping and a zone-less IST time, read correctly
+visible through ALERTS_CURRENT inside the transaction: 6
+rolled back: demo AML.ALERTS rows before=16 after=16

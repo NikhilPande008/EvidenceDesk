@@ -1,0 +1,90 @@
+[
+  {
+    "factor_id": "POE-002",
+    "factor_name": "Business Profile",
+    "assessment": "triggered",
+    "evidence": "Customer KYC records salaried employee (declared annual income ₹3.6L). Observed credits of ₹3,45,000 on 2026-08-12 and ₹2,10,000 on 2026-08-19 within 7 days are inconsistent with any known self-employment or business activity.",
+    "evidence_txn_ids": ["TXN-001", "TXN-002"],
+    "rules_cited": ["POE-002", "RFI-001"]
+  },
+  {
+    "factor_id": "POE-003",
+    "factor_name": "Transaction History",
+    "assessment": "triggered",
+    "evidence": "Account dormant for 18 months prior to 2026-08-12. Sudden high-velocity credits (₹3,45,000 + ₹2,10,000 = ₹5,55,000 over 7 days) with same-day onward transfer to flagged counterparty UPI-98XXXXXX76 represent a sharp departure from prior nil-transaction baseline.",
+    "evidence_txn_ids": ["TXN-001", "TXN-002", "TXN-003"],
+    "rules_cited": ["POE-003", "RFI-003"]
+  },
+  {
+    "factor_id": "POE-004",
+    "factor_name": "Customer Risk Profile",
+    "assessment": "triggered",
+    "evidence": "Customer was assigned LOW risk at onboarding. Given I4C Suspect Registry flag on counterparty UPI-98XXXXXX76 and subsequent pass-through pattern, the effective risk should be re-assessed as HIGH.",
+    "evidence_txn_ids": ["TXN-001", "TXN-003"],
+    "rules_cited": ["POE-004", "SB-004"]
+  },
+  {
+    "factor_id": "POE-005",
+    "factor_name": "Income Level",
+    "assessment": "triggered",
+    "evidence": "Declared annual income ₹3.6L (~₹30,000/month). Credits of ₹5,55,000 in 7 days represent 15.4x the monthly declared income. No documentation of any windfall, inheritance, or one-time receipt.",
+    "evidence_txn_ids": ["TXN-001", "TXN-002"],
+    "rules_cited": ["POE-005"]
+  },
+  {
+    "factor_id": "POE-006",
+    "factor_name": "Source of Income",
+    "assessment": "triggered",
+    "evidence": "Credits arrive from 2 distinct private individuals (not the declared employer). No invoice, contract, or business documentation provided. Source is undisclosed.",
+    "evidence_txn_ids": ["TXN-001", "TXN-002"],
+    "rules_cited": ["POE-006"]
+  },
+  {
+    "factor_id": "POE-007",
+    "factor_name": "Beneficiary",
+    "assessment": "triggered",
+    "evidence": "Entire net credit (₹5,47,000 of ₹5,55,000 received) transferred same-day to UPI-98XXXXXX76, which appears in the I4C Suspect Registry for prior mule-account activity.",
+    "evidence_txn_ids": ["TXN-003"],
+    "rules_cited": ["POE-007", "RFI-005"]
+  },
+  {
+    "factor_id": "POE-008",
+    "factor_name": "Transaction Frequency",
+    "assessment": "triggered",
+    "evidence": "2 incoming credits and 1 outgoing transfer in 7 days on a previously dormant account. The burst pattern (dormant → high-frequency → dormant) is consistent with a single-use pass-through account.",
+    "evidence_txn_ids": ["TXN-001", "TXN-002", "TXN-003"],
+    "rules_cited": ["POE-008", "RFI-001"]
+  },
+  {
+    "factor_id": "POE-009",
+    "factor_name": "Transaction Size",
+    "assessment": "triggered",
+    "evidence": "Individual credit of ₹3,45,000 exceeds 11x declared monthly salary. Aggregate credits of ₹5,55,000 exceed the CTR threshold (₹10L not met, but size relative to declared income is anomalous).",
+    "evidence_txn_ids": ["TXN-001", "TXN-002"],
+    "rules_cited": ["POE-009"]
+  },
+  {
+    "factor_id": "POE-010",
+    "factor_name": "Transaction Complexity",
+    "assessment": "clear",
+    "evidence": "Transactions are simple credit-debit with no layering, no multiple-step structuring, and no use of investment products. Complexity factor does not independently contribute to suspicion.",
+    "evidence_txn_ids": [],
+    "rules_cited": []
+  },
+  {
+    "factor_id": "POE-011",
+    "factor_name": "Geographies",
+    "assessment": "clear",
+    "evidence": "All transactions are domestic. No cross-border elements, no FATF-listed jurisdictions, no correspondent banking involvement. Geography factor is neutral.",
+    "evidence_txn_ids": [],
+    "rules_cited": []
+  },
+  {
+    "factor_id": "POE-012",
+    "factor_name": "KYC Availability",
+    "assessment": "insufficient_data",
+    "evidence": "KYC on file is 3 years old. Address not re-verified post-onboarding. Aadhaar linkage status unconfirmed. KYC completeness cannot be positively asserted; this is a gap rather than a positive suspicion indicator.",
+    "evidence_txn_ids": [],
+    "rules_cited": ["POE-012"]
+  }
+]

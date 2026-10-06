@@ -1,0 +1,183 @@
+# FIU-IND Inspection Focus Areas
+# Category: INSPECTION_FOCUS
+# Snapshot date: 2026-09-11
+#
+# These are the areas FIU-IND on-site inspectors prioritise.
+# Designing the product around these areas is the core strategic choice.
+
+rules:
+
+  - id: INS-001
+    rule: >
+      FIU-IND inspectors examine cases where an alert was raised but an STR was NOT
+      filed. Based on published FIU-IND inspection reports and industry AML governance
+      practice, the absence of a documented rationale for not filing (a "not-filed
+      rationale") is a recognised inspection risk indicator. This rule reflects
+      internal governance best practice and widely understood FIU-IND inspection
+      criteria; it is not a verbatim mandate from a single identifiable FIU-IND
+      circular (see DG-13).
+    category: INSPECTION_FOCUS
+    subcategory: NOT_FILED_RATIONALE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND inspection guidance (general); industry AML governance practice"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "Inspection criteria — STR non-filing (composite)"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is the single most important design driver for the product. Every
+      not-file decision must produce a documented rationale stored in the append-only
+      decision ledger. "We closed the alert without filing" without a written reason
+      is indefensible in an inspection. The ledger is the evidence that the PO
+      applied their mind to each alert. The product UI must label this as
+      "internal governance requirement" not "FIU-IND mandate" until DG-13 is resolved.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      DG-13: Obtain a specific FIU-IND inspection report or circular that states this
+      requirement explicitly. The principle is widely recognised in AML practice
+      but a primary FIU-IND citation would significantly strengthen the product's
+      defensibility claim. Until then, label as "internal governance best practice."
+    related_rules:
+      - INS-002
+      - INS-003
+      - STR-001
+
+  - id: INS-002
+    rule: >
+      FIU-IND inspectors verify that STR filing decisions were made by authorised
+      staff (the designated Principal Officer or a delegated officer at the appropriate
+      seniority level) and within the 7-working-day SLA from the date of suspicion
+      formation.
+    category: INSPECTION_FOCUS
+    subcategory: AUTHORISED_STAFF_SLA
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "PMLA 2002 s.12 (statutory basis); FIU-IND inspection guidelines"
+      url: "https://www.indiacode.nic.in/handle/123456789/2205"
+      url_verified: false
+      section: "s.12 and PO designation requirements"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The product must record: (a) the identity of the decision-maker (PO or
+      delegated officer), (b) the timestamp of the suspicion-formation event, and
+      (c) the timestamp of the filing or not-file decision. These three fields
+      together demonstrate authorised-staff-within-SLA compliance to an inspector.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify: does FIU-IND specify a maximum delegation level below the PO?
+      Confirm the exact SLA definition — is it 7 working days from alert creation,
+      from transaction date, or from the PO's personal awareness? See DG-08.
+    related_rules:
+      - STR-002
+      - INS-001
+
+  - id: INS-003
+    rule: >
+      The alert-to-STR filing ratio is an internal governance metric used by AML
+      compliance teams to monitor the health of their suspicious-transaction detection
+      and disposition pipeline. Based on published commentary and industry practice,
+      FIU-IND inspectors are understood to examine this ratio; however, no FIU-IND
+      circular or inspection report has been confirmed as publishing a specific
+      benchmark range. Both implausibly low ratios (possible filing suppression) and
+      implausibly high ratios (mechanical filing without genuine suspicion) carry
+      inspection risk.
+    category: INSPECTION_FOCUS
+    subcategory: ALERT_TO_STR_RATIO
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Industry AML governance practice; FIU-IND inspection commentary (no specific circular confirmed)"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "Alert-to-STR ratio — internal governance metric"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: INDUSTRY_PRACTICE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The ratio is context-dependent: a retail bank with millions of accounts will
+      have a different ratio than a small NBFC. No FIU-IND published benchmark exists
+      (DG-04 unresolved). The product dashboard must surface the ratio as an internal
+      governance indicator, NOT as a FIU-IND compliance benchmark. The UI caption must
+      read: "alert-to-STR ratio (internal governance metric; no FIU-IND benchmark
+      published)" until DG-04 is resolved.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      DG-04 (HIGH PRIORITY): Locate any FIU-IND published benchmark or inspection
+      report that quantifies an acceptable alert-to-STR ratio range. If no benchmark
+      exists, confirm that from a primary source so the product can accurately say
+      "there is no published benchmark; ratio is evaluated contextually."
+    related_rules:
+      - INS-001
+      - INS-002
+
+  - id: INS-004
+    rule: >
+      FIU-IND inspectors specifically flag STRs where the Ground of Suspicion is
+      a generic template rather than a specific, customer-individualised narrative.
+      Templated Grounds of Suspicion are treated as a report quality failure and
+      may result in the STR being considered non-compliant.
+    category: INSPECTION_FOCUS
+    subcategory: TEMPLATED_STR_QUALITY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND quality feedback to Reporting Entities; FIU-IND annual report"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "STR quality — templated narratives"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This inspection focus is the direct justification for the product's core
+      proposition. If an RE is filing STRs with identical boilerplate text across
+      all reports, inspectors flag it. The product generates specific, evidence-cited
+      narratives as the antidote to this compliance gap.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      HIGH PRIORITY — DG-09. Locate the specific FIU-IND annual report, inspection
+      finding, or circular that uses this exact language about templated STRs.
+      A verbatim quote from a FIU-IND publication would be the strongest possible
+      product justification. Check FIU-IND Annual Reports 2022–2025.
+    related_rules:
+      - RS-004
+      - INS-001

@@ -1,0 +1,862 @@
+{
+ "note": "The three DEFERRED decisions committed in the first clean room (2026-10-02, synthetic data), exactly as the ledger stores them, with the ROW_HASH the ledger computed in SQL. skills/dossier.py recomputes that hash in Python with Snowflake's TO_JSON serialisation (tests/test_dossier.py); all three match. Role names are deployment names, not people; no user identity is in these rows.",
+ "rows": [
+  {
+   "row": {
+    "decision_id": "e29eb877-4266-4ffd-b5ba-8b9dc5219fa4",
+    "alert_id": "ALERT-05",
+    "customer_ref": "CUST-05",
+    "disposition": "DEFERRED",
+    "decision_maker_id": "CR-DRILL",
+    "suspicion_formed_at": "2026-10-02T04:17:42.578881",
+    "decision_made_at": "2026-10-02T04:17:42.578881",
+    "sla_days_remaining": 7,
+    "rationale_text": "Clean-room drill: awaiting re-KYC documents before a decision is made.",
+    "rules_cited": [
+     "STR-001",
+     "CBTR-001",
+     "RFI-008",
+     "POE-002",
+     "POE-006",
+     "POE-011"
+    ],
+    "poe_factors_assessed": {},
+    "rfi_triggers": [],
+    "str_reference": null,
+    "metadata": {
+     "acknowledgements": {
+      "assumed_basis": null,
+      "assumed_rule_ids": [
+       "POE-002",
+       "POE-006",
+       "POE-011"
+      ],
+      "override_reason_recorded": false,
+      "unverified_assertion_count": 0,
+      "unverified_claims": null
+     },
+     "ai_recommendation": "NOT_RUN",
+     "challenge": {},
+     "corpus_version": "1.1.0",
+     "defensibility_gate": {
+      "acknowledgements": {
+       "assumed_basis": null,
+       "assumed_rule_ids": [
+        "POE-002",
+        "POE-006",
+        "POE-011"
+       ],
+       "override_reason_recorded": false,
+       "unverified_assertion_count": 0,
+       "unverified_claims": null
+      },
+      "blocking_codes": [],
+      "can_record": true,
+      "conditions": [
+       {
+        "code": "EVIDENCE_GATE_NOT_RUN",
+        "detail": {},
+        "message": "No case record was supplied, so this rationale was not checked against the transactions.",
+        "satisfied": null,
+        "severity": "WARN"
+       },
+       {
+        "code": "ASSUMED_RULES_IN_BASIS",
+        "detail": {
+         "assumed_rule_ids": [
+          "POE-002",
+          "POE-006",
+          "POE-011"
+         ]
+        },
+        "message": "The basis includes ASSUMED rules (POE-002, POE-006, POE-011).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "NEEDS_VERIFICATION_RULES_AS_TAGS",
+        "detail": {
+         "rule_ids": [
+          "CBTR-001",
+          "RFI-008"
+         ]
+        },
+        "message": "NEEDS-VERIFICATION rules are internal tags, never citations: CBTR-001, RFI-008",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "BASIS_NOT_INDEPENDENTLY_VERIFIED",
+        "detail": {
+         "independently_verified": 0,
+         "usable": 4
+        },
+        "message": "None of the cited rules has been independently re-verified against its primary source (PROVEN means a source is cited).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "NO_AI_RECOMMENDATION",
+        "detail": {},
+        "message": "No usable AI recommendation — this decision is fully human.",
+        "satisfied": null,
+        "severity": "WARN"
+       }
+      ],
+      "disposition": "DEFERRED",
+      "gate_version": "1",
+      "info_codes": [
+       "ASSUMED_RULES_IN_BASIS",
+       "NEEDS_VERIFICATION_RULES_AS_TAGS",
+       "BASIS_NOT_INDEPENDENTLY_VERIFIED"
+      ],
+      "pending_codes": [],
+      "satisfied_codes": [],
+      "status": "PASS_WITH_WARNINGS",
+      "warning_codes": [
+       "EVIDENCE_GATE_NOT_RUN",
+       "NO_AI_RECOMMENDATION"
+      ]
+     },
+     "evidence_snapshot_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+     "evidence_txn_ids": [],
+     "gos": {
+      "ai_output_valid": null,
+      "hard_gate_passed": null,
+      "narrative_sha256": "6c6cf2705fb45059f5378b4df19665d0fc85b7813df9f2851930ae578636d77a",
+      "quality_score": null,
+      "status": "NOT_CHECKED",
+      "unsupported_claims_by_type": {},
+      "unverified_assertions": []
+     },
+     "human_decision": "DEFERRED",
+     "model_name": "NOT_RUN",
+     "override": false,
+     "override_reason": null,
+     "poe_assessment": [],
+     "prompt_version": "v2.0",
+     "regulatory_basis": {
+      "assumed_rule_ids": [
+       "POE-002",
+       "POE-006",
+       "POE-011"
+      ],
+      "basis_sha256": "05d6445583288067f19365ea25701f183ef2a66119700be0ae5c0fd6140a1265",
+      "by_evidence_level": {
+       "ASSUMED": [
+        "POE-002",
+        "POE-006",
+        "POE-011"
+       ],
+       "NEEDS-VERIFICATION": [
+        "CBTR-001",
+        "RFI-008"
+       ],
+       "PROVEN": [
+        "STR-001"
+       ]
+      },
+      "corpus_version": "1.1.0",
+      "error": null,
+      "excluded": [
+       {
+        "reason": "NEEDS_VERIFICATION",
+        "rule_id": "CBTR-001",
+        "superseded_by": null
+       },
+       {
+        "reason": "NEEDS_VERIFICATION",
+        "rule_id": "RFI-008",
+        "superseded_by": null
+       }
+      ],
+      "grade": "INCLUDES_ASSUMED",
+      "independently_verified_count": 0,
+      "legal_conclusion_permitted": true,
+      "proven_rule_ids": [
+       "STR-001"
+      ],
+      "requires_assumed_acknowledgement": true,
+      "rules": [
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "NEEDS-VERIFICATION",
+        "review_status": "DRAFT",
+        "review_verified": false,
+        "rule_id": "CBTR-001",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": "NEEDS_VERIFICATION",
+        "usable_as_basis": false
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-002",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-006",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-011",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "NEEDS-VERIFICATION",
+        "review_status": "DRAFT",
+        "review_verified": false,
+        "rule_id": "RFI-008",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_PUBLICATION",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": "NEEDS_VERIFICATION",
+        "usable_as_basis": false
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "PROVEN",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "STR-001",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "STATUTE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       }
+      ],
+      "schema": "regulatory_basis/1",
+      "snapshot_date": "2026-09-17",
+      "stale_review_rule_ids": []
+     },
+     "schema_version": "3",
+     "skill_version": "v2.0",
+     "sla_basis": "working_days_mon_fri_no_holiday_calendar_IST",
+     "unverified_claims_acknowledged": null,
+     "written_by_role": "FIU_APP_ROLE_CR"
+    }
+   },
+   "row_hash": "be109b1cbcf6acdd59655bc9fd78cf4a3b3e17cdd71e5d05061b4183ec26ed27"
+  },
+  {
+   "row": {
+    "decision_id": "0e5254ed-74e9-4827-9e2e-199c84681822",
+    "alert_id": "ALERT-06",
+    "customer_ref": "CUST-06",
+    "disposition": "DEFERRED",
+    "decision_maker_id": "CR-DRILL",
+    "suspicion_formed_at": "2026-10-02T04:17:44.451262",
+    "decision_made_at": "2026-10-02T04:17:44.451262",
+    "sla_days_remaining": 7,
+    "rationale_text": "Clean-room drill: awaiting re-KYC documents before a decision is made.",
+    "rules_cited": [
+     "STR-001",
+     "CTR-001",
+     "NTR-001",
+     "RFI-010",
+     "POE-002",
+     "POE-006",
+     "POE-007",
+     "POE-008"
+    ],
+    "poe_factors_assessed": {},
+    "rfi_triggers": [],
+    "str_reference": null,
+    "metadata": {
+     "acknowledgements": {
+      "assumed_basis": null,
+      "assumed_rule_ids": [
+       "NTR-001",
+       "POE-002",
+       "POE-006",
+       "POE-007",
+       "POE-008"
+      ],
+      "override_reason_recorded": false,
+      "unverified_assertion_count": 0,
+      "unverified_claims": null
+     },
+     "ai_recommendation": "NOT_RUN",
+     "challenge": {},
+     "corpus_version": "1.1.0",
+     "defensibility_gate": {
+      "acknowledgements": {
+       "assumed_basis": null,
+       "assumed_rule_ids": [
+        "NTR-001",
+        "POE-002",
+        "POE-006",
+        "POE-007",
+        "POE-008"
+       ],
+       "override_reason_recorded": false,
+       "unverified_assertion_count": 0,
+       "unverified_claims": null
+      },
+      "blocking_codes": [],
+      "can_record": true,
+      "conditions": [
+       {
+        "code": "EVIDENCE_GATE_NOT_RUN",
+        "detail": {},
+        "message": "No case record was supplied, so this rationale was not checked against the transactions.",
+        "satisfied": null,
+        "severity": "WARN"
+       },
+       {
+        "code": "ASSUMED_RULES_IN_BASIS",
+        "detail": {
+         "assumed_rule_ids": [
+          "NTR-001",
+          "POE-002",
+          "POE-006",
+          "POE-007",
+          "POE-008"
+         ]
+        },
+        "message": "The basis includes ASSUMED rules (NTR-001, POE-002, POE-006, POE-007, POE-008).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "NEEDS_VERIFICATION_RULES_AS_TAGS",
+        "detail": {
+         "rule_ids": [
+          "RFI-010"
+         ]
+        },
+        "message": "NEEDS-VERIFICATION rules are internal tags, never citations: RFI-010",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "BASIS_NOT_INDEPENDENTLY_VERIFIED",
+        "detail": {
+         "independently_verified": 0,
+         "usable": 7
+        },
+        "message": "None of the cited rules has been independently re-verified against its primary source (PROVEN means a source is cited).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "NO_AI_RECOMMENDATION",
+        "detail": {},
+        "message": "No usable AI recommendation — this decision is fully human.",
+        "satisfied": null,
+        "severity": "WARN"
+       }
+      ],
+      "disposition": "DEFERRED",
+      "gate_version": "1",
+      "info_codes": [
+       "ASSUMED_RULES_IN_BASIS",
+       "NEEDS_VERIFICATION_RULES_AS_TAGS",
+       "BASIS_NOT_INDEPENDENTLY_VERIFIED"
+      ],
+      "pending_codes": [],
+      "satisfied_codes": [],
+      "status": "PASS_WITH_WARNINGS",
+      "warning_codes": [
+       "EVIDENCE_GATE_NOT_RUN",
+       "NO_AI_RECOMMENDATION"
+      ]
+     },
+     "evidence_snapshot_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+     "evidence_txn_ids": [],
+     "gos": {
+      "ai_output_valid": null,
+      "hard_gate_passed": null,
+      "narrative_sha256": "6c6cf2705fb45059f5378b4df19665d0fc85b7813df9f2851930ae578636d77a",
+      "quality_score": null,
+      "status": "NOT_CHECKED",
+      "unsupported_claims_by_type": {},
+      "unverified_assertions": []
+     },
+     "human_decision": "DEFERRED",
+     "model_name": "NOT_RUN",
+     "override": false,
+     "override_reason": null,
+     "poe_assessment": [],
+     "prompt_version": "v2.0",
+     "regulatory_basis": {
+      "assumed_rule_ids": [
+       "NTR-001",
+       "POE-002",
+       "POE-006",
+       "POE-007",
+       "POE-008"
+      ],
+      "basis_sha256": "27c5e38c7bf3ed8287165820d6bbf0bc2c80b2e3ab14fc9ad2920af0e38cd90d",
+      "by_evidence_level": {
+       "ASSUMED": [
+        "NTR-001",
+        "POE-002",
+        "POE-006",
+        "POE-007",
+        "POE-008"
+       ],
+       "NEEDS-VERIFICATION": [
+        "RFI-010"
+       ],
+       "PROVEN": [
+        "CTR-001",
+        "STR-001"
+       ]
+      },
+      "corpus_version": "1.1.0",
+      "error": null,
+      "excluded": [
+       {
+        "reason": "NEEDS_VERIFICATION",
+        "rule_id": "RFI-010",
+        "superseded_by": null
+       }
+      ],
+      "grade": "INCLUDES_ASSUMED",
+      "independently_verified_count": 0,
+      "legal_conclusion_permitted": true,
+      "proven_rule_ids": [
+       "CTR-001",
+       "STR-001"
+      ],
+      "requires_assumed_acknowledgement": true,
+      "rules": [
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "PROVEN",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "CTR-001",
+        "snapshot_date": "2026-09-17",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "NTR-001",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-002",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-006",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-007",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-008",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "NEEDS-VERIFICATION",
+        "review_status": "DRAFT",
+        "review_verified": false,
+        "rule_id": "RFI-010",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_PUBLICATION",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": "NEEDS_VERIFICATION",
+        "usable_as_basis": false
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "PROVEN",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "STR-001",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "STATUTE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       }
+      ],
+      "schema": "regulatory_basis/1",
+      "snapshot_date": "2026-09-17",
+      "stale_review_rule_ids": []
+     },
+     "schema_version": "3",
+     "skill_version": "v2.0",
+     "sla_basis": "working_days_mon_fri_no_holiday_calendar_IST",
+     "unverified_claims_acknowledged": null,
+     "written_by_role": "FIU_APP_ROLE_CR"
+    }
+   },
+   "row_hash": "cd6792eea034549874b1fec10738865996c3e0e62585307db17faaa443d3234e"
+  },
+  {
+   "row": {
+    "decision_id": "21eaed7f-18af-48e8-a454-76e2c0652d8c",
+    "alert_id": "ALERT-07",
+    "customer_ref": "CUST-07",
+    "disposition": "DEFERRED",
+    "decision_maker_id": "CR-DRILL",
+    "suspicion_formed_at": "2026-10-02T04:17:46.257624",
+    "decision_made_at": "2026-10-02T04:17:46.257624",
+    "sla_days_remaining": 7,
+    "rationale_text": "Clean-room drill: awaiting re-KYC documents before a decision is made.",
+    "rules_cited": [
+     "STR-001",
+     "CTR-001",
+     "INS-001",
+     "INS-003",
+     "POE-002",
+     "POE-003",
+     "POE-005",
+     "POE-009"
+    ],
+    "poe_factors_assessed": {},
+    "rfi_triggers": [],
+    "str_reference": null,
+    "metadata": {
+     "acknowledgements": {
+      "assumed_basis": null,
+      "assumed_rule_ids": [
+       "INS-001",
+       "INS-003",
+       "POE-002",
+       "POE-003",
+       "POE-005",
+       "POE-009"
+      ],
+      "override_reason_recorded": false,
+      "unverified_assertion_count": 0,
+      "unverified_claims": null
+     },
+     "ai_recommendation": "NOT_RUN",
+     "challenge": {},
+     "corpus_version": "1.1.0",
+     "defensibility_gate": {
+      "acknowledgements": {
+       "assumed_basis": null,
+       "assumed_rule_ids": [
+        "INS-001",
+        "INS-003",
+        "POE-002",
+        "POE-003",
+        "POE-005",
+        "POE-009"
+       ],
+       "override_reason_recorded": false,
+       "unverified_assertion_count": 0,
+       "unverified_claims": null
+      },
+      "blocking_codes": [],
+      "can_record": true,
+      "conditions": [
+       {
+        "code": "EVIDENCE_GATE_NOT_RUN",
+        "detail": {},
+        "message": "No case record was supplied, so this rationale was not checked against the transactions.",
+        "satisfied": null,
+        "severity": "WARN"
+       },
+       {
+        "code": "ASSUMED_RULES_IN_BASIS",
+        "detail": {
+         "assumed_rule_ids": [
+          "INS-001",
+          "INS-003",
+          "POE-002",
+          "POE-003",
+          "POE-005",
+          "POE-009"
+         ]
+        },
+        "message": "The basis includes ASSUMED rules (INS-001, INS-003, POE-002, POE-003, POE-005, POE-009).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "BASIS_NOT_INDEPENDENTLY_VERIFIED",
+        "detail": {
+         "independently_verified": 0,
+         "usable": 8
+        },
+        "message": "None of the cited rules has been independently re-verified against its primary source (PROVEN means a source is cited).",
+        "satisfied": null,
+        "severity": "INFO"
+       },
+       {
+        "code": "NO_AI_RECOMMENDATION",
+        "detail": {},
+        "message": "No usable AI recommendation — this decision is fully human.",
+        "satisfied": null,
+        "severity": "WARN"
+       }
+      ],
+      "disposition": "DEFERRED",
+      "gate_version": "1",
+      "info_codes": [
+       "ASSUMED_RULES_IN_BASIS",
+       "BASIS_NOT_INDEPENDENTLY_VERIFIED"
+      ],
+      "pending_codes": [],
+      "satisfied_codes": [],
+      "status": "PASS_WITH_WARNINGS",
+      "warning_codes": [
+       "EVIDENCE_GATE_NOT_RUN",
+       "NO_AI_RECOMMENDATION"
+      ]
+     },
+     "evidence_snapshot_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+     "evidence_txn_ids": [],
+     "gos": {
+      "ai_output_valid": null,
+      "hard_gate_passed": null,
+      "narrative_sha256": "6c6cf2705fb45059f5378b4df19665d0fc85b7813df9f2851930ae578636d77a",
+      "quality_score": null,
+      "status": "NOT_CHECKED",
+      "unsupported_claims_by_type": {},
+      "unverified_assertions": []
+     },
+     "human_decision": "DEFERRED",
+     "model_name": "NOT_RUN",
+     "override": false,
+     "override_reason": null,
+     "poe_assessment": [],
+     "prompt_version": "v2.0",
+     "regulatory_basis": {
+      "assumed_rule_ids": [
+       "INS-001",
+       "INS-003",
+       "POE-002",
+       "POE-003",
+       "POE-005",
+       "POE-009"
+      ],
+      "basis_sha256": "5bf5b51977c08cc0107f755cbaf8e0e4d7ac12c21714c4f7786173380ebfe3c6",
+      "by_evidence_level": {
+       "ASSUMED": [
+        "INS-001",
+        "INS-003",
+        "POE-002",
+        "POE-003",
+        "POE-005",
+        "POE-009"
+       ],
+       "PROVEN": [
+        "CTR-001",
+        "STR-001"
+       ]
+      },
+      "corpus_version": "1.1.0",
+      "error": null,
+      "excluded": [],
+      "grade": "INCLUDES_ASSUMED",
+      "independently_verified_count": 0,
+      "legal_conclusion_permitted": true,
+      "proven_rule_ids": [
+       "CTR-001",
+       "STR-001"
+      ],
+      "requires_assumed_acknowledgement": true,
+      "rules": [
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "PROVEN",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "CTR-001",
+        "snapshot_date": "2026-09-17",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "INS-001",
+        "snapshot_date": "2026-09-17",
+        "source_authority": "FIU_IND_PUBLICATION",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "INS-003",
+        "snapshot_date": "2026-09-17",
+        "source_authority": "INDUSTRY_PRACTICE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-002",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-003",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-005",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "ASSUMED",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "POE-009",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "FIU_IND_GUIDANCE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       },
+       {
+        "corpus_version": "1.1.0",
+        "evidence_level": "PROVEN",
+        "review_status": "AUTHOR_ASSERTED",
+        "review_verified": false,
+        "rule_id": "STR-001",
+        "snapshot_date": "2026-09-11",
+        "source_authority": "STATUTE",
+        "superseded_by": null,
+        "supersession_status": "CURRENT",
+        "unusable_reason": null,
+        "usable_as_basis": true
+       }
+      ],
+      "schema": "regulatory_basis/1",
+      "snapshot_date": "2026-09-17",
+      "stale_review_rule_ids": []
+     },
+     "schema_version": "3",
+     "skill_version": "v2.0",
+     "sla_basis": "working_days_mon_fri_no_holiday_calendar_IST",
+     "unverified_claims_acknowledged": null,
+     "written_by_role": "FIU_APP_ROLE_CR"
+    }
+   },
+   "row_hash": "b6f58f3f2706e76d5b3ac9e33ca7d8a8e5f59e81af1fbe935958e2a9f8e93650"
+  }
+ ]
+}

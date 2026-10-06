@@ -1,0 +1,93 @@
+# Record Retention Obligations
+# Category: RECORD_RETENTION
+# Snapshot date: 2026-09-11
+
+rules:
+
+  - id: RR-001
+    rule: >
+      Every Reporting Entity must maintain records of all transactions for a minimum
+      of five years from the date of the transaction or the cessation of the business
+      relationship, whichever is later (PMLA 2002, s.12(1)(c)). Different record types
+      have distinct retention anchors: (a) transaction records — from the transaction
+      date; (b) identity and KYC documents — from the cessation of the business
+      relationship; (c) STR-related records (the STR itself, underlying transaction
+      data, and the suspicion-formation documentation) — from the date of the STR.
+      The 5-year period is the confirmed statutory floor; extended retention for
+      STR-specific records may apply (see RR-002, NEEDS-VERIFICATION).
+    category: RECORD_RETENTION
+    subcategory: GENERAL_RETENTION
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-Laundering Act, 2002 — Section 12(1)(c)"
+      url: "https://www.indiacode.nic.in/handle/123456789/2205"
+      url_verified: false
+      section: "Section 12(1)(c)"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The 5-year statutory floor applies to all transaction and KYC records, with the
+      retention clock starting differently by record type. For the product, the
+      DECISION_LEDGER is the suspicion-formation record and must be retained for at
+      least 5 years from the date of each entry. Do not allow deletion of disposition
+      records. The product's append-only constraint directly satisfies the retention
+      requirement for STR documentation.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      Verify whether the 2023 PMLA amendments altered the 5-year base retention period.
+      Clarify the exact retention anchor for identity/KYC documents: is it cessation
+      of the business relationship, or a fixed period after the last transaction?
+      This distinction matters for dormant account KYC records.
+    related_rules:
+      - RR-002
+
+  - id: RR-002
+    rule: >
+      Records relating to a Suspicious Transaction Report (STR) — including the STR
+      itself, the underlying transaction data, and the documentation of the suspicion-
+      formation process — must be retained for a period longer than the standard 5-year
+      period. An extended retention period of up to 10 years from the date of the STR
+      has been referenced in FIU-IND guidance.
+    category: RECORD_RETENTION
+    subcategory: STR_RETENTION
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2 (referenced); PMLA 2002 s.12(1)(c)"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR record retention"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The 10-year figure for STR-related records appears in FIU-IND guidance but
+      the exact statutory/regulatory basis needs to be confirmed. Until verified,
+      the product should surface only the 5-year PMLA floor and note that STR
+      records "may be subject to extended retention requirements."
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      VERIFY: Exact retention period for STR-specific records. Is the 10-year figure
+      from a specific FIU-IND circular or from the PMLA amendment? Locate the
+      precise provision. See DG-02 in GAPS.md. Until verified, use 5-year floor only.
+    related_rules:
+      - RR-001
+      - STR-001

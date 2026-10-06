@@ -1,0 +1,38 @@
+definition_version: 1
+streamlit:
+  name: fiu_aml_copilot
+  stage: STREAMLIT_STAGE
+  query_warehouse: FIU_WH
+  main_file: streamlit_app.py
+  title: "EvidenceDesk"
+  comment: "EvidenceDesk: AML decision-defensibility copilot for Principal Officers"
+  additional_source_files:
+    - skills/__init__.py
+    - skills/core.py
+    - skills/llm_output.py
+    - skills/grounding.py
+    - skills/governance.py
+    - skills/ledger.py
+    - skills/evidence.py
+    - skills/connection.py
+    - skills/defensibility.py
+    - skills/audit.py
+    - skills/errors.py
+    - skills/po_copy.py
+    - skills/human_review.py
+    - skills/review_monitor.py
+    - skills/prioritisation.py
+    - skills/evidence_quality.py
+    - skills/relationships.py
+    - skills/corpus_lifecycle.py
+    - skills/identity.py
+    - skills/feedback.py
+    - skills/kpis.py
+    - skills/readiness.py
+    - skills/scope_guard.py
+    - skills/saved_responses.py
+    - skills/saved_responses_data.py
+    - skills/attribution.py
+    - skills/nexus_support.py
+    - skills/dossier.py
+    - skills/feed_contract.py

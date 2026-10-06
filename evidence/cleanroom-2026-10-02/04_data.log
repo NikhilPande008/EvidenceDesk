@@ -1,0 +1,24 @@
+RENDERED  86 files (83 text, 39 changed, 304 identifier substitutions, 0 production identifiers left) → <build>/build-cr
+          tree sha256 af098163c5b46416…   names: FIU_COPILOT→FIU_COPILOT_CR, FIU_WH→FIU_WH_CR, FIU_ADMIN_ROLE→FIU_ADMIN_ROLE_CR, FIU_APP_ROLE→FIU_APP_ROLE_CR, FIU_AUDIT_ROLE→FIU_AUDIT_ROLE_CR
+MODE: APPLY · profile cleanroom · FIU_COPILOT_CR.AML · warehouse FIU_WH_CR
+
+== data ==
+  as FIU_ADMIN_ROLE_CR: python3 scripts/load_corpus.py --upsert
+      
+      CORPUS_SEARCH is defined in regulatory_corpus.sql (created by scripts/deploy_snowflake.py);
+      it refreshes from REGULATORY_CORPUS within its TARGET_LAG (1 hour) — or run:
+        ALTER CORTEX SEARCH SERVICE FIU_COPILOT_CR.AML.CORPUS_SEARCH REFRESH;
+  as FIU_ADMIN_ROLE_CR: python3 scripts/setup_alerts.py
+      
+      Verification query:
+        SELECT GOLD_DISPOSITION, COUNT(*) FROM FIU_COPILOT_CR.AML.ALERTS GROUP BY 1 ORDER BY 1;
+        Expected: CONTESTED=4, FILE=9, NOT_FILE=3
+  as FIU_ADMIN_ROLE_CR: python3 scripts/upload_semantic_model.py
+      
+      Cortex Analyst is called through its REST endpoint (/api/v2/cortex/analyst/message) with
+      semantic_model_file=@FIU_COPILOT_CR.AML.SEMANTIC_STAGE/semantic_model.yaml — there is no
+      SNOWFLAKE.CORTEX.ANALYST SQL function. The app's Dashboard 'Ask the data' box exercises it.
+  as FIU_ADMIN_ROLE_CR: ALTER CORTEX SEARCH SERVICE CORPUS_SEARCH REFRESH  (index the freshly loaded corpus now, not at the next TARGET_LAG)
+      refresh requested — SHOW CORTEX SEARCH SERVICES shows source_data_num_rows = 36 once indexing completes
+
+DONE

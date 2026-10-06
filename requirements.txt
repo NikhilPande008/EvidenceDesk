@@ -1,0 +1,26 @@
+# FIU-IND AML Decision-Defensibility Copilot
+# Install: pip install -r requirements.txt
+
+# Snowflake connectivity (connector for local runs / scripts / tests; Snowpark for Streamlit-in-Snowflake)
+snowflake-connector-python>=3.6.0,<5
+snowflake-snowpark-python>=1.15.0,<2
+
+# Streamlit (Streamlit-in-Snowflake bundles its own; pin the local dev version). AppTest (UI tests) needs >=1.28.
+streamlit>=1.32.0,<2
+
+# Config / secrets
+python-dotenv>=1.0.0,<2
+
+# Corpus loading + governance validation
+pyyaml>=6.0.1,<7
+jsonschema>=4.0.0,<5
+
+# Cortex Analyst REST calls from a local run
+requests>=2.31.0,<3
+
+# Dataframe display (SiS has it built in)
+pandas>=2.0.0,<4
+
+# Tests (markdown-it-py: the render-safety sweep parses every rendered string with a real CommonMark parser)
+pytest>=7.0.0,<10
+markdown-it-py>=3.0.0,<5

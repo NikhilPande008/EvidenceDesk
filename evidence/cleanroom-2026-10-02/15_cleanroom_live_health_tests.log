@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.14/bin/python3
+rootdir: <build>/build-cr
+configfile: pytest.ini
+plugins: typeguard-4.5.2, asyncio-1.4.0, anyio-4.13.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items / 9 deselected / 4 selected
+
+tests/test_live_e2e.py::test_live_ledger_reconciliation_is_read_only_and_honest 
+  reconciliation: CONSISTENT · {'INTACT': 3} · audit export: present
+PASSED
+tests/test_live_e2e.py::test_live_audit_export_chain_detects_a_simulated_deletion 
+  simulated deletion of 0e5254ed… from 3 real rows → DELETED_RECORD detected (in memory; nothing written)
+PASSED
+tests/test_live_e2e.py::test_live_health_check_runs_read_only_as_the_app_role_and_every_result_has_one_of_three_states 
+  health as FIU_APP_ROLE_CR: complete_probe=UNVERIFIED · analyst_probe=UNVERIFIED  ({'HEALTHY': 11, 'UNAVAILABLE': 0, 'UNVERIFIED': 2})
+  application: HEALTHY — owner FIU_APP_ROLE_CR, warehouse FIU_WH_CR, 13/13 code files byte-identical to the source (bundle 44097f553ea800d9…). What Snowsight rendered is NOT v
+PASSED
+tests/test_live_e2e.py::test_live_sql_health_pack_executes_as_the_app_role_and_every_status_is_one_of_three 
+  SQL health pack: 1=HEALTHY · 2=HEALTHY · 3=HEALTHY · 4=HEALTHY · 4b=HEALTHY · 5=HEALTHY · 6=UNVERIFIED · 7=HEALTHY · 9=UNVERIFIED · 10=UNVERIFIED
+PASSED
+
+======================= 4 passed, 9 deselected in 12.19s =======================

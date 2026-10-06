@@ -1,0 +1,14 @@
+txn_id,alert_id,txn_date,txn_type,amount_inr,channel,counterparty,is_flagged
+TF1-1,FEED-001,2026-09-18,CREDIT,150000,UPI,Sender One (individual),false
+TF1-2,FEED-001,2026-09-21,CREDIT,130000,UPI,Sender Two (individual),false
+TF1-3,FEED-001,2026-09-22,CREDIT,140000,UPI,Sender Three (individual),false
+TF1-4,FEED-001,2026-09-24,DEBIT,410000,NEFT,Aman Verma,false
+TF2-1,FEED-002,2026-09-17,CREDIT,190000,CASH,Cash deposit at branch counter,false
+TF2-2,FEED-002,2026-09-18,CREDIT,190000,CASH,Cash deposit at branch counter,false
+TF2-3,FEED-002,2026-09-21,CREDIT,190000,CASH,Cash deposit at branch counter,false
+TF2-4,FEED-002,2026-09-22,CREDIT,190000,CASH,Cash deposit at branch counter,false
+TF2-5,FEED-002,2026-09-23,CREDIT,190000,CASH,Cash deposit at branch counter,false
+TF3-1,FEED-003,2026-09-03,CREDIT,150000,SWIFT,"Gulf Logistics LLC, Dubai (employer)",false
+TF3-2,FEED-003,2026-09-10,CREDIT,160000,SWIFT,"Gulf Logistics LLC, Dubai (employer)",false
+TF3-3,FEED-003,2026-09-17,CREDIT,150000,SWIFT,"Gulf Logistics LLC, Dubai (employer)",false
+TF3-4,FEED-003,2026-09-24,CREDIT,150000,SWIFT,"Gulf Logistics LLC, Dubai (employer)",false

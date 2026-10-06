@@ -1,0 +1,15 @@
+RENDERED  86 files (83 text, 39 changed, 304 identifier substitutions, 0 production identifiers left) → <build>/build-cr
+          tree sha256 af098163c5b46416…   names: FIU_COPILOT→FIU_COPILOT_CR, FIU_WH→FIU_WH_CR, FIU_ADMIN_ROLE→FIU_ADMIN_ROLE_CR, FIU_APP_ROLE→FIU_APP_ROLE_CR, FIU_AUDIT_ROLE→FIU_AUDIT_ROLE_CR
+MODE: APPLY · profile cleanroom · FIU_COPILOT_CR.AML · warehouse FIU_WH_CR
+
+== ddl ==
+  as FIU_ADMIN_ROLE_CR: regulatory_corpus.sql (18 statements)
+      ok
+  as FIU_ADMIN_ROLE_CR: alerts.sql (3 statements)
+      ok
+  as FIU_ADMIN_ROLE_CR: transactions.sql (3 statements)
+      ok
+  as FIU_ADMIN_ROLE_CR: views.sql (2 statements)
+      ok
+
+DONE

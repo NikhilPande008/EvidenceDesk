@@ -1,0 +1,610 @@
+{
+  "meta": {
+    "date": "2026-10-05",
+    "generated_at_utc": "2026-10-05T18:03:36+00:00",
+    "git_commit": "e2021d8",
+    "git_dirty": true,
+    "prompt_version": "v2.2",
+    "environment": "FIU_COPILOT_CR2",
+    "role": "FIU_APP_ROLE_CR2",
+    "draft": false,
+    "label": "ab-structured-off",
+    "model_requested": "llama3.3-70b",
+    "no_fallback": false,
+    "temperature": 0,
+    "structured_outputs": false
+  },
+  "summary": {
+    "alerts_run": 4,
+    "alerts_skipped_or_failed": 0,
+    "assessment_valid": 4,
+    "triggered_factors": 26,
+    "triggered_grounded": 26,
+    "label_by_recommendation": {
+      "CONTESTED -> REVIEW": 1,
+      "FILE -> FILE": 2,
+      "NOT_FILE -> FILE": 1
+    },
+    "drafts": 0,
+    "drafts_passing_hard_gate": 0,
+    "drafts_with_unsupported_facts": 0,
+    "unsupported_facts_total": 0,
+    "drafts_with_unverified_assertions": 0,
+    "assessment_seconds": {
+      "median": 92.4,
+      "max": 95.7
+    },
+    "draft_seconds_both_calls": {
+      "median": null,
+      "max": null
+    },
+    "models": [
+      "llama3.3-70b"
+    ]
+  },
+  "alerts": [
+    {
+      "alert_id": "ALERT-01",
+      "label": "FILE",
+      "n_transactions": 5,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 95.7,
+      "assessment_tokens": 1727,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      },
+      "assessment_prompt_sha256": "25c53b88878831417591773f7a3120d216ef61d97dd40cd4d42f16b8c8a91057",
+      "triggered": 7,
+      "triggered_grounded": 7,
+      "triggered_ungrounded": [],
+      "clear": 1,
+      "insufficient": 3,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-007",
+        "POE-010"
+      ],
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-1",
+            "T01-2",
+            "T01-3",
+            "T01-4",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-3",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-1",
+            "T01-2",
+            "T01-4"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-3",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-1",
+            "T01-2",
+            "T01-3",
+            "T01-4",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-1",
+            "T01-2",
+            "T01-3",
+            "T01-4",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01-1",
+            "T01-2",
+            "T01-3",
+            "T01-4",
+            "T01-5"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ]
+    },
+    {
+      "alert_id": "ALERT-16",
+      "label": "NOT_FILE",
+      "n_transactions": 4,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 79.6,
+      "assessment_tokens": 1596,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      },
+      "assessment_prompt_sha256": "072935362b514e3cfc25c58f7b3c6f43692d7e827bc58413187b1b11f1403f9a",
+      "triggered": 5,
+      "triggered_grounded": 5,
+      "triggered_ungrounded": [],
+      "clear": 3,
+      "insufficient": 3,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-010"
+      ],
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-1",
+            "T01B-2",
+            "T01B-3"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-1",
+            "T01B-2",
+            "T01B-3"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-4"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-1",
+            "T01B-2",
+            "T01B-3"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-4"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T01B-1",
+            "T01B-2",
+            "T01B-3",
+            "T01B-4"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ]
+    },
+    {
+      "alert_id": "ALERT-03",
+      "label": "CONTESTED",
+      "n_transactions": 6,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 92.4,
+      "assessment_tokens": 1779,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      },
+      "assessment_prompt_sha256": "8558d7e6a58656a92e63b3321b1f23bd9fc3750ea7fd8dfdad0b0d0d0251f883",
+      "triggered": 5,
+      "triggered_grounded": 5,
+      "triggered_ungrounded": [],
+      "clear": 2,
+      "insufficient": 4,
+      "recommendation": "REVIEW",
+      "grounded_nexus_factors": [],
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T03-1",
+            "T03-2",
+            "T03-3",
+            "T03-4",
+            "T03-5",
+            "T03-6"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ]
+    },
+    {
+      "alert_id": "ALERT-12",
+      "label": "FILE",
+      "n_transactions": 2,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 88.8,
+      "assessment_tokens": 1548,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      },
+      "assessment_prompt_sha256": "11862d15a4059703e72156a240a5cde08850481c3ec327d37b7c3e8de02e32e6",
+      "triggered": 9,
+      "triggered_grounded": 9,
+      "triggered_ungrounded": [],
+      "clear": 1,
+      "insufficient": 1,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-007",
+        "POE-010",
+        "POE-011"
+      ],
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T12-1",
+            "T12-2"
+          ]
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ]
+    }
+  ],
+  "calls": [
+    {
+      "prompt_sha256": "25c53b88878831417591773f7a3120d216ef61d97dd40cd4d42f16b8c8a91057",
+      "model": "llama3.3-70b",
+      "seconds": 95.7,
+      "response_chars": 2989,
+      "usage": {
+        "completion_tokens": 929,
+        "prompt_tokens": 798,
+        "total_tokens": 1727
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "072935362b514e3cfc25c58f7b3c6f43692d7e827bc58413187b1b11f1403f9a",
+      "model": "llama3.3-70b",
+      "seconds": 79.6,
+      "response_chars": 2853,
+      "usage": {
+        "completion_tokens": 836,
+        "prompt_tokens": 760,
+        "total_tokens": 1596
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "8558d7e6a58656a92e63b3321b1f23bd9fc3750ea7fd8dfdad0b0d0d0251f883",
+      "model": "llama3.3-70b",
+      "seconds": 92.4,
+      "response_chars": 2942,
+      "usage": {
+        "completion_tokens": 921,
+        "prompt_tokens": 858,
+        "total_tokens": 1779
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "11862d15a4059703e72156a240a5cde08850481c3ec327d37b7c3e8de02e32e6",
+      "model": "llama3.3-70b",
+      "seconds": 88.8,
+      "response_chars": 2889,
+      "usage": {
+        "completion_tokens": 858,
+        "prompt_tokens": 690,
+        "total_tokens": 1548
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": false
+      }
+    }
+  ]
+}

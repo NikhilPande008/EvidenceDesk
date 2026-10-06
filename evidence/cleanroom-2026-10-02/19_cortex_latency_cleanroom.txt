@@ -1,0 +1,23 @@
+Cortex Complete calls on the clean-room warehouse, 2026-10-02 (UTC-7 timestamps as returned), from INFORMATION_SCHEMA.QUERY_HISTORY_BY_WAREHOUSE
+TIME | ROLE | STATUS | SECONDS | MODEL | PURPOSE
+2026-10-01 21:00:37 | FIU_ADMIN_ROLE_CR | SUCCESS | 90 | llama3.3-70b | one-word probe
+2026-10-01 21:02:16 | FIU_ADMIN_ROLE_CR | FAILED_WITH_ERROR | 120 | llama3.3-70b | 11-factor assessment
+2026-10-01 21:04:17 | FIU_ADMIN_ROLE_CR | SUCCESS | 16 | llama3.1-8b | 11-factor assessment
+2026-10-01 21:04:34 | FIU_ADMIN_ROLE_CR | SUCCESS | 54 | llama3.3-70b | GoS draft
+2026-10-01 21:05:28 | FIU_ADMIN_ROLE_CR | SUCCESS | 54 | llama3.3-70b | quality check
+2026-10-01 21:06:22 | FIU_ADMIN_ROLE_CR | SUCCESS | 113 | llama3.3-70b | quality check
+2026-10-01 21:08:21 | FIU_ADMIN_ROLE_CR | FAILED_WITH_ERROR | 120 | llama3.3-70b | 11-factor assessment
+2026-10-01 21:10:21 | FIU_ADMIN_ROLE_CR | SUCCESS | 19 | llama3.1-8b | 11-factor assessment
+2026-10-01 21:10:40 | FIU_ADMIN_ROLE_CR | SUCCESS | 100 | llama3.3-70b | quality check
+2026-10-01 21:12:57 | FIU_APP_ROLE_CR | SUCCESS | 15 | llama3.3-70b | one-word probe
+2026-10-01 21:13:20 | FIU_APP_ROLE_CR | SUCCESS | 42 | llama3.3-70b | 11-factor assessment
+2026-10-01 21:14:02 | FIU_APP_ROLE_CR | SUCCESS | 25 | llama3.3-70b | GoS draft
+2026-10-01 21:14:27 | FIU_APP_ROLE_CR | SUCCESS | 37 | llama3.3-70b | quality check
+2026-10-01 21:15:04 | FIU_APP_ROLE_CR | SUCCESS | 35 | llama3.3-70b | quality check
+2026-10-01 21:15:43 | FIU_APP_ROLE_CR | SUCCESS | 35 | llama3.3-70b | 11-factor assessment
+2026-10-01 21:16:19 | FIU_APP_ROLE_CR | SUCCESS | 34 | llama3.3-70b | quality check
+2026-10-01 21:18:33 | FIU_APP_ROLE_CR | SUCCESS | 12 | llama3.3-70b | one-word probe
+2026-10-01 21:18:56 | FIU_APP_ROLE_CR | SUCCESS | 11 | llama3.3-70b | one-word probe
+2026-10-01 21:20:17 | FIU_APP_ROLE_CR | SUCCESS | 15 | llama3.3-70b | one-word probe
+
+calls 19 · success 17 · failed 2 (all at the 120 s statement timeout: True) · slowest success 113 s · median success 35 s

@@ -1,0 +1,11 @@
+RefNo,AlertRef,ValueDate,DrCr,Amt,Mode,Party,Watchlist
+R-1,TM-7001,24/09/2026,C,"1,50,000",CASH,Cash deposit - Branch A,N
+R-2,TM-7001,25/09/2026,C,"1,55,000",CASH,Cash deposit - Branch B,N
+R-3,TM-7001,25/09/2026,C,"1,55,000",CASH,Cash deposit - Branch A,N
+R-4,TM-7002,28/09/2026,C,"1,00,000",IMPS,Remitter P,N
+R-5,TM-7002,28/09/2026,C,"1,10,000",IMPS,Remitter Q,N
+R-6,TM-7002,28/09/2026,D,"2,00,000",NEFT,Beneficiary Z,Y
+R-7,TM-7003,29/09/2026,C,"3,00,000",NEFT,Employer Payroll Ltd,N
+R-8,TM-9999,29/09/2026,C,"50,000",NEFT,Unknown,N
+R-9,TM-7003,31/02/2026,C,"10,000",NEFT,Bad date row,N
+R-10,TM-7003,29/09/2026,X,"10,000",NEFT,Bad direction row,N

@@ -1,0 +1,64 @@
+{
+ "note": "Set Q measured ONCE, before any change made because of it (the own-account direction exception was added afterwards and is disabled here). This is the figure to quote.",
+ "misattributions": 20,
+ "detected": {
+  "k": 14,
+  "n": 20,
+  "rate_pct": 70.0,
+  "wilson95_pct": [
+   48.1,
+   85.5
+  ]
+ },
+ "correct_statements": 20,
+ "wrongly_flagged": {
+  "k": 1,
+  "n": 20,
+  "rate_pct": 5.0,
+  "wilson95_pct": [
+   0.9,
+   23.6
+  ]
+ },
+ "missed": [
+  {
+   "id": "Q06",
+   "kind": "partial sum called the total",
+   "sentence": "The credits totalled Rs.4,80,000 over two months."
+  },
+  {
+   "id": "Q07",
+   "kind": "wrong direction",
+   "sentence": "Rs.6,20,000 left the account for DEF Engineering Pvt Ltd on 2026-06-20."
+  },
+  {
+   "id": "Q14",
+   "kind": "wrong direction",
+   "sentence": "ACCT-02-B paid out Rs.1,42,500 by NEFT."
+  },
+  {
+   "id": "Q15",
+   "kind": "ratio on the wrong side",
+   "sentence": "Of the credits received, 100% were forwarded to flagged handle C."
+  },
+  {
+   "id": "Q19",
+   "kind": "wrong direction (cue not read)",
+   "sentence": "UPI handle B was the recipient of Rs.1.4L."
+  },
+  {
+   "id": "Q20",
+   "kind": "two parties in one sentence",
+   "sentence": "Rs.1.4L went from UPI handle A to UPI handle C."
+  }
+ ],
+ "false_flags": [
+  {
+   "id": "R13",
+   "sentence": "ACCT-02-B received a cash deposit of Rs.1,42,500 on 2026-08-19.",
+   "why": [
+    "The sentence says Rs.1,42,500 was paid to ACCT-02-B cash deposits; the record shows a credit from ACCT-02-B cash deposits on 2026-08-19."
+   ]
+  }
+ ]
+}

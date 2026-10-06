@@ -1,0 +1,1115 @@
+{
+  "meta": {
+    "date": "2026-10-06",
+    "generated_at_utc": "2026-10-06T06:28:37+00:00",
+    "git_commit": "9717e1c",
+    "git_dirty": true,
+    "prompt_version": "v2.2",
+    "environment": "FIU_COPILOT_CR2",
+    "role": "FIU_APP_ROLE_CR2",
+    "draft": true,
+    "label": "retry-of-timed-out-alerts",
+    "model_requested": "llama3.3-70b",
+    "no_fallback": true,
+    "temperature": 0,
+    "structured_outputs": true
+  },
+  "summary": {
+    "alerts_run": 5,
+    "alerts_skipped_or_failed": 0,
+    "assessment_valid": 5,
+    "triggered_factors": 36,
+    "triggered_grounded": 36,
+    "label_by_recommendation": {
+      "FILE -> FILE": 3,
+      "NOT_FILE -> FILE": 2
+    },
+    "drafts": 5,
+    "drafts_passing_hard_gate": 5,
+    "drafts_passing_hard_gate_first_time": 5,
+    "repairs_attempted": 0,
+    "repairs_that_passed": 0,
+    "drafts_with_unsupported_facts": 0,
+    "unsupported_facts_total": 0,
+    "drafts_with_unverified_assertions": 2,
+    "assessment_seconds": {
+      "median": 77.5,
+      "max": 112.6
+    },
+    "draft_seconds_both_calls": {
+      "median": 130.6,
+      "max": 158.10000000000002
+    },
+    "models": [
+      "llama3.3-70b"
+    ]
+  },
+  "alerts": [
+    {
+      "alert_id": "ALERT-05",
+      "label": "FILE",
+      "n_transactions": 2,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 112.6,
+      "assessment_tokens": 1555,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      },
+      "assessment_prompt_sha256": "65b18282dfc8fba009270b61339f20091ad92b4584f04417363047336b44454c",
+      "triggered": 8,
+      "triggered_grounded": 8,
+      "triggered_ungrounded": [],
+      "clear": 2,
+      "insufficient": 1,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-007",
+        "POE-010",
+        "POE-011"
+      ],
+      "discounted_nexus_factors": [],
+      "recommendation_before_record_check": "FILE",
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T05-1",
+            "T05-2"
+          ]
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ],
+      "draft": {
+        "status": "READY",
+        "hard_gate_passed": true,
+        "quality_score": 10,
+        "unsupported_facts": [],
+        "unsupported_claims_by_type": {},
+        "unverified_assertions": [
+          {
+            "type": "third_party_characterisation",
+            "text": "sanctioned entity",
+            "why": "cannot be verified from the case record"
+          }
+        ],
+        "hard_gate_failure": "",
+        "narrative_words": 265,
+        "narrative": "The account received two high-value SWIFT debits on 2026-08-06 and 2026-08-27, totaling Rs.37.5L and Rs.26.7L, respectively, with Regal Trading FZCO, Sharjah, UAE, as the counterparty, via a DPRK-linked correspondent. This pattern is inconsistent with the customer's declared profile as an IT services exporter with a Rs.4.2Cr annual turnover, as it involves significant transactions with a potentially sanctioned entity. The transactions triggered multiple red-flag indicators, including the involvement of a DPRK-linked correspondent and high-value payments.\n\nThe POE-002 (Business Profile) factor is triggered, as the customer's business profile does not align with the nature of these transactions. POE-003 (Transaction History) is also triggered, given the two high-value debits in a short period. The customer's Medium risk profile, as per POE-004, further contributes to the suspicious nature of these transactions. Additionally, POE-007 (Beneficiary) and POE-011 (Geographies) are triggered due to the involvement of Regal Trading FZCO and the UAE and DPRK-linked entities.\n\nThe record does not rule out innocent explanations, such as legitimate business transactions with Regal Trading FZCO. However, the transactions contradict explanations that the customer's business is solely focused on IT services, given the significant debits to a potentially sanctioned entity. The RFI-008 alert signal further supports the suspicious nature of these transactions.\n\nThe statutory basis for this report is Section 12(1)(b) of the Prevention of Money Laundering Act (PMLA), which mandates reporting of transactions that may involve proceeds of crime. The pattern of transactions, combined with the customer's profile and the red-flag indicators, warrants further investigation. The transactions' complexity, size, and frequency, as highlighted by POE-008, POE-009, and POE-010, further support the need for scrutiny.",
+        "repair": null,
+        "first_draft_passed_hard_gate": true,
+        "calls": [
+          {
+            "prompt_sha256": "09a1c1e0c1ce4764851912f6201f2234fc7d344034819fbe94f11794ded8c196",
+            "model": "llama3.3-70b",
+            "seconds": 63.7,
+            "usage": {
+              "completion_tokens": 412,
+              "prompt_tokens": 790,
+              "total_tokens": 1202
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1200,
+              "structured": false
+            }
+          },
+          {
+            "prompt_sha256": "c1f7fee52a16edc025862ceec482881ee609e8d9c5a74502b091ca859894772e",
+            "model": "llama3.3-70b",
+            "seconds": 94.4,
+            "usage": {
+              "completion_tokens": 814,
+              "prompt_tokens": 959,
+              "total_tokens": 1773
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1800,
+              "structured": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "alert_id": "ALERT-09",
+      "label": "FILE",
+      "n_transactions": 1,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 77.5,
+      "assessment_tokens": 1376,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      },
+      "assessment_prompt_sha256": "0f35613ee865299688facef3fbb08c8bcf62aed5c35f89c974b1e3b1139e22c6",
+      "triggered": 7,
+      "triggered_grounded": 7,
+      "triggered_ungrounded": [],
+      "clear": 0,
+      "insufficient": 4,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-007",
+        "POE-010"
+      ],
+      "discounted_nexus_factors": [],
+      "recommendation_before_record_check": "FILE",
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T09-1"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T09-1"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T09-1"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T09-1"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "T09-1"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ],
+      "draft": {
+        "status": "READY",
+        "hard_gate_passed": true,
+        "quality_score": 9,
+        "unsupported_facts": [],
+        "unsupported_claims_by_type": {},
+        "unverified_assertions": [
+          {
+            "type": "profile_income",
+            "text": "declared income of Rs.8",
+            "why": "declared income is not parseable from the customer profile"
+          },
+          {
+            "type": "percentage",
+            "text": "94.5%",
+            "why": "not reproducible from transaction data"
+          }
+        ],
+        "hard_gate_failure": "",
+        "narrative_words": 232,
+        "narrative": "The account received a credit of Rs.27,30,000 on 2026-09-03 via UPI from multiple counterparties. This transaction is inconsistent with the customer's declared income of Rs.8-15,000 per month. The customer's profile indicates multiple low-income individuals, including factory workers, auto drivers, and labourers, with seven accounts linked to the same device fingerprint. \n\nThe pattern of multiple UPI credits from unknown handles to these seven accounts, including the single credit of Rs.27,30,000, triggers several red-flag indicators, including POE-002 (Business Profile), POE-004 (Customer Risk Profile), POE-005 (Income Level), POE-007 (Beneficiary), POE-009 (Transaction Size), POE-010 (Transaction Complexity), and POE-012 (KYC Availability). The credits flow predominantly to a single unknown destination handle, with 94.5% of the credits going to this one handle.\n\nThe record does not rule out the possibility that the customers are engaged in legitimate business activities that generate income not reflected in their declared income. However, the large credit of Rs.27,30,000 contradicts the customers' declared low-income profiles. The transactions also indicate a potential pass-through pattern, with multiple credits from unknown handles to the seven accounts on the same device.\n\nThe statutory basis for this report is Section 12(1)(b) of the Prevention of Money Laundering Act (PMLA), which requires reporting of transactions that may involve proceeds of crime. The transactions and customer profile are inconsistent with the expected pattern of activity for low-income individuals, triggering the aforementioned POE factors and indicating a potential money laundering risk.",
+        "repair": null,
+        "first_draft_passed_hard_gate": true,
+        "calls": [
+          {
+            "prompt_sha256": "a034288577d85d720df761047ae24b765e31aaa3be3250d3dc5bd52015e4280c",
+            "model": "llama3.3-70b",
+            "seconds": 40.1,
+            "usage": {
+              "completion_tokens": 351,
+              "prompt_tokens": 710,
+              "total_tokens": 1061
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1200,
+              "structured": false
+            }
+          },
+          {
+            "prompt_sha256": "907f1efd0f6f8f98bd9688fc3f4158083d576127b43797a6b151b7165905d151",
+            "model": "llama3.3-70b",
+            "seconds": 73.1,
+            "usage": {
+              "completion_tokens": 750,
+              "prompt_tokens": 831,
+              "total_tokens": 1581
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1800,
+              "structured": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "alert_id": "ALERT-17",
+      "label": "FILE",
+      "n_transactions": 11,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 83.1,
+      "assessment_tokens": 2078,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      },
+      "assessment_prompt_sha256": "29552f1608db3a8506291812f3cfd710e2ebc2b85edb34f876913b43d6024e51",
+      "triggered": 10,
+      "triggered_grounded": 10,
+      "triggered_ungrounded": [],
+      "clear": 1,
+      "insufficient": 0,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-006",
+        "POE-007",
+        "POE-010",
+        "POE-011"
+      ],
+      "discounted_nexus_factors": [],
+      "recommendation_before_record_check": "FILE",
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2"
+          ]
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-9",
+            "TG1-10"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2"
+          ]
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2"
+          ]
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-10"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2",
+            "TG1-9"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-2"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-10"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG1-1",
+            "TG1-4"
+          ]
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ],
+      "draft": {
+        "status": "READY",
+        "hard_gate_passed": true,
+        "quality_score": 10,
+        "unsupported_facts": [],
+        "unsupported_claims_by_type": {},
+        "unverified_assertions": [],
+        "hard_gate_failure": "",
+        "narrative_words": 255,
+        "narrative": "The account received multiple large credit transactions between 2026-09-14 and 2026-09-17, totaling Rs.14.2L, from unknown remitters in Gulf countries, including Rs.175,000 on 2026-09-14 from an unknown remitter in Dubai, UAE, via SWIFT, and Rs.190,000 on the same day from an unknown remitter in Abu Dhabi, UAE, also via SWIFT. This pattern is inconsistent with the customer's declared profile as a delivery rider with a monthly income of Rs.22,000. The transactions trigger POE-002 (Business Profile) and POE-005 (Income Level), as the received amounts far exceed the customer's declared income. \n\nThe subsequent debits, including Rs.450,000 on 2026-09-18 via cash withdrawals at several ATMs and Rs.520,000 on 2026-09-21 via IMPS to an unidentified beneficiary account, further trigger POE-003 (Transaction History) and POE-009 (Transaction Size). The involvement of multiple unknown remitters and beneficiaries in these transactions triggers POE-007 (Beneficiary) and POE-010 (Transaction Complexity). The geographic locations of the transactions, including UAE, Qatar, and Saudi Arabia, trigger POE-011 (Geographies).\n\nThe record does not rule out the possibility that the customer has a legitimate, unreported source of income. However, it contradicts the customer's declared low-risk profile and income level, as evidenced by the large and frequent transactions. The pattern of transactions also triggers red-flag indicators, including the pass-through pattern of large credits followed by debits. \n\nThe statutory basis for this report is Section 12(1)(b) of the Prevention of Money Laundering Act (PMLA), which mandates reporting of transactions suspected to involve proceeds of crime. The transactions in question, due to their nature, frequency, and inconsistency with the customer's profile, necessitate further examination.",
+        "repair": null,
+        "first_draft_passed_hard_gate": true,
+        "calls": [
+          {
+            "prompt_sha256": "1974ebad4657d68d72a5b312c8cb3af17a2a6a288bab9406209e2a08732fd00f",
+            "model": "llama3.3-70b",
+            "seconds": 41.3,
+            "usage": {
+              "completion_tokens": 412,
+              "prompt_tokens": 1288,
+              "total_tokens": 1700
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1200,
+              "structured": false
+            }
+          },
+          {
+            "prompt_sha256": "8493b15cc58f5a8fa944afc9a2fa6e7ad3b1278f8bb57659425ece0b42299094",
+            "model": "llama3.3-70b",
+            "seconds": 89.3,
+            "usage": {
+              "completion_tokens": 813,
+              "prompt_tokens": 1425,
+              "total_tokens": 2238
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1800,
+              "structured": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "alert_id": "ALERT-18",
+      "label": "NOT_FILE",
+      "n_transactions": 10,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 73.5,
+      "assessment_tokens": 1893,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      },
+      "assessment_prompt_sha256": "39375857939ca3f4c08f6a4020dbf0056b30cf1c6d3658b68ff41aa5f9049f07",
+      "triggered": 4,
+      "triggered_grounded": 4,
+      "triggered_ungrounded": [],
+      "clear": 7,
+      "insufficient": 0,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-011"
+      ],
+      "discounted_nexus_factors": [],
+      "recommendation_before_record_check": "FILE",
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG2-1",
+            "TG2-2",
+            "TG2-3"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG2-1"
+          ]
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG2-1",
+            "TG2-2",
+            "TG2-3",
+            "TG2-4",
+            "TG2-5"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG2-1"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG2-1"
+          ]
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ],
+      "draft": {
+        "status": "READY",
+        "hard_gate_passed": true,
+        "quality_score": 9,
+        "unsupported_facts": [],
+        "unsupported_claims_by_type": {},
+        "unverified_assertions": [],
+        "hard_gate_failure": "",
+        "narrative_words": 257,
+        "narrative": "The account received regular monthly credits of Rs.236,000 via SWIFT from Gulf Digital Solutions LLC, Dubai, UAE, on 2026-04-30, 2026-05-29, 2026-06-30, 2026-07-31, and 2026-08-31, with a slightly increased amount of Rs.238,000 on 2026-08-31 and 2026-09-30. These credits are consistent with the customer's declared income as a software engineer. However, the pattern of regular debits of Rs.85,000 to a housing finance company for a home loan account on 2026-06-01, 2026-07-01, and 2026-08-03, and a larger debit of Rs.400,000 to a term deposit in the customer's own name on 2026-09-02, raises questions about the source and purpose of these funds.\n\nThe transaction history (POE-003) shows a consistent pattern of credits and debits since 2026-04-30, with a regular monthly frequency (POE-008) and large credit amounts (POE-009), including the initial credit of Rs.236,000 on 2026-04-30. The transactions also involve a counterparty in the UAE (POE-011), which is consistent with the customer's profile as an NRI resident in the UAE.\n\nThe record does not rule out the possibility that the customer is using their income to service their home loan and make investments. However, the large credit amounts and the fact that the customer's declared income is approximately Rs.2.4L per month, which is close to the monthly credit amounts, contradicts the explanation that the credits are solely from the customer's employment income.\n\nThe RFI-006 alert signal has been triggered, indicating a potential red-flag indicator. The statutory basis for this report is Section 12(1)(b) of the Prevention of Money Laundering Act (PMLA), which requires reporting of transactions that may involve proceeds of crime.",
+        "repair": null,
+        "first_draft_passed_hard_gate": true,
+        "calls": [
+          {
+            "prompt_sha256": "636c2aedabd6a0cc66883f82a852e852710c2e8ff1233a0d12d6af9d7b72a79c",
+            "model": "llama3.3-70b",
+            "seconds": 41.2,
+            "usage": {
+              "completion_tokens": 435,
+              "prompt_tokens": 1123,
+              "total_tokens": 1558
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1200,
+              "structured": false
+            }
+          },
+          {
+            "prompt_sha256": "dde736ecf8573ff38e85af63bb8d0fdf74a8aec8f6aa8c6f470f0929cfc9da4d",
+            "model": "llama3.3-70b",
+            "seconds": 98.0,
+            "usage": {
+              "completion_tokens": 813,
+              "prompt_tokens": 1416,
+              "total_tokens": 2229
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1800,
+              "structured": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "alert_id": "ALERT-19",
+      "label": "NOT_FILE",
+      "n_transactions": 2,
+      "assessment_valid": true,
+      "assessment_error": null,
+      "model": "llama3.3-70b",
+      "assessment_seconds": 76.5,
+      "assessment_tokens": 1467,
+      "assessment_decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      },
+      "assessment_prompt_sha256": "bb4bdb7187db3acd55698aa40f4e17297ea18c6e14db414504006f2d6033e9e5",
+      "triggered": 7,
+      "triggered_grounded": 7,
+      "triggered_ungrounded": [],
+      "clear": 3,
+      "insufficient": 1,
+      "recommendation": "FILE",
+      "grounded_nexus_factors": [
+        "POE-006",
+        "POE-010",
+        "POE-011"
+      ],
+      "discounted_nexus_factors": [],
+      "recommendation_before_record_check": "FILE",
+      "factors": [
+        {
+          "factor_id": "POE-002",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-003",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1",
+            "TG3-2"
+          ]
+        },
+        {
+          "factor_id": "POE-004",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-005",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-006",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-007",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-2"
+          ]
+        },
+        {
+          "factor_id": "POE-008",
+          "assessment": "clear",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1",
+            "TG3-2"
+          ]
+        },
+        {
+          "factor_id": "POE-009",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-010",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1",
+            "TG3-2"
+          ]
+        },
+        {
+          "factor_id": "POE-011",
+          "assessment": "triggered",
+          "grounded": true,
+          "evidence_txn_ids": [
+            "TG3-1"
+          ]
+        },
+        {
+          "factor_id": "POE-012",
+          "assessment": "insufficient_data",
+          "grounded": true,
+          "evidence_txn_ids": []
+        }
+      ],
+      "draft": {
+        "status": "READY",
+        "hard_gate_passed": true,
+        "quality_score": 9,
+        "unsupported_facts": [],
+        "unsupported_claims_by_type": {},
+        "unverified_assertions": [],
+        "hard_gate_failure": "",
+        "narrative_words": 260,
+        "narrative": "The account received a credit of Rs.21,50,000 on 2026-09-16 via SWIFT from Gulf Logistics LLC, Abu Dhabi, UAE, which is inconsistent with the customer's declared profile as a returned resident with a monthly income of Rs.25,000 from pension and rent. This transaction exceeds the customer's declared income, triggering POE-005 (Income Level). The subsequent debit of Rs.20,00,000 on 2026-09-21 to a term deposit in the same name and bank raises concerns, as it may indicate a pass-through pattern, triggering POE-010 (Transaction Complexity).\n\nThe large credit and subsequent term deposit also trigger POE-002 (Business Profile) and POE-009 (Transaction Size), respectively. The transaction's origin from Abu Dhabi, UAE, triggers POE-011 (Geographies). Furthermore, the customer's returned resident status and the high-value transaction trigger POE-004 (Customer Risk Profile). The end-of-service payment without documents triggers POE-006 (Source of Income).\n\nThe record does not rule out the possibility that the credit represents a legitimate end-of-service payment. However, it contradicts the customer's declared income, as the credit amount exceeds their monthly income by a significant margin. The term deposit transaction also contradicts the customer's declared business profile, as it does not align with their stated sources of income.\n\nThe pattern of transactions and the customer's profile trigger multiple red-flag indicators, including the RFI-006 alert signal. Pursuant to the Prevention of Money Laundering Act, 2002, Section 12(1)(b), a report is required to be made to the Financial Intelligence Unit - India, as the transactions may indicate a possible proceeds of crime. The transactions and customer profile are inconsistent, and the large credit and subsequent term deposit warrant further examination.",
+        "repair": null,
+        "first_draft_passed_hard_gate": true,
+        "calls": [
+          {
+            "prompt_sha256": "99d0a36f8d4f9e9358ce449c3f364ccc7f716258e80f9b3a5584ab38d7acb86b",
+            "model": "llama3.3-70b",
+            "seconds": 38.9,
+            "usage": {
+              "completion_tokens": 381,
+              "prompt_tokens": 728,
+              "total_tokens": 1109
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1200,
+              "structured": false
+            }
+          },
+          {
+            "prompt_sha256": "f5f2fda5d016ee72860753938c7116c04342a81d9a85ed8299d077427731c7be",
+            "model": "llama3.3-70b",
+            "seconds": 89.0,
+            "usage": {
+              "completion_tokens": 815,
+              "prompt_tokens": 917,
+              "total_tokens": 1732
+            },
+            "decoding": {
+              "temperature": 0,
+              "max_tokens": 1800,
+              "structured": true
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "calls": [
+    {
+      "prompt_sha256": "65b18282dfc8fba009270b61339f20091ad92b4584f04417363047336b44454c",
+      "model": "llama3.3-70b",
+      "seconds": 112.6,
+      "response_chars": 2320,
+      "usage": {
+        "completion_tokens": 867,
+        "prompt_tokens": 688,
+        "total_tokens": 1555
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "09a1c1e0c1ce4764851912f6201f2234fc7d344034819fbe94f11794ded8c196",
+      "model": "llama3.3-70b",
+      "seconds": 63.7,
+      "response_chars": 1915,
+      "usage": {
+        "completion_tokens": 412,
+        "prompt_tokens": 790,
+        "total_tokens": 1202
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1200,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "c1f7fee52a16edc025862ceec482881ee609e8d9c5a74502b091ca859894772e",
+      "model": "llama3.3-70b",
+      "seconds": 94.4,
+      "response_chars": 2934,
+      "usage": {
+        "completion_tokens": 814,
+        "prompt_tokens": 959,
+        "total_tokens": 1773
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1800,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "0f35613ee865299688facef3fbb08c8bcf62aed5c35f89c974b1e3b1139e22c6",
+      "model": "llama3.3-70b",
+      "seconds": 77.5,
+      "response_chars": 2316,
+      "usage": {
+        "completion_tokens": 776,
+        "prompt_tokens": 600,
+        "total_tokens": 1376
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "a034288577d85d720df761047ae24b765e31aaa3be3250d3dc5bd52015e4280c",
+      "model": "llama3.3-70b",
+      "seconds": 40.1,
+      "response_chars": 1693,
+      "usage": {
+        "completion_tokens": 351,
+        "prompt_tokens": 710,
+        "total_tokens": 1061
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1200,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "907f1efd0f6f8f98bd9688fc3f4158083d576127b43797a6b151b7165905d151",
+      "model": "llama3.3-70b",
+      "seconds": 73.1,
+      "response_chars": 2701,
+      "usage": {
+        "completion_tokens": 750,
+        "prompt_tokens": 831,
+        "total_tokens": 1581
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1800,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "29552f1608db3a8506291812f3cfd710e2ebc2b85edb34f876913b43d6024e51",
+      "model": "llama3.3-70b",
+      "seconds": 83.1,
+      "response_chars": 2471,
+      "usage": {
+        "completion_tokens": 906,
+        "prompt_tokens": 1172,
+        "total_tokens": 2078
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "1974ebad4657d68d72a5b312c8cb3af17a2a6a288bab9406209e2a08732fd00f",
+      "model": "llama3.3-70b",
+      "seconds": 41.3,
+      "response_chars": 1835,
+      "usage": {
+        "completion_tokens": 412,
+        "prompt_tokens": 1288,
+        "total_tokens": 1700
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1200,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "8493b15cc58f5a8fa944afc9a2fa6e7ad3b1278f8bb57659425ece0b42299094",
+      "model": "llama3.3-70b",
+      "seconds": 89.3,
+      "response_chars": 3030,
+      "usage": {
+        "completion_tokens": 813,
+        "prompt_tokens": 1425,
+        "total_tokens": 2238
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1800,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "39375857939ca3f4c08f6a4020dbf0056b30cf1c6d3658b68ff41aa5f9049f07",
+      "model": "llama3.3-70b",
+      "seconds": 73.5,
+      "response_chars": 2108,
+      "usage": {
+        "completion_tokens": 769,
+        "prompt_tokens": 1124,
+        "total_tokens": 1893
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "636c2aedabd6a0cc66883f82a852e852710c2e8ff1233a0d12d6af9d7b72a79c",
+      "model": "llama3.3-70b",
+      "seconds": 41.2,
+      "response_chars": 1701,
+      "usage": {
+        "completion_tokens": 435,
+        "prompt_tokens": 1123,
+        "total_tokens": 1558
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1200,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "dde736ecf8573ff38e85af63bb8d0fdf74a8aec8f6aa8c6f470f0929cfc9da4d",
+      "model": "llama3.3-70b",
+      "seconds": 98.0,
+      "response_chars": 3074,
+      "usage": {
+        "completion_tokens": 813,
+        "prompt_tokens": 1416,
+        "total_tokens": 2229
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1800,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "bb4bdb7187db3acd55698aa40f4e17297ea18c6e14db414504006f2d6033e9e5",
+      "model": "llama3.3-70b",
+      "seconds": 76.5,
+      "response_chars": 2164,
+      "usage": {
+        "completion_tokens": 784,
+        "prompt_tokens": 683,
+        "total_tokens": 1467
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 3000,
+        "structured": true
+      }
+    },
+    {
+      "prompt_sha256": "99d0a36f8d4f9e9358ce449c3f364ccc7f716258e80f9b3a5584ab38d7acb86b",
+      "model": "llama3.3-70b",
+      "seconds": 38.9,
+      "response_chars": 1825,
+      "usage": {
+        "completion_tokens": 381,
+        "prompt_tokens": 728,
+        "total_tokens": 1109
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1200,
+        "structured": false
+      }
+    },
+    {
+      "prompt_sha256": "f5f2fda5d016ee72860753938c7116c04342a81d9a85ed8299d077427731c7be",
+      "model": "llama3.3-70b",
+      "seconds": 89.0,
+      "response_chars": 3053,
+      "usage": {
+        "completion_tokens": 815,
+        "prompt_tokens": 917,
+        "total_tokens": 1732
+      },
+      "decoding": {
+        "temperature": 0,
+        "max_tokens": 1800,
+        "structured": true
+      }
+    }
+  ]
+}

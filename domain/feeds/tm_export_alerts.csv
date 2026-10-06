@@ -1,0 +1,4 @@
+AlertRef,CIF,RaisedOn,Rule,Score,TotalValue,Notes,SuspicionTime
+TM-7001,C-88121,26/09/2026,STRUCTURING,81,"4,60,000","Three cash deposits of Rs.1.5L to 1.6L at two branches in two days.",29/09/2026 10:30
+TM-7002,C-90044,27/09/2026,PASS_THROUGH,64,"2,10,000","Credits of Rs.2.1L from two senders; Rs.2.0L sent onward the same day.",
+TM-7003,C-90310,28/09/2026,PASS_THROUGH,55,"3,00,000","Credits Rs.3.0L; no onward transfer in the window.",

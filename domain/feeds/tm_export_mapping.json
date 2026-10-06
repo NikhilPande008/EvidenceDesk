@@ -1,0 +1,50 @@
+{
+  "alerts": {
+    "columns": {
+      "alert_id": "AlertRef",
+      "customer_ref": "CIF",
+      "alert_date": "RaisedOn",
+      "alert_type": "Rule",
+      "alert_amount_inr": "TotalValue",
+      "alert_narrative": "Notes",
+      "suspicion_formed_at": "SuspicionTime"
+    },
+    "date_formats": {
+      "alert_date": "%d/%m/%Y"
+    },
+    "strip_thousands": [
+      "alert_amount_inr"
+    ],
+    "datetime_formats": {
+      "suspicion_formed_at": {
+        "format": "%d/%m/%Y %H:%M",
+        "tz": "+05:30"
+      }
+    }
+  },
+  "transactions": {
+    "columns": {
+      "txn_id": "RefNo",
+      "alert_id": "AlertRef",
+      "txn_date": "ValueDate",
+      "txn_type": "DrCr",
+      "amount_inr": "Amt",
+      "channel": "Mode",
+      "counterparty": "Party",
+      "is_flagged": "Watchlist"
+    },
+    "values": {
+      "txn_type": {
+        "D": "DEBIT",
+        "C": "CREDIT"
+      }
+    },
+    "date_formats": {
+      "txn_date": "%d/%m/%Y"
+    },
+    "strip_thousands": [
+      "amount_inr"
+    ]
+  },
+  "note": "A detection system's export in its own shape: other column names, D/C codes, Y/N watch-list flags, DD/MM/YYYY dates, a zone-less timestamp (the mapping says it is IST) and Indian digit grouping. Two rows are deliberately bad (an impossible date, an unknown direction) and one points at an alert that is not in the feed; the loader rejects them with the reason and loads the rest."
+}

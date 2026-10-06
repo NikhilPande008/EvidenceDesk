@@ -1,0 +1,1240 @@
+{
+ "meta": {
+  "run_utc": "2026-10-05 13:33:15Z",
+  "commit": "61e86a3",
+  "dirty": true
+ },
+ "record": {
+  "alert": "ALERT-01",
+  "transactions": 5,
+  "derivable_amounts": 12
+ },
+ "faithful": {
+  "narratives": 70,
+  "hard_false_positives": {
+   "k": 0,
+   "n": 70,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    5.2
+   ]
+  },
+  "soft_flags": {
+   "k": 0,
+   "n": 70,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    5.2
+   ]
+  },
+  "hard_fp_cases": [],
+  "soft_flag_cases": [],
+  "other_alerts": {
+   "alerts": [
+    "ALERT-01",
+    "ALERT-02",
+    "ALERT-03",
+    "ALERT-04",
+    "ALERT-05",
+    "ALERT-07",
+    "ALERT-08",
+    "ALERT-11",
+    "ALERT-12",
+    "ALERT-14",
+    "ALERT-15",
+    "ALERT-16"
+   ],
+   "narratives": 57,
+   "hard_false_positives": {
+    "k": 0,
+    "n": 57,
+    "rate_pct": 0.0,
+    "wilson95_pct": [
+     0.0,
+     6.3
+    ]
+   },
+   "hard_fp_cases": []
+  }
+ },
+ "fabricated_hard": {
+  "narratives": 154,
+  "caught_any": {
+   "k": 154,
+   "n": 154,
+   "rate_pct": 100.0,
+   "wilson95_pct": [
+    97.6,
+    100.0
+   ]
+  },
+  "caught_as_right_class": {
+   "k": 154,
+   "n": 154,
+   "rate_pct": 100.0,
+   "wilson95_pct": [
+    97.6,
+    100.0
+   ]
+  },
+  "by_class": {
+   "amount": {
+    "n": 30,
+    "caught_any": {
+     "k": 30,
+     "n": 30,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      88.6,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 30,
+     "n": 30,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      88.6,
+      100.0
+     ]
+    }
+   },
+   "channel": {
+    "n": 14,
+    "caught_any": {
+     "k": 14,
+     "n": 14,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      78.5,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 14,
+     "n": 14,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      78.5,
+      100.0
+     ]
+    }
+   },
+   "date": {
+    "n": 20,
+    "caught_any": {
+     "k": 20,
+     "n": 20,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      83.9,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 20,
+     "n": 20,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      83.9,
+      100.0
+     ]
+    }
+   },
+   "entity": {
+    "n": 16,
+    "caught_any": {
+     "k": 16,
+     "n": 16,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      80.6,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 16,
+     "n": 16,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      80.6,
+      100.0
+     ]
+    }
+   },
+   "geography": {
+    "n": 20,
+    "caught_any": {
+     "k": 20,
+     "n": 20,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      83.9,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 20,
+     "n": 20,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      83.9,
+      100.0
+     ]
+    }
+   },
+   "identifier": {
+    "n": 14,
+    "caught_any": {
+     "k": 14,
+     "n": 14,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      78.5,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 14,
+     "n": 14,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      78.5,
+      100.0
+     ]
+    }
+   },
+   "profile_fact": {
+    "n": 16,
+    "caught_any": {
+     "k": 16,
+     "n": 16,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      80.6,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 16,
+     "n": 16,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      80.6,
+      100.0
+     ]
+    }
+   },
+   "profile_income": {
+    "n": 12,
+    "caught_any": {
+     "k": 12,
+     "n": 12,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      75.8,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 12,
+     "n": 12,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      75.8,
+      100.0
+     ]
+    }
+   },
+   "txn_id": {
+    "n": 12,
+    "caught_any": {
+     "k": 12,
+     "n": 12,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      75.8,
+      100.0
+     ]
+    },
+    "caught_as_right_class": {
+     "k": 12,
+     "n": 12,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      75.8,
+      100.0
+     ]
+    }
+   }
+  },
+  "missed": []
+ },
+ "fabricated_soft": {
+  "narratives": 22,
+  "flagged_for_acknowledgement": {
+   "k": 18,
+   "n": 22,
+   "rate_pct": 81.8,
+   "wilson95_pct": [
+    61.5,
+    92.7
+   ]
+  },
+  "by_class": {
+   "multiple": {
+    "k": 2,
+    "n": 2,
+    "rate_pct": 100.0,
+    "wilson95_pct": [
+     34.2,
+     100.0
+    ]
+   },
+   "percentage": {
+    "k": 0,
+    "n": 4,
+    "rate_pct": 0.0,
+    "wilson95_pct": [
+     0.0,
+     49.0
+    ]
+   },
+   "third_party_characterisation": {
+    "k": 16,
+    "n": 16,
+    "rate_pct": 100.0,
+    "wilson95_pct": [
+     80.6,
+     100.0
+    ]
+   }
+  },
+  "missed": [
+   {
+    "id": "H09",
+    "cls": "percentage",
+    "text": " to UPI handle C (I4C-flagged). The customer's declared income is Rs.28K per month. 99.9% of the credits were withdrawn."
+   },
+   {
+    "id": "H09",
+    "cls": "percentage",
+    "text": " handle. The credits total Rs.3.45L and 98.8% of that left the account within days. 99.9% of the credits were withdrawn."
+   },
+   {
+    "id": "H11",
+    "cls": "percentage",
+    "text": "ed handle. The credits total Rs.3.45L and 98.8% of that left the account within days. 40% of the funds were sent abroad."
+   },
+   {
+    "id": "H11",
+    "cls": "percentage",
+    "text": "credits are about 12 times that income, and none of the counterparties is documented. 40% of the funds were sent abroad."
+   }
+  ]
+ },
+ "stress": {
+  "S": {
+   "narratives": 40,
+   "caught": {
+    "k": 40,
+    "n": 40,
+    "rate_pct": 100.0,
+    "wilson95_pct": [
+     91.2,
+     100.0
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 10,
+     "n": 10,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      72.2,
+      100.0
+     ]
+    },
+    "channel": {
+     "k": 6,
+     "n": 6,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      61.0,
+      100.0
+     ]
+    },
+    "date": {
+     "k": 6,
+     "n": 6,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      61.0,
+      100.0
+     ]
+    },
+    "entity": {
+     "k": 5,
+     "n": 5,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      56.5,
+      100.0
+     ]
+    },
+    "geography": {
+     "k": 6,
+     "n": 6,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      61.0,
+      100.0
+     ]
+    },
+    "identifier": {
+     "k": 3,
+     "n": 3,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      43.9,
+      100.0
+     ]
+    },
+    "profile_fact": {
+     "k": 3,
+     "n": 3,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      43.9,
+      100.0
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  },
+  "S2": {
+   "narratives": 42,
+   "caught": {
+    "k": 35,
+    "n": 42,
+    "rate_pct": 83.3,
+    "wilson95_pct": [
+     69.4,
+     91.7
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 10,
+     "n": 10,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      72.2,
+      100.0
+     ]
+    },
+    "channel": {
+     "k": 5,
+     "n": 6,
+     "rate_pct": 83.3,
+     "wilson95_pct": [
+      43.6,
+      97.0
+     ]
+    },
+    "date": {
+     "k": 8,
+     "n": 8,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      67.6,
+      100.0
+     ]
+    },
+    "entity": {
+     "k": 4,
+     "n": 5,
+     "rate_pct": 80.0,
+     "wilson95_pct": [
+      37.5,
+      96.4
+     ]
+    },
+    "geography": {
+     "k": 2,
+     "n": 5,
+     "rate_pct": 40.0,
+     "wilson95_pct": [
+      11.8,
+      76.9
+     ]
+    },
+    "identifier": {
+     "k": 3,
+     "n": 3,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      43.9,
+      100.0
+     ]
+    },
+    "profile_fact": {
+     "k": 2,
+     "n": 4,
+     "rate_pct": 50.0,
+     "wilson95_pct": [
+      15.0,
+      85.0
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  },
+  "S3": {
+   "narratives": 38,
+   "caught": {
+    "k": 30,
+    "n": 38,
+    "rate_pct": 78.9,
+    "wilson95_pct": [
+     63.6,
+     88.9
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 8,
+     "n": 8,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      67.6,
+      100.0
+     ]
+    },
+    "channel": {
+     "k": 5,
+     "n": 6,
+     "rate_pct": 83.3,
+     "wilson95_pct": [
+      43.6,
+      97.0
+     ]
+    },
+    "date": {
+     "k": 5,
+     "n": 6,
+     "rate_pct": 83.3,
+     "wilson95_pct": [
+      43.6,
+      97.0
+     ]
+    },
+    "entity": {
+     "k": 4,
+     "n": 6,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      30.0,
+      90.3
+     ]
+    },
+    "geography": {
+     "k": 3,
+     "n": 6,
+     "rate_pct": 50.0,
+     "wilson95_pct": [
+      18.8,
+      81.2
+     ]
+    },
+    "identifier": {
+     "k": 2,
+     "n": 2,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      34.2,
+      100.0
+     ]
+    },
+    "profile_fact": {
+     "k": 2,
+     "n": 3,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      20.8,
+      93.8
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  }
+ },
+ "stress_missed": [
+  {
+   "set": "S2",
+   "id": "Y20",
+   "cls": "channel",
+   "sentence": "The funds were sent through a mobile wallet."
+  },
+  {
+   "set": "S2",
+   "id": "Y26",
+   "cls": "geography",
+   "sentence": "A counterparty in Lithuania was involved."
+  },
+  {
+   "set": "S2",
+   "id": "Y27",
+   "cls": "geography",
+   "sentence": "Payments went to Vanuatu."
+  },
+  {
+   "set": "S2",
+   "id": "Y28",
+   "cls": "geography",
+   "sentence": "Funds were sent to Oslo."
+  },
+  {
+   "set": "S2",
+   "id": "Y32",
+   "cls": "entity",
+   "sentence": "The beneficiary is Zenith Securities."
+  },
+  {
+   "set": "S2",
+   "id": "Y40",
+   "cls": "profile_fact",
+   "sentence": "The customer is a serving government official."
+  },
+  {
+   "set": "S2",
+   "id": "Y42",
+   "cls": "profile_fact",
+   "sentence": "The customer is 29 years old."
+  },
+  {
+   "set": "S3",
+   "id": "Z11",
+   "cls": "date",
+   "sentence": "On the 3rd day of September the account was used."
+  },
+  {
+   "set": "S3",
+   "id": "Z16",
+   "cls": "channel",
+   "sentence": "The customer used a mobile banking app to push funds."
+  },
+  {
+   "set": "S3",
+   "id": "Z21",
+   "cls": "geography",
+   "sentence": "Funds were transferred to Hungary."
+  },
+  {
+   "set": "S3",
+   "id": "Z23",
+   "cls": "geography",
+   "sentence": "A payment reached Casablanca."
+  },
+  {
+   "set": "S3",
+   "id": "Z26",
+   "cls": "geography",
+   "sentence": "The recipient lives in Chittagong."
+  },
+  {
+   "set": "S3",
+   "id": "Z29",
+   "cls": "entity",
+   "sentence": "Funds went to Nair & Nair."
+  },
+  {
+   "set": "S3",
+   "id": "Z32",
+   "cls": "entity",
+   "sentence": "A wallet company, PhonePe, was involved."
+  },
+  {
+   "set": "S3",
+   "id": "Z38",
+   "cls": "profile_fact",
+   "sentence": "He is a government servant."
+  }
+ ],
+ "mis_attribution": {
+  "cases": 9,
+  "detected": 9,
+  "cases_detail": [
+   {
+    "id": "M01",
+    "kind": "wrong direction",
+    "sentence": "The customer sent Rs.1.1L to UPI handle A.",
+    "detected": true,
+    "flagged": [
+     "The customer sent Rs.1.1L to UPI handle A."
+    ]
+   },
+   {
+    "id": "M02",
+    "kind": "wrong party for an amount",
+    "sentence": "Rs.2.465L was received from UPI handle A.",
+    "detected": true,
+    "flagged": [
+     "Rs.2.465L was received from UPI handle A."
+    ]
+   },
+   {
+    "id": "M03",
+    "kind": "wrong date for a transaction",
+    "sentence": "On 2026-08-13 debits of Rs.2.465L went to UPI handle C.",
+    "detected": true,
+    "flagged": [
+     "On 2026-08-13 debits of Rs.2.465L went to UPI handle C."
+    ]
+   },
+   {
+    "id": "M04",
+    "kind": "wrong party carries the flag",
+    "sentence": "UPI handle D, which is I4C-flagged, received the money.",
+    "detected": true,
+    "flagged": [
+     "UPI handle D, which is I4C-flagged, received the money."
+    ]
+   },
+   {
+    "id": "M05",
+    "kind": "wrong source for all credits",
+    "sentence": "All three credits came from UPI handle C.",
+    "detected": true,
+    "flagged": [
+     "All three credits came from UPI handle C."
+    ]
+   },
+   {
+    "id": "M06",
+    "kind": "total mislabelled",
+    "sentence": "The debits totalled Rs.3.45L.",
+    "detected": true,
+    "flagged": [
+     "The debits totalled Rs.3.45L."
+    ]
+   },
+   {
+    "id": "M07",
+    "kind": "wrong date for an amount",
+    "sentence": "The credit of Rs.0.95L was received on 2026-08-13.",
+    "detected": true,
+    "flagged": [
+     "The credit of Rs.0.95L was received on 2026-08-13."
+    ]
+   },
+   {
+    "id": "M08",
+    "kind": "wrong party carries the flag",
+    "sentence": "UPI handle B, an I4C-flagged account, sent Rs.1.4L.",
+    "detected": true,
+    "flagged": [
+     "UPI handle B, an I4C-flagged account, sent Rs.1.4L."
+    ]
+   },
+   {
+    "id": "M09",
+    "kind": "ratio attached to the wrong side",
+    "sentence": "98.8% of the debits were later returned.",
+    "detected": true,
+    "flagged": [
+     "98.8% of the debits were later returned."
+    ]
+   }
+  ]
+ },
+ "mis_attribution_held_out": {
+  "cases": 15,
+  "detected": 15,
+  "cases_detail": [
+   {
+    "id": "N01",
+    "kind": "wrong direction",
+    "sentence": "UPI handle B transferred Rs.1.4L out of the account.",
+    "detected": true,
+    "flagged": [
+     "UPI handle B transferred Rs.1.4L out of the account."
+    ]
+   },
+   {
+    "id": "N02",
+    "kind": "wrong direction",
+    "sentence": "Rs.95,000 was paid to UPI handle D on 2026-08-16.",
+    "detected": true,
+    "flagged": [
+     "Rs.95,000 was paid to UPI handle D on 2026-08-16."
+    ]
+   },
+   {
+    "id": "N03",
+    "kind": "wrong direction",
+    "sentence": "Funds of Rs.2,46,500 were received from UPI handle C.",
+    "detected": true,
+    "flagged": [
+     "Funds of Rs.2,46,500 were received from UPI handle C."
+    ]
+   },
+   {
+    "id": "N04",
+    "kind": "wrong party",
+    "sentence": "The first credit, Rs.1.1L, arrived from UPI handle B.",
+    "detected": true,
+    "flagged": [
+     "The first credit, Rs.1.1L, arrived from UPI handle B."
+    ]
+   },
+   {
+    "id": "N05",
+    "kind": "wrong date",
+    "sentence": "On 17 August 2026, UPI handle A sent Rs.1.1L.",
+    "detected": true,
+    "flagged": [
+     "On 17 August 2026, UPI handle A sent Rs.1.1L."
+    ]
+   },
+   {
+    "id": "N06",
+    "kind": "wrong party",
+    "sentence": "A debit of Rs.94,200 went to UPI handle A.",
+    "detected": true,
+    "flagged": [
+     "A debit of Rs.94,200 went to UPI handle A."
+    ]
+   },
+   {
+    "id": "N07",
+    "kind": "wrong flag",
+    "sentence": "The I4C-flagged handle B received Rs.2.465L.",
+    "detected": true,
+    "flagged": [
+     "The I4C-flagged handle B received Rs.2.465L."
+    ]
+   },
+   {
+    "id": "N08",
+    "kind": "wrong date",
+    "sentence": "Rs.1.4L credited on 2026-08-16 came from UPI handle B.",
+    "detected": true,
+    "flagged": [
+     "Rs.1.4L credited on 2026-08-16 came from UPI handle B."
+    ]
+   },
+   {
+    "id": "N09",
+    "kind": "total on the wrong side",
+    "sentence": "Total credits amounted to Rs.3.407L.",
+    "detected": true,
+    "flagged": [
+     "Total credits amounted to Rs.3.407L."
+    ]
+   },
+   {
+    "id": "N10",
+    "kind": "total on the wrong side",
+    "sentence": "Total debits came to ₹3.45 lakh.",
+    "detected": true,
+    "flagged": [
+     "Total debits came to ₹3.45 lakh."
+    ]
+   },
+   {
+    "id": "N11",
+    "kind": "wrong party for all debits",
+    "sentence": "All the debits went to UPI handle A.",
+    "detected": true,
+    "flagged": [
+     "All the debits went to UPI handle A."
+    ]
+   },
+   {
+    "id": "N12",
+    "kind": "wrong party for all credits",
+    "sentence": "Every credit was received from UPI handle C.",
+    "detected": true,
+    "flagged": [
+     "Every credit was received from UPI handle C."
+    ]
+   },
+   {
+    "id": "N13",
+    "kind": "wrong flag",
+    "sentence": "UPI handle D, flagged by I4C, sent Rs.95,000.",
+    "detected": true,
+    "flagged": [
+     "UPI handle D, flagged by I4C, sent Rs.95,000."
+    ]
+   },
+   {
+    "id": "N14",
+    "kind": "ratio on the wrong side",
+    "sentence": "98.75% of the debits were received back.",
+    "detected": true,
+    "flagged": [
+     "98.75% of the debits were received back."
+    ]
+   },
+   {
+    "id": "N15",
+    "kind": "wrong direction and party",
+    "sentence": "Rs.1.1L left the account to UPI handle C on 2026-08-13.",
+    "detected": true,
+    "flagged": [
+     "Rs.1.1L left the account to UPI handle C on 2026-08-13."
+    ]
+   }
+  ],
+  "rate": {
+   "k": 15,
+   "n": 15,
+   "rate_pct": 100.0,
+   "wilson95_pct": [
+    79.6,
+    100.0
+   ]
+  }
+ },
+ "correct_attribution": {
+  "statements": 18,
+  "wrongly_flagged": {
+   "k": 0,
+   "n": 18,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    17.6
+   ]
+  },
+  "flagged_cases": []
+ },
+ "attribution_q": {
+  "misattributions": 20,
+  "detected": {
+   "k": 12,
+   "n": 20,
+   "rate_pct": 60.0,
+   "wilson95_pct": [
+    38.7,
+    78.1
+   ]
+  },
+  "cases_detail": [
+   {
+    "id": "Q01",
+    "alert": "ALERT-04",
+    "kind": "wrong direction",
+    "sentence": "Rs.11,00,000 was paid to ABC Infrastructure Ltd on 2026-07-15.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q02",
+    "alert": "ALERT-04",
+    "kind": "wrong party",
+    "sentence": "DEF Engineering Pvt Ltd credited Rs.8,50,000 on 2026-06-15.",
+    "detected": true,
+    "why": [
+     "Rs.8,50,000 appears in the record as a credit from ABC Infrastructure Ltd on 2026-06-15, not with DEF Engineering Pvt Ltd."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q03",
+    "alert": "ALERT-04",
+    "kind": "wrong party",
+    "sentence": "GHI Constructions sent Rs.9,30,000 on 2026-08-15.",
+    "detected": true,
+    "why": [
+     "Rs.9,30,000 appears in the record as a credit from DEF Engineering Pvt Ltd on 2026-08-15, not with GHI Constructions."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q04",
+    "alert": "ALERT-04",
+    "kind": "wrong party for all credits",
+    "sentence": "All the credits came from ABC Infrastructure Ltd.",
+    "detected": true,
+    "why": [
+     "The sentence says all the credits involve ABC Infrastructure Ltd; the record shows ABC Infrastructure Ltd, DEF Engineering Pvt Ltd, GHI Constructions, JKL Roadways Pvt Ltd."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q05",
+    "alert": "ALERT-04",
+    "kind": "wrong date",
+    "sentence": "JKL Roadways Pvt Ltd paid Rs.8,20,000 on 2026-08-15.",
+    "detected": true,
+    "why": [
+     "The sentence dates Rs.8,20,000 to 2026-08-15; the record shows a credit from JKL Roadways Pvt Ltd on 2026-08-20."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q06",
+    "alert": "ALERT-04",
+    "kind": "partial sum called the total",
+    "sentence": "The credits totalled Rs.4,80,000 over two months.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q07",
+    "alert": "ALERT-04",
+    "kind": "wrong direction",
+    "sentence": "Rs.6,20,000 left the account for DEF Engineering Pvt Ltd on 2026-06-20.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q08",
+    "alert": "ALERT-04",
+    "kind": "wrong party",
+    "sentence": "Rs.4,80,000 was received from JKL Roadways Pvt Ltd.",
+    "detected": true,
+    "why": [
+     "Rs.4,80,000 appears in the record as a credit from GHI Constructions on 2026-07-20, not with JKL Roadways Pvt Ltd."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q09",
+    "alert": "ALERT-16",
+    "kind": "wrong direction",
+    "sentence": "Rs.3,00,000 was received from City General Hospital.",
+    "detected": true,
+    "why": [
+     "The sentence says Rs.3,00,000 was received from City General Hospital; the record shows a debit to City General Hospital on 2026-09-12."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q10",
+    "alert": "ALERT-16",
+    "kind": "wrong party",
+    "sentence": "Rs.1,50,000 came from his father.",
+    "detected": true,
+    "why": [
+     "Rs.1,50,000 appears in the record as a credit from Brother on 2026-09-09, not with Father."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q11",
+    "alert": "ALERT-16",
+    "kind": "wrong direction",
+    "sentence": "Rs.75,000 was paid to Sister on 2026-09-11.",
+    "detected": true,
+    "why": [
+     "The sentence says Rs.75,000 was paid to Sister; the record shows a credit from Sister on 2026-09-11."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q12",
+    "alert": "ALERT-16",
+    "kind": "wrong party",
+    "sentence": "Rs.1,20,000 arrived from the brother on 2026-09-10.",
+    "detected": true,
+    "why": [
+     "Rs.1,20,000 appears in the record as a credit from Father on 2026-09-10, not with Brother."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q13",
+    "alert": "ALERT-02",
+    "kind": "wrong date",
+    "sentence": "Rs.4,20,000 was transferred by NEFT on 2026-08-19.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q14",
+    "alert": "ALERT-02",
+    "kind": "wrong direction",
+    "sentence": "ACCT-02-B paid out Rs.1,42,500 by NEFT.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q15",
+    "alert": "ALERT-01",
+    "kind": "ratio on the wrong side",
+    "sentence": "Of the credits received, 100% were forwarded to flagged handle C.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q16",
+    "alert": "ALERT-01",
+    "kind": "wrong party",
+    "sentence": "UPI handle A deposited Rs.2,46,500 into the account.",
+    "detected": true,
+    "why": [
+     "Rs.2,46,500 appears in the record as a debit to UPI handle C on 2026-08-15, not with UPI handle A."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q17",
+    "alert": "ALERT-01",
+    "kind": "wrong date",
+    "sentence": "The final debit, Rs.94,200, went to UPI handle C on 2026-08-15.",
+    "detected": true,
+    "why": [
+     "The sentence dates Rs.94,200, to 2026-08-15; the record shows a debit to UPI handle C on 2026-08-17."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q18",
+    "alert": "ALERT-01",
+    "kind": "total on the wrong side",
+    "sentence": "Debits totalled Rs.3.45L over five days.",
+    "detected": true,
+    "why": [
+     "The sentence gives Rs.3.45L as the total of the debits; the record shows Rs.3.45L is the total of the credits, and the debits total Rs.3,40,700."
+    ],
+    "other_flags": {}
+   },
+   {
+    "id": "Q19",
+    "alert": "ALERT-01",
+    "kind": "wrong direction (cue not read)",
+    "sentence": "UPI handle B was the recipient of Rs.1.4L.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   },
+   {
+    "id": "Q20",
+    "alert": "ALERT-01",
+    "kind": "two parties in one sentence",
+    "sentence": "Rs.1.4L went from UPI handle A to UPI handle C.",
+    "detected": false,
+    "why": [],
+    "other_flags": {}
+   }
+  ],
+  "correct_statements": 20,
+  "wrongly_flagged": {
+   "k": 0,
+   "n": 20,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    16.1
+   ]
+  },
+  "flagged_cases": []
+ },
+ "acceptance_bands": {
+  "derivable_figures_in_the_record": 12,
+  "by_notation": {
+   "whole lakh (Rs.4 lakh)": {
+    "displayed_figures_tested": 10,
+    "accepted": 3,
+    "accepted_share_pct": 30.0,
+    "accepted_examples": [
+     "Rs.1 lakh",
+     "Rs.2 lakh",
+     "Rs.3 lakh"
+    ]
+   },
+   "one decimal lakh (Rs.4.3 lakh)": {
+    "displayed_figures_tested": 100,
+    "accepted": 11,
+    "accepted_share_pct": 11.0,
+    "accepted_examples": [
+     "Rs.0.3 lakh",
+     "Rs.0.9 lakh",
+     "Rs.1.0 lakh",
+     "Rs.1.1 lakh",
+     "Rs.1.4 lakh",
+     "Rs.2.0 lakh"
+    ]
+   },
+   "two decimals lakh (Rs.4.35 lakh)": {
+    "displayed_figures_tested": 199,
+    "accepted": 7,
+    "accepted_share_pct": 3.5,
+    "accepted_examples": [
+     "Rs.0.95 lakh",
+     "Rs.1.10 lakh",
+     "Rs.1.40 lakh",
+     "Rs.2.05 lakh",
+     "Rs.2.35 lakh",
+     "Rs.2.50 lakh"
+    ]
+   },
+   "exact rupees (Rs.4,35,000)": {
+    "displayed_figures_tested": 397,
+    "accepted": 7,
+    "accepted_share_pct": 1.8,
+    "accepted_examples": [
+     "Rs.95,000",
+     "Rs.110,000",
+     "Rs.140,000",
+     "Rs.205,000",
+     "Rs.235,000",
+     "Rs.250,000"
+    ]
+   }
+  },
+  "percentages": {
+   "whole percentages_tested": 99,
+   "accepted_without_a_flag": 9,
+   "accepted_share_pct": 9.1,
+   "accepted": [
+    8,
+    27,
+    28,
+    32,
+    40,
+    41,
+    71,
+    72,
+    99
+   ],
+   "note": "a percentage passes when within 0.6 points of any ratio derivable from the transactions; the check is soft (UNVERIFIED), not a block"
+  }
+ }
+}

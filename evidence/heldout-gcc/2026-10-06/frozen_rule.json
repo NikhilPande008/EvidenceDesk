@@ -1,0 +1,7 @@
+{
+ "note": "The nexus rule that PREDICTION.md and FIRST_MEASUREMENT.md were written against. skills/nexus_support.py was last changed in commit f05eeeb, before ALERT-17, ALERT-18 and ALERT-19 existed. tests/test_nexus_support.py fails if the file no longer has this hash. Changing the rule is allowed, but it ends the held-out status of these three alerts: record the change, say so in FIRST_MEASUREMENT.md, and write new alerts to test the new rule.",
+ "file": "skills/nexus_support.py",
+ "sha256": "77adc75212e45d842cadb33a32b9b14599742a9afa217ee484e22fea1d052aa4",
+ "last_changed_in_commit": "f05eeeb",
+ "alerts_held_out_against_it": ["ALERT-17", "ALERT-18", "ALERT-19"]
+}

@@ -1,0 +1,210 @@
+{
+ "meta": {
+  "run_utc": "2026-10-05 13:01:41Z",
+  "commit": "61e86a3",
+  "dirty": true
+ },
+ "note": "Frozen before any attribution logic was added to skills/grounding.py. M = development set, N = held-out set, P = correctly bound statements.",
+ "mis_attribution": {
+  "cases": 9,
+  "detected": 0,
+  "cases_detail": [
+   {
+    "id": "M01",
+    "kind": "wrong direction",
+    "sentence": "The customer sent Rs.1.1L to UPI handle A.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M02",
+    "kind": "wrong party for an amount",
+    "sentence": "Rs.2.465L was received from UPI handle A.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M03",
+    "kind": "wrong date for a transaction",
+    "sentence": "On 2026-08-13 debits of Rs.2.465L went to UPI handle C.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M04",
+    "kind": "wrong party carries the flag",
+    "sentence": "UPI handle D, which is I4C-flagged, received the money.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M05",
+    "kind": "wrong source for all credits",
+    "sentence": "All three credits came from UPI handle C.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M06",
+    "kind": "total mislabelled",
+    "sentence": "The debits totalled Rs.3.45L.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M07",
+    "kind": "wrong date for an amount",
+    "sentence": "The credit of Rs.0.95L was received on 2026-08-13.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M08",
+    "kind": "wrong party carries the flag",
+    "sentence": "UPI handle B, an I4C-flagged account, sent Rs.1.4L.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "M09",
+    "kind": "ratio attached to the wrong side",
+    "sentence": "98.8% of the debits were later returned.",
+    "detected": false,
+    "flagged": []
+   }
+  ]
+ },
+ "mis_attribution_held_out": {
+  "cases": 15,
+  "detected": 0,
+  "cases_detail": [
+   {
+    "id": "N01",
+    "kind": "wrong direction",
+    "sentence": "UPI handle B transferred Rs.1.4L out of the account.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N02",
+    "kind": "wrong direction",
+    "sentence": "Rs.95,000 was paid to UPI handle D on 2026-08-16.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N03",
+    "kind": "wrong direction",
+    "sentence": "Funds of Rs.2,46,500 were received from UPI handle C.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N04",
+    "kind": "wrong party",
+    "sentence": "The first credit, Rs.1.1L, arrived from UPI handle B.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N05",
+    "kind": "wrong date",
+    "sentence": "On 17 August 2026, UPI handle A sent Rs.1.1L.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N06",
+    "kind": "wrong party",
+    "sentence": "A debit of Rs.94,200 went to UPI handle A.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N07",
+    "kind": "wrong flag",
+    "sentence": "The I4C-flagged handle B received Rs.2.465L.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N08",
+    "kind": "wrong date",
+    "sentence": "Rs.1.4L credited on 2026-08-16 came from UPI handle B.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N09",
+    "kind": "total on the wrong side",
+    "sentence": "Total credits amounted to Rs.3.407L.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N10",
+    "kind": "total on the wrong side",
+    "sentence": "Total debits came to ₹3.45 lakh.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N11",
+    "kind": "wrong party for all debits",
+    "sentence": "All the debits went to UPI handle A.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N12",
+    "kind": "wrong party for all credits",
+    "sentence": "Every credit was received from UPI handle C.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N13",
+    "kind": "wrong flag",
+    "sentence": "UPI handle D, flagged by I4C, sent Rs.95,000.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N14",
+    "kind": "ratio on the wrong side",
+    "sentence": "98.75% of the debits were received back.",
+    "detected": false,
+    "flagged": []
+   },
+   {
+    "id": "N15",
+    "kind": "wrong direction and party",
+    "sentence": "Rs.1.1L left the account to UPI handle C on 2026-08-13.",
+    "detected": false,
+    "flagged": []
+   }
+  ],
+  "rate": {
+   "k": 0,
+   "n": 15,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    20.4
+   ]
+  }
+ },
+ "correct_attribution": {
+  "statements": 18,
+  "wrongly_flagged": {
+   "k": 0,
+   "n": 18,
+   "rate_pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    17.6
+   ]
+  },
+  "flagged_cases": []
+ }
+}

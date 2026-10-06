@@ -1,0 +1,406 @@
+# FIU-IND Red-Flag Indicators
+# Category: RED_FLAG_INDICATOR
+# Snapshot date: 2026-09-11
+#
+# ⚠️  ALL ENTRIES IN THIS FILE ARE NEEDS-VERIFICATION
+# These patterns are derived from widely-published AML guidance and domain knowledge.
+# They must be mapped to an exact FIU-IND typology report, Master Direction
+# section, or circular before being cited in product output as FIU-IND–endorsed.
+# See GAPS.md — DG-07.
+#
+# The patterns themselves are defensible as industry-standard AML red flags;
+# the gap is the exact primary-source citation within the FIU-IND framework.
+
+rules:
+
+  - id: RFI-001
+    rule: >
+      Multiple credits to an account followed by immediate near-total debit of the
+      same funds — a pass-through or transit-account pattern — where the account
+      does not appear to have a legitimate commercial purpose that explains the
+      volume or velocity.
+    category: RED_FLAG_INDICATOR
+    subcategory: VELOCITY_STRUCTURING
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report / Master Circular — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is the canonical mule-account signal. Credits arrive from multiple sources;
+      the account immediately sweeps them out to one or more beneficiaries.
+      The account is being used as a pass-through, not for genuine banking.
+      Triggers: POE factors 1, 2, 7, 8, 9.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Map to exact FIU-IND typology report citation. Confirm the pattern description
+      matches FIU-IND's published language. This is the highest-priority RFI to source.
+    related_rules:
+      - POE-008
+      - POE-009
+      - CTR-001
+
+  - id: RFI-002
+    rule: >
+      Sub-threshold cash deposits made across multiple linked accounts or on consecutive
+      days, structured to remain below the ₹10 lakh CTR reporting threshold — a
+      structuring pattern.
+    category: RED_FLAG_INDICATOR
+    subcategory: STRUCTURING_CTR_AVOIDANCE
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Structuring is both a red flag and a predicate offence under PMLA.
+      The aggregate cash deposit exceeds ₹10 lakh but no single transaction
+      triggers the CTR threshold. The pattern itself triggers an STR obligation.
+      Triggers: POE factors 7, 8, 9.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Map to exact FIU-IND typology or PMLA structuring provision. Note: PMLA explicitly covers structuring as an offence."
+    related_rules:
+      - CTR-001
+      - POE-009
+
+  - id: RFI-003
+    rule: >
+      An account that has been dormant for six months or more suddenly exhibits
+      high-value transaction activity inconsistent with the customer's known profile.
+    category: RED_FLAG_INDICATOR
+    subcategory: DORMANCY_ANOMALY
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Dormant accounts are commonly purchased or taken over by mule networks.
+      The 6-month dormancy threshold is an industry standard but the exact FIU-IND
+      specification should be confirmed. Triggers: POE factors 2, 7, 8.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify the 6-month dormancy definition against FIU-IND / RBI guidance.
+      Note that RBI defines a 'dormant account' as inactive for 24 months —
+      the 6-month figure here is an AML detection threshold, not the regulatory
+      dormancy classification. Distinguish these clearly in product output.
+    related_rules:
+      - POE-003
+
+  - id: RFI-004
+    rule: >
+      The same mobile number, device identifier, or IP address is linked to multiple
+      distinct accounts held by different customers at the same Reporting Entity — an
+      identity linkage anomaly suggesting coordinated account creation or account takeover.
+    category: RED_FLAG_INDICATOR
+    subcategory: IDENTITY_LINKAGE
+    applies_to:
+      - banking_companies
+      - payment_system_operators
+    primary_source:
+      document: "FIU-IND Typology Report / RBI MuleHunter.AI signals — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is a network-level signal, not a per-account signal. Requires entity
+      linkage analysis across accounts. In the product context, this signal would
+      arrive from MuleHunter.AI or DPIP and trigger disposition. The PO must address
+      this linkage explicitly in the Ground of Suspicion.
+      Triggers: POE factor 11 (KYC — inconsistent registration data).
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Confirm this is an enumerated FIU-IND indicator or primarily an RBI MuleHunter.AI signal. Locate primary citation."
+    related_rules:
+      - POE-012
+      - MAC-001
+
+  - id: RFI-005
+    rule: >
+      The account receives a credit from an account that is flagged in a recognised
+      suspect database — including the I4C suspect registry, DPIP, or MuleHunter.AI
+      output — indicating that funds may originate from a known fraud source.
+    category: RED_FLAG_INDICATOR
+    subcategory: SIGNAL_BASED_SUSPECT_LINKAGE
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "I4C suspect registry; RBI DPIP; MuleHunter.AI — signal-based, not direct FIU-IND citation"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: INDUSTRY_PRACTICE
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is a derived signal, not a pattern-based one. A suspect-registry match
+      is strong evidence for suspicion but does not automatically require an STR —
+      the PO must still form suspicion and document the evaluation. A match
+      without STR filing is a significant compliance risk.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Confirm DPIP and I4C signals are legally permitted as suspicion inputs under
+      PMLA. Locate FIU-IND guidance on using regulatory signal databases as STR
+      triggers. Clarify whether a suspect-registry match alone is sufficient evidence
+      for suspicion or requires corroboration.
+    related_rules:
+      - MAC-001
+
+  - id: RFI-006
+    rule: >
+      A salary account receives credits that are inconsistent with the employer profile
+      — either significantly in excess of plausible salary, from counterparties other
+      than the stated employer, or of a type (cash, third-party transfers) inconsistent
+      with salary payments.
+    category: RED_FLAG_INDICATOR
+    subcategory: INCOME_INCONSISTENCY
+    applies_to:
+      - banking_companies
+    primary_source:
+      document: "FIU-IND Typology Report — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Salary accounts with anomalous credits are a classic mule-account pattern.
+      The contrast between the account's stated purpose (salary receipt) and its
+      actual use (pass-through for third-party funds) is the core of the suspicion
+      narrative. Triggers: POE factors 1, 2, 4, 5.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Map to exact FIU-IND typology report or RBI guidance on salary account misuse."
+    related_rules:
+      - POE-004
+      - POE-005
+
+  - id: RFI-007
+    rule: >
+      All or most outgoing transfers from otherwise unrelated accounts flow to the
+      same single beneficiary — a beneficiary concentration pattern that suggests
+      coordinated fund aggregation or layering.
+    category: RED_FLAG_INDICATOR
+    subcategory: BENEFICIARY_CONCENTRATION_LAYERING
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report — exact document to be located"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is a network-level layering indicator. Multiple source accounts feeding
+      one destination account is the aggregation (placement → layering) phase of
+      ML. The PO's narrative must explain why these accounts are unrelated and why
+      the shared beneficiary is not commercially explained.
+      Triggers: POE factors 6, 9.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Map to exact FIU-IND typology citation. Requires cross-account analysis capability in product."
+    related_rules:
+      - POE-007
+      - POE-010
+
+  - id: RFI-008
+    rule: >
+      A cross-border wire transfer to or from a FATF-listed high-risk or non-cooperative
+      jurisdiction, or a jurisdiction that the customer's business profile does not
+      explain as a natural counterparty.
+    category: RED_FLAG_INDICATOR
+    subcategory: GEOGRAPHY_HIGH_RISK
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report; FATF High-Risk Jurisdictions list"
+      url: "https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      FATF updates its jurisdiction lists three times per year. The product should
+      maintain a current FATF list as a reference corpus. A CBTR to a FATF black-list
+      jurisdiction is a near-automatic STR trigger. A CBTR to a grey-list jurisdiction
+      requires evaluation of the customer's business justification.
+      Triggers: POE factor 10.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify current FATF black/grey list composition (as of Sep 2026).
+      Confirm whether RBI has an India-specific jurisdiction risk list that differs
+      from FATF. FATF URL given is best-effort; verify it is live.
+    related_rules:
+      - CBTR-001
+      - POE-011
+
+  - id: RFI-009
+    rule: >
+      A Politically Exposed Person (PEP) customer whose transaction pattern is
+      inconsistent with the income reasonably expected from their public function
+      or political office.
+    category: RED_FLAG_INDICATOR
+    subcategory: PEP_INCONSISTENCY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Typology Report; RBI Master Direction on KYC (PEP definition)"
+      url: "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11566"
+      url_verified: false
+      section: "PEP — enhanced due diligence"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      PEPs are subject to enhanced due diligence (EDD) under RBI KYC norms.
+      A PEP transaction that exceeds what their known official income can justify
+      is a strong suspicion indicator. The PO must document the income assessment
+      explicitly in the Ground of Suspicion.
+      Triggers: POE factors 3, 4, 5.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify RBI Master Direction on KYC URL and PEP definition section.
+      Confirm current KYC Master Direction version/date. The URL given is
+      commonly cited for the RBI KYC Master Direction (as of 2022) but needs
+      to be verified as still pointing to the current version.
+    related_rules:
+      - POE-004
+      - POE-005
+
+  - id: RFI-010
+    rule: >
+      A non-profit organisation (NPO) account receives large cash donations or
+      transfers and redistributes funds immediately to multiple beneficiaries,
+      in a pattern inconsistent with the NPO's stated charitable purpose.
+    category: RED_FLAG_INDICATOR
+    subcategory: NPO_MISUSE_TF
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Typology Report; FATF Guidance on NPOs"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "NEEDS-VERIFICATION"
+      accessed_date: null
+    effective_date: null
+    evidence_level: NEEDS-VERIFICATION
+    source_authority: FIU_IND_PUBLICATION
+    corpus_version: "1.1.1"
+    review_status: DRAFT
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      NPO misuse is a primary TF channel. The FIU-IND NTR obligation (NTR-001)
+      exists specifically for this risk. An NPO account that fails this red-flag
+      test should trigger both NTR and STR review. The PO must document why the
+      transaction pattern does not fit the NPO's stated charitable activity.
+      Triggers: POE factors 1, 2, 6, 7.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Map to exact FIU-IND typology or FATF NPO guidance citation.
+      Confirm definition of 'immediate redistribution' in context of this indicator.
+    related_rules:
+      - NTR-001
+      - POE-001
+      - POE-007

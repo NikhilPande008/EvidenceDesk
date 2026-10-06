@@ -1,0 +1,230 @@
+# Statutory Basis Quick Reference
+# Category: STATUTORY_BASIS
+# Snapshot date: 2026-09-11
+
+rules:
+
+  - id: SB-001
+    rule: >
+      Prevention of Money-Laundering Act, 2002 (Act 15 of 2003) is the primary statute
+      governing AML obligations for Reporting Entities in India. It establishes the
+      obligations to maintain records, file reports with FIU-IND, and designate a
+      Principal Officer.
+    category: STATUTORY_BASIS
+    subcategory: PMLA_2002
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-Laundering Act, 2002 (as amended)"
+      url: "https://www.indiacode.nic.in/handle/123456789/2205"
+      url_verified: false
+      section: "Act 15 of 2003"
+      accessed_date: null
+    effective_date: null  # in-force date NEEDS-VERIFICATION — see gap DG-11
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      PMLA is the parent statute. All product citations should trace back to PMLA
+      provisions where possible. Secondary sources (FIU-IND circulars, RBI Master
+      Directions) are delegated instruments under PMLA authority.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify exact in-force date of PMLA 2002. Confirm which version of the India
+      Code URL corresponds to the current consolidated version (post-2023 amendments).
+      The 2023 PMLA amendment expanded the definition of "proceeds of crime" and
+      the list of Reporting Entities — verify exact changes.
+    related_rules:
+      - STR-001
+      - SB-002
+      - SB-003
+
+  - id: SB-002
+    rule: >
+      PMLA 2002, Section 12(1)(b) imposes the obligation on Reporting Entities to
+      furnish information in respect of transactions that may constitute a suspicious
+      transaction, to the Director, FIU-IND.
+    category: STATUTORY_BASIS
+    subcategory: PMLA_S12_1B
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-Laundering Act, 2002 — Section 12(1)(b)"
+      url: "https://www.indiacode.nic.in/handle/123456789/2205"
+      url_verified: false
+      section: "Section 12(1)(b)"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is the STR statutory basis. All product STR-related output should cite
+      "PMLA 2002 s.12(1)(b)" as the authority for the filing obligation.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify s.12(1)(b) text unchanged in current consolidated PMLA. Check 2023 amendment impact."
+    related_rules:
+      - STR-001
+      - SB-001
+
+  - id: SB-003
+    rule: >
+      Tipping-off is prohibited for Reporting Entities. Rule 8(6) of the Prevention of
+      Money-laundering (Maintenance of Records) Rules, 2005 requires every Reporting
+      Entity, its directors, officers and all employees to keep confidential the fact
+      that records are maintained and that information has been furnished to the
+      Director, FIU-IND. The RBI Master Direction on KYC adds that, once a suspicion of
+      ML/TF has formed, the customer must not be tipped off (including through CDD), and
+      that STR filing and the customer's risk categorisation stay confidential.
+    category: STATUTORY_BASIS
+    subcategory: PML_RULES_R8_6_TIPPING_OFF
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-laundering (Maintenance of Records) Rules, 2005 — Rule 8(6); RBI Master Direction on KYC"
+      url: "https://fiuindia.gov.in/files/AML_Legislation/notification.html"
+      url_verified: false
+      section: "Rule 8(6) of PML Rules 2005; RBI KYC Master Direction (tipping-off and confidentiality provisions, paragraph numbers not captured)"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The tipping-off prohibition is not merely operational guidance: it is a duty in
+      the PML Rules (Rule 8(6)) and in the RBI KYC Master Direction. Product access
+      controls must be designed to prevent accidental disclosure. The STR workflow
+      must not surface the filing status (FILE/NOT_FILE) to anyone other than
+      authorised staff. This entry does not state what the consequence of a breach is.
+    last_verified: null
+    snapshot_date: "2026-10-05"
+    gap_notes: >
+      CORRECTED 2026-10-05 (v1.1.1). v1.1.0 cited PMLA 2002 s.12A as the tipping-off
+      prohibition and described a breach as a criminal offence, graded PROVEN. On
+      2026-10-05 the text of the Act on the FIU-IND site was read: s.12A is "Access to
+      information" (the Director may call for records; sub-section (3) makes the
+      information the Director seeks confidential). No tipping-off prohibition was
+      found in the Act text that was read. Rule 8(6) of the PML Rules was read on the
+      FIU-IND site and matches the confidentiality duty above. Both reads were made
+      through a summarising fetch by an AI assistant, not by a lawyer, so this is
+      ASSUMED, not PROVEN. Open: confirm the Rule 8(6) wording after the 2023
+      amendment rules; capture the RBI KYC MD paragraph numbers; confirm whether and
+      where any penalty for tipping-off is provided (do not state "criminal offence"
+      until then).
+    related_rules:
+      - STR-004
+      - SB-001
+
+  - id: SB-004
+    rule: >
+      RBI Master Direction on Know Your Customer (KYC), issued under sections 35A and
+      56 of the Banking Regulation Act, 1949, establishes KYC obligations and the
+      customer risk-categorisation framework for banking companies. It defines PEPs,
+      beneficial ownership, and enhanced due diligence requirements.
+    category: STATUTORY_BASIS
+    subcategory: RBI_KYC_MASTER_DIRECTION
+    applies_to:
+      - banking_companies
+    regulatory_perimeter:
+      jurisdiction: India
+      statute: "Banking Regulation Act, 1949 (ss.35A, 56); PMLA 2002"
+      regulators: [RBI]
+      entity_types: [banking_companies]
+      excludes:
+        - NBFCs_not_regulated_by_RBI
+        - payment_aggregators
+        - virtual_asset_service_providers
+        - entities_regulated_by_SEBI_IRDAI_PFRDA_only
+      perimeter_note: >
+        This rule applies only within the RBI-regulated entity perimeter. For entities
+        regulated by SEBI, IRDAI, or PFRDA, equivalent KYC norms are issued by those
+        regulators and are outside the scope of this corpus entry. A query for an IFSC
+        or securities firm should not retrieve this rule as the primary authority.
+    primary_source:
+      document: "RBI Master Direction on KYC — DBR.AML.BC.No.81/14.01.001/2015-16 (as updated)"
+      url: "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11566"
+      url_verified: false
+      section: "Full document"
+      accessed_date: null
+    effective_date: "2016-02-25"
+    evidence_level: ASSUMED
+    source_authority: RBI_DIRECTION
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The KYC Master Direction is the operational backbone for customer risk profiling
+      within RBI-regulated entities. The PO evaluation factors (POE-002 to POE-012)
+      rely on the risk categories and EDD/SDD frameworks established here. The product
+      should reference the current version; it is updated periodically by RBI circular.
+      When surfacing this rule for a non-banking entity, add a disclaimer that the
+      applicable KYC norms depend on the entity's sectoral regulator.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      Verify that the RBI URL (id=11566) still resolves to the current KYC Master
+      Direction. Verify the latest amendment date of the Master Direction — it was
+      last significantly amended in 2023. Confirm whether SEBI/IRDAI/PFRDA have
+      issued harmonised KYC norms that would extend parts of this direction to
+      non-banking entities.
+    related_rules:
+      - POE-004
+      - POE-012
+      - RFI-009
+
+  - id: SB-005
+    rule: >
+      The FATF Recommendations (40 Recommendations, last revised 2022) are the
+      international standard for AML/CFT compliance. India is a FATF member and
+      its domestic AML legislation is required to comply with these standards.
+      FATF Mutual Evaluation findings directly influence RBI and FIU-IND guidance.
+    category: STATUTORY_BASIS
+    subcategory: FATF_RECOMMENDATIONS
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FATF Recommendations 2012 (updated to 2022)"
+      url: "https://www.fatf-gafi.org/en/topics/fatf-recommendations.html"
+      url_verified: false
+      section: "Recommendations 9–23 (financial institutions)"
+      accessed_date: null
+    effective_date: "2012-02-16"  # original 2012 adoption; updated Oct 2022
+    evidence_level: ASSUMED
+    source_authority: INTERNATIONAL_STANDARD
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      FATF provides the framework; India's PMLA and FIU-IND guidelines implement it.
+      When a domestic provision lacks specificity, FATF guidance provides interpretive
+      support but is not directly enforceable in India. The product should cite
+      FATF guidance as secondary context, not as primary authority.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify latest FATF Recommendation version (2022 revision). Confirm India FATF Mutual Evaluation status."
+    related_rules:
+      - POE-011
+      - RFI-008

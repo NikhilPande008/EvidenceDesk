@@ -1,0 +1,19 @@
+# Corpus release manifest — the single source of truth for corpus version, snapshot date and counts.
+# README, DEPLOY, the Streamlit sidebar and the ledger provenance all derive from THIS file (or from
+# the REGULATORY_CORPUS rows it produces). tests/test_governance.py fails if any of it drifts.
+corpus_version: "1.1.1"
+snapshot_date: "2026-10-05"      # latest rule revision in this release; each rule keeps its own as-of `snapshot_date`
+owner: "Nikhil Pande (corpus maintainer)"
+review_policy:
+  max_review_age_days: 180        # a VERIFIED rule older than this is reported STALE
+  verification_status: >
+    No rule has been independently re-verified against its live primary source
+    (all url_verified=false, last_verified=null). PROVEN = primary source cited by the corpus author.
+    v1.1.1 (2026-10-05): SB-003 and STR-004 re-sourced (PMLA s.12A is "Access to information", not a tipping-off
+    provision; the duty is in PML Rules Rule 8(6) and the RBI KYC Master Direction) and graded PROVEN -> ASSUMED.
+counts:                           # asserted against the YAML by tests/test_governance.py
+  total: 49
+  PROVEN: 13
+  ASSUMED: 23
+  NEEDS-VERIFICATION: 13
+  search_indexed: 36              # PROVEN + ASSUMED (CORPUS_SEARCH excludes NEEDS-VERIFICATION)

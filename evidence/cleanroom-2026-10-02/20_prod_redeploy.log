@@ -1,0 +1,23 @@
+MODE: APPLY · profile default · FIU_COPILOT.AML · warehouse FIU_WH
+
+== app ==
+  as FIU_APP_ROLE: snow streamlit deploy  (first creation needs a TEMPORARY CREATE STREAMLIT grant, revoked in a finally)
+      snow streamlit deploy --connection fiu-copilot --database FIU_COPILOT --schema AML --warehouse FIU_WH --role FIU_APP_ROLE --secondary-roles NONE
+  existing app: owned by FIU_APP_ROLE → --replace (no temporary grant needed)
+        modified: skills/connection.py -> skills/connection.py
+        modified: skills/core.py -> skills/core.py
+        modified: skills/defensibility.py -> skills/defensibility.py
+        modified: skills/errors.py -> skills/errors.py
+        modified: skills/evidence.py -> skills/evidence.py
+        modified: skills/governance.py -> skills/governance.py
+        modified: skills/grounding.py -> skills/grounding.py
+        modified: skills/ledger.py -> skills/ledger.py
+        modified: skills/llm_output.py -> skills/llm_output.py
+        modified: skills/po_copy.py -> skills/po_copy.py
+        modified: streamlit_app.py -> streamlit_app.py
+      Uploading files from local <repo>/output/bundle/streamlit/fiu_aml_copilot directory to stage.
+      Restarting Streamlit app FIU_COPILOT.AML.fiu_aml_copilot so the new files take effect
+      Streamlit successfully deployed and available under https://app.snowflake.com/<org>/<account>/#/streamlit-apps/FIU_COPILOT.AML.FIU_AML_COPILOT
+  after: app owner = FIU_APP_ROLE; FIU_APP_ROLE CREATE privileges = none
+
+DONE

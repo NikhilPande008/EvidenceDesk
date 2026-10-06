@@ -1,0 +1,127 @@
+# CTR Reporting Obligations
+# Category: REPORTING_OBLIGATION
+# Snapshot date: 2026-09-11
+
+rules:
+
+  - id: CTR-001
+    rule: >
+      A Reporting Entity must file a Cash Transaction Report (CTR) for all cash
+      transactions exceeding ₹10 lakh in a calendar month — whether through a single
+      transaction or through multiple transactions that are integrally connected
+      (i.e., transactions by or on behalf of the same person that appear to have been
+      deliberately split to avoid the reporting threshold). Linked accounts of the
+      same customer count toward the monthly aggregate.
+    category: REPORTING_OBLIGATION
+    subcategory: CTR_THRESHOLD
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "CTR — Filing threshold"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The ₹10 lakh threshold is a monthly aggregate per customer (including linked
+      accounts), not per single transaction. The "integrally connected" aggregation
+      rule means structuring — splitting cash transactions to stay below ₹10 lakh —
+      triggers both the CTR obligation (once the split transactions are aggregated)
+      and a separate STR obligation for the structuring behaviour itself (RFI-002).
+      The product should surface both obligations when cash structuring is detected.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      Verify the exact phrase "integrally connected" in the current FIU-IND RFG v2.2.
+      Verify whether the ₹10 lakh threshold has been revised in any 2024–2026 PMLA
+      amendment or FIU-IND circular.
+    related_rules:
+      - CTR-002
+      - RFI-002
+
+  - id: CTR-002
+    rule: >
+      A CTR must be filed by the 15th calendar day of the month following the month
+      in which the reportable cash transactions occurred. Where multiple integrally
+      connected transactions across a calendar month trigger the ₹10 lakh threshold,
+      the deadline is the 15th of the month following the last transaction in the series.
+    category: REPORTING_OBLIGATION
+    subcategory: CTR_DEADLINE
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "CTR — Filing deadline"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      CTR is a calendar-month look-back filed in arrears, unlike STR which is
+      event-triggered within 7 working days of suspicion formation. The CTR deadline
+      is in calendar days (not working days). The product's alert-to-STR ratio
+      dashboard does not cover CTR volume — that is a separate compliance metric.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      Confirm 15th day is still the deadline in FINGate 2.0 and that it is calendar
+      days not working days. Verify the interpretation for integrally connected
+      transactions spanning a month boundary.
+    related_rules:
+      - CTR-001
+
+  - id: CTR-003
+    rule: >
+      A CTR must be filed irrespective of whether the cash transaction is suspicious.
+      Where the same transaction qualifies for both CTR and STR filing, both reports
+      must be filed independently.
+    category: REPORTING_OBLIGATION
+    subcategory: CTR_STR_INDEPENDENCE
+    applies_to:
+      - banking_companies
+      - financial_institutions
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2; FIU-IND FAQs"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "CTR — relationship with STR"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      A common RE mistake is to file only one report when both thresholds are met.
+      Filing a CTR does not discharge the STR obligation, and vice versa. The product
+      must flag this dual-obligation scenario when a suspicious cash transaction
+      exceeds ₹10 lakh.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Locate the specific FIU-IND FAQ that addresses dual CTR+STR filing. Confirm this interpretation is current."
+    related_rules:
+      - CTR-001
+      - STR-001

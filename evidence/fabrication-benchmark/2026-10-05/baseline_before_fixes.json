@@ -1,0 +1,314 @@
+{
+ "meta": {
+  "run_utc": "2026-10-05 12:24:16Z",
+  "commit": "61e86a3",
+  "dirty": true
+ },
+ "note": "Frozen before any change to skills/grounding.py. Stress set S only.",
+ "stress": {
+  "S": {
+   "narratives": 40,
+   "caught": {
+    "k": 7,
+    "n": 40,
+    "rate_pct": 17.5,
+    "wilson95_pct": [
+     8.8,
+     31.9
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 4,
+     "n": 10,
+     "rate_pct": 40.0,
+     "wilson95_pct": [
+      16.8,
+      68.7
+     ]
+    },
+    "channel": {
+     "k": 0,
+     "n": 6,
+     "rate_pct": 0.0,
+     "wilson95_pct": [
+      0.0,
+      39.0
+     ]
+    },
+    "date": {
+     "k": 0,
+     "n": 6,
+     "rate_pct": 0.0,
+     "wilson95_pct": [
+      0.0,
+      39.0
+     ]
+    },
+    "entity": {
+     "k": 0,
+     "n": 5,
+     "rate_pct": 0.0,
+     "wilson95_pct": [
+      0.0,
+      43.5
+     ]
+    },
+    "geography": {
+     "k": 0,
+     "n": 6,
+     "rate_pct": 0.0,
+     "wilson95_pct": [
+      0.0,
+      39.0
+     ]
+    },
+    "identifier": {
+     "k": 1,
+     "n": 3,
+     "rate_pct": 33.3,
+     "wilson95_pct": [
+      6.2,
+      79.2
+     ]
+    },
+    "profile_fact": {
+     "k": 1,
+     "n": 3,
+     "rate_pct": 33.3,
+     "wilson95_pct": [
+      6.2,
+      79.2
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  }
+ },
+ "stress_missed": [
+  {
+   "set": "S",
+   "id": "X01",
+   "cls": "amount",
+   "sentence": "The customer moved twenty-five lakh rupees."
+  },
+  {
+   "set": "S",
+   "id": "X03",
+   "cls": "amount",
+   "sentence": "A transfer of 2.5 million rupees took place."
+  },
+  {
+   "set": "S",
+   "id": "X04",
+   "cls": "amount",
+   "sentence": "She received five hundred thousand rupees."
+  },
+  {
+   "set": "S",
+   "id": "X05",
+   "cls": "amount",
+   "sentence": "The sum of Rupees Seven Lakh Eighty Five Thousand was received."
+  },
+  {
+   "set": "S",
+   "id": "X08",
+   "cls": "amount",
+   "sentence": "The customer got 785000 rupees."
+  },
+  {
+   "set": "S",
+   "id": "X09",
+   "cls": "amount",
+   "sentence": "A payment of 7,85,000 INR followed."
+  },
+  {
+   "set": "S",
+   "id": "X11",
+   "cls": "date",
+   "sentence": "On the twenty-seventh of August the customer made a transfer."
+  },
+  {
+   "set": "S",
+   "id": "X12",
+   "cls": "date",
+   "sentence": "On 27th August a transfer was made."
+  },
+  {
+   "set": "S",
+   "id": "X13",
+   "cls": "date",
+   "sentence": "The transfer was on 27.08.2026."
+  },
+  {
+   "set": "S",
+   "id": "X14",
+   "cls": "date",
+   "sentence": "On 2026/08/27 the funds moved."
+  },
+  {
+   "set": "S",
+   "id": "X15",
+   "cls": "date",
+   "sentence": "A transfer on August 27 happened."
+  },
+  {
+   "set": "S",
+   "id": "X16",
+   "cls": "date",
+   "sentence": "The funds were withdrawn on 20260827."
+  },
+  {
+   "set": "S",
+   "id": "X17",
+   "cls": "channel",
+   "sentence": "The customer used a wire transfer to send funds abroad."
+  },
+  {
+   "set": "S",
+   "id": "X18",
+   "cls": "channel",
+   "sentence": "An international remittance followed."
+  },
+  {
+   "set": "S",
+   "id": "X19",
+   "cls": "channel",
+   "sentence": "The customer paid by debit card."
+  },
+  {
+   "set": "S",
+   "id": "X20",
+   "cls": "channel",
+   "sentence": "Funds were moved through internet banking."
+  },
+  {
+   "set": "S",
+   "id": "X21",
+   "cls": "channel",
+   "sentence": "A demand draft was issued."
+  },
+  {
+   "set": "S",
+   "id": "X22",
+   "cls": "channel",
+   "sentence": "Cash was handed over at the branch."
+  },
+  {
+   "set": "S",
+   "id": "X23",
+   "cls": "geography",
+   "sentence": "Funds reached the Maldives."
+  },
+  {
+   "set": "S",
+   "id": "X24",
+   "cls": "geography",
+   "sentence": "A company in the Bahamas received funds."
+  },
+  {
+   "set": "S",
+   "id": "X25",
+   "cls": "geography",
+   "sentence": "The beneficiary lives in Jersey."
+  },
+  {
+   "set": "S",
+   "id": "X26",
+   "cls": "geography",
+   "sentence": "The money was sent to Kathmandu."
+  },
+  {
+   "set": "S",
+   "id": "X27",
+   "cls": "geography",
+   "sentence": "Funds went to Karachi."
+  },
+  {
+   "set": "S",
+   "id": "X28",
+   "cls": "geography",
+   "sentence": "A recipient in Shenzhen was involved."
+  },
+  {
+   "set": "S",
+   "id": "X29",
+   "cls": "entity",
+   "sentence": "Funds went to Acme Holdings."
+  },
+  {
+   "set": "S",
+   "id": "X30",
+   "cls": "entity",
+   "sentence": "A payment to Rao & Sons was made."
+  },
+  {
+   "set": "S",
+   "id": "X31",
+   "cls": "entity",
+   "sentence": "Sunrise Group received funds."
+  },
+  {
+   "set": "S",
+   "id": "X32",
+   "cls": "entity",
+   "sentence": "ICICI received the funds."
+  },
+  {
+   "set": "S",
+   "id": "X33",
+   "cls": "entity",
+   "sentence": "Kalyan Jewellers Inc was the payee."
+  },
+  {
+   "set": "S",
+   "id": "X35",
+   "cls": "identifier",
+   "sentence": "The customer's mobile +91 98765 43210 was provided."
+  },
+  {
+   "set": "S",
+   "id": "X36",
+   "cls": "identifier",
+   "sentence": "A card ending 4321 was used."
+  },
+  {
+   "set": "S",
+   "id": "X38",
+   "cls": "profile_fact",
+   "sentence": "The customer has been banking with us for ten years."
+  },
+  {
+   "set": "S",
+   "id": "X39",
+   "cls": "profile_fact",
+   "sentence": "The account was opened in 2019."
+  }
+ ],
+ "in_distribution_caught": {
+  "k": 154,
+  "n": 154,
+  "rate_pct": 100.0,
+  "wilson95_pct": [
+   97.6,
+   100.0
+  ]
+ },
+ "faithful_hard_false_positives": {
+  "k": 0,
+  "n": 40,
+  "rate_pct": 0.0,
+  "wilson95_pct": [
+   0.0,
+   8.8
+  ]
+ }
+}

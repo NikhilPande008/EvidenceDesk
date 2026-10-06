@@ -1,0 +1,1 @@
+Closing without filing. The three credits (Rs.1.5L, Rs.1.2L and Rs.0.75L, total Rs.3.45L) came from the customer's brother, father and sister, who are KYC-linked family members. Rs.3.0L was then paid to City General Hospital, which has an invoice on file. No flagged counterparty received any onward transfer. The I4C match is a false positive on a shared merchant handle.

@@ -1,0 +1,698 @@
+# Cortex Analyst Semantic Model
+# FIU-IND Defensible-Disposition Copilot
+# Upload to Snowflake stage and reference in Cortex Analyst API calls.
+#
+# Stage command (run once):
+#   CREATE STAGE IF NOT EXISTS FIU_COPILOT.AML.SEMANTIC_STAGE;
+#   PUT file://domain/corpus/export/semantic_model.yaml @SEMANTIC_STAGE OVERWRITE=TRUE;
+
+name: fiu_copilot_semantic_model
+description: >
+  Semantic model for the FIU-IND AML Defensible-Disposition Copilot.
+  Covers the regulatory knowledge corpus, the live alert queue, and the
+  append-only disposition ledger. Enables natural-language queries over
+  regulatory rules, alert patterns, and PO decision analytics — including
+  the alert-to-STR ratio that FIU-IND inspectors focus on.
+
+tables:
+
+  # ── REGULATORY_CORPUS ─────────────────────────────────────────────────────
+  - name: regulatory_corpus
+    description: >
+      Structured Indian AML regulatory knowledge base. Each row is one
+      regulatory fact drawn from PMLA 2002, FIU-IND guidance, or RBI
+      Master Direction. Evidence level (PROVEN / ASSUMED / NEEDS-VERIFICATION)
+      controls which rules surface in agent output.
+    base_table:
+      database: FIU_COPILOT
+      schema: AML
+      table: REGULATORY_CORPUS
+    primary_key:
+      columns:
+        - rule_id
+
+    dimensions:
+      - name: rule_id
+        synonyms: [rule, corpus id, rule identifier]
+        description: Unique rule identifier (e.g. STR-001, RFI-007, POE-005).
+        expr: RULE_ID
+        data_type: TEXT
+        unique: true
+        sample_values: [STR-001, STR-002, CTR-001, RFI-001, POE-003, INS-002, SB-002]
+
+      - name: category
+        synonyms: [rule type, rule category, type]
+        description: >
+          High-level category of the rule. Key values: REPORTING_OBLIGATION,
+          REPORT_STRUCTURE, RECORD_RETENTION, RED_FLAG_INDICATOR,
+          INSPECTION_FOCUS, STATUTORY_BASIS, PO_EVALUATION, TIPPING_OFF.
+        expr: CATEGORY
+        data_type: TEXT
+        sample_values: [REPORTING_OBLIGATION, RED_FLAG_INDICATOR, INSPECTION_FOCUS,
+                        REPORT_STRUCTURE, RECORD_RETENTION, STATUTORY_BASIS,
+                        PO_EVALUATION, TIPPING_OFF]
+
+      - name: subcategory
+        synonyms: [sub-type, rule subtype]
+        description: Fine-grain label within the category.
+        expr: SUBCATEGORY
+        data_type: TEXT
+
+      - name: evidence_level
+        synonyms: [evidence, verification status, confidence, proof level]
+        description: >
+          PROVEN = stated in primary source with confirmable URL.
+          ASSUMED = widely accepted, not independently verified.
+          NEEDS-VERIFICATION = material risk of being outdated; excluded from
+          generated compliance output by default.
+        expr: EVIDENCE_LEVEL
+        data_type: TEXT
+        sample_values: [PROVEN, ASSUMED, NEEDS-VERIFICATION]
+
+      - name: source_document
+        synonyms: [source, citation, primary source]
+        description: Document name and section the rule is drawn from.
+        expr: SOURCE_DOCUMENT
+        data_type: TEXT
+
+      - name: source_url
+        synonyms: [url, link, reference url]
+        description: Best-known URL for the primary source document.
+        expr: SOURCE_URL
+        data_type: TEXT
+
+      - name: snapshot_date
+        synonyms: [as of date, corpus date, version date]
+        description: The "as of" date for this corpus entry (2026-09-11).
+        expr: SNAPSHOT_DATE
+        data_type: DATE
+
+      - name: rule_text
+        synonyms: [rule text, regulatory text, the rule]
+        description: The regulatory statement as drawn from the primary source.
+        expr: RULE_TEXT
+        data_type: TEXT
+
+      - name: my_synthesis
+        synonyms: [PO interpretation, synthesis, practical meaning]
+        description: >
+          PO-lens interpretation of the rule — what it means in practice for
+          a Principal Officer making a disposition decision.
+        expr: MY_SYNTHESIS
+        data_type: TEXT
+
+    time_dimensions:
+      - name: effective_date
+        synonyms: [in force since, effective since]
+        description: Date the rule came into legal force. Null if unknown.
+        expr: EFFECTIVE_DATE
+        data_type: DATE
+
+      - name: created_at
+        synonyms: [added date, corpus load date]
+        description: When this row was loaded into the corpus table.
+        expr: CREATED_AT
+        data_type: TIMESTAMP_TZ
+
+    measures:
+      - name: total_rules
+        synonyms: [number of rules, count of rules, how many rules]
+        description: Total number of rules in the corpus (all evidence levels).
+        expr: COUNT(RULE_ID)
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: proven_rules
+        synonyms: [primary sourced rules, confirmed rules]
+        description: Count of rules with EVIDENCE_LEVEL = PROVEN.
+        expr: COUNT_IF(EVIDENCE_LEVEL = 'PROVEN')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: assumed_rules
+        synonyms: [assumed rules]
+        description: Count of rules with EVIDENCE_LEVEL = ASSUMED.
+        expr: COUNT_IF(EVIDENCE_LEVEL = 'ASSUMED')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: needs_verification_rules
+        synonyms: [unverified rules, rules needing verification]
+        description: Count of rules with EVIDENCE_LEVEL = NEEDS-VERIFICATION.
+        expr: COUNT_IF(EVIDENCE_LEVEL = 'NEEDS-VERIFICATION')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: usable_rules
+        synonyms: [rules safe for output, production-ready rules]
+        description: >
+          Count of rules that are safe to surface in compliance output
+          (PROVEN + ASSUMED only; excludes NEEDS-VERIFICATION).
+        expr: COUNT_IF(EVIDENCE_LEVEL IN ('PROVEN', 'ASSUMED'))
+        data_type: NUMBER
+        default_aggregation: count
+
+
+  # ── ALERTS ────────────────────────────────────────────────────────────────
+  - name: alerts
+    description: >
+      Synthetic AML alert queue (19 alerts: 15 gold-standard scenarios, the ALERT-16 same-signal twin and three Gulf-remittance alerts).
+      Each row is one alert awaiting PO review.
+      ALERT_STATUS is DERIVED from the append-only decision ledger (OPEN / REVIEWED / DEFERRED).
+    base_table:
+      database: FIU_COPILOT
+      schema: AML
+      table: ALERTS_CURRENT
+    primary_key:
+      columns:
+        - alert_id
+
+    dimensions:
+      - name: alert_id
+        synonyms: [alert, alert identifier, case id]
+        description: Unique alert identifier (ALERT-01 through ALERT-16).
+        expr: ALERT_ID
+        data_type: TEXT
+        unique: true
+        sample_values: [ALERT-01, ALERT-02, ALERT-07, ALERT-08]
+
+      - name: customer_ref
+        synonyms: [customer, customer id, account holder]
+        description: Anonymised customer reference.
+        expr: CUSTOMER_REF
+        data_type: TEXT
+
+      - name: alert_type
+        synonyms: [type of alert, pattern type, typology]
+        description: >
+          Alert typology. Values: MULE_PASSTHROUGH, STRUCTURING,
+          DORMANT_REACTIVATION, PEP_INCONSISTENCY, CROSS_BORDER_FATF,
+          NPO_MISUSE, LARGE_CASH_DEPOSIT, LARGE_CREDIT,
+          DEVICE_IDENTITY_LINKAGE, BENEFICIARY_CONCENTRATION,
+          INCOME_INCONSISTENCY, ATTEMPTED_SWIFT, MF_LAYERING,
+          NRI_KYC_MISMATCH, FIDUCIARY_DIVERSION.
+        expr: ALERT_TYPE
+        data_type: TEXT
+        sample_values: [MULE_PASSTHROUGH, STRUCTURING, PEP_INCONSISTENCY,
+                        CROSS_BORDER_FATF, ATTEMPTED_SWIFT]
+
+      - name: signal_source
+        synonyms: [source, detection source, who flagged it, origin]
+        description: >
+          System that generated the alert signal.
+          I4C = I4C Suspect Registry (cyber fraud database).
+          INTERNAL_RULE = bank's own AML rule engine.
+          MULE_HUNTER = MuleHunter.AI (RBI/IB).
+          DPIP = Digital Payment Intelligence Platform (RBI).
+        expr: SIGNAL_SOURCE
+        data_type: TEXT
+        sample_values: [I4C, INTERNAL_RULE, MULE_HUNTER, DPIP]
+
+      - name: account_type
+        synonyms: [account, type of account]
+        description: Type of bank account (SAVINGS, CURRENT, NRO, MF).
+        expr: ACCOUNT_TYPE
+        data_type: TEXT
+        sample_values: [SAVINGS, CURRENT, NRO, MF]
+
+      - name: customer_profile
+        synonyms: [customer description, KYC summary, who is the customer]
+        description: One-line KYC summary of the account holder.
+        expr: CUSTOMER_PROFILE
+        data_type: TEXT
+
+      - name: alert_narrative
+        synonyms: [what happened, alert description, case summary, pattern]
+        description: Brief description of the suspicious pattern for the PO queue.
+        expr: ALERT_NARRATIVE
+        data_type: TEXT
+
+      - name: alert_status
+        synonyms: [status, case status, workflow status]
+        description: >
+          PO workflow status.
+          OPEN = awaiting review.
+          REVIEWED = PO has assessed; disposition recorded in DECISION_LEDGER.
+          CLOSED = fully resolved.
+        expr: ALERT_STATUS
+        data_type: TEXT
+        sample_values: [OPEN, REVIEWED, CLOSED]
+
+      - name: assigned_po
+        synonyms: [assigned officer, Principal Officer, PO, who is handling]
+        description: Principal Officer the alert is assigned to.
+        expr: ASSIGNED_PO
+        data_type: TEXT
+
+    time_dimensions:
+      - name: alert_date
+        synonyms: [when the alert was raised, alert generation date, date]
+        description: Date the alert was generated by the detection system.
+        expr: ALERT_DATE
+        data_type: DATE
+
+    measures:
+      - name: total_alerts
+        synonyms: [count of alerts, number of alerts, how many alerts]
+        description: Total number of alerts in the queue.
+        expr: COUNT(ALERT_ID)
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: open_alerts
+        synonyms: [pending alerts, unreviewed alerts, backlog]
+        description: Count of alerts with ALERT_STATUS = OPEN.
+        expr: COUNT_IF(ALERT_STATUS = 'OPEN')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: total_alert_amount_inr
+        synonyms: [total suspicious amount, total value, aggregate amount]
+        description: Sum of ALERT_AMOUNT_INR across selected alerts.
+        expr: SUM(ALERT_AMOUNT_INR)
+        data_type: NUMBER
+        default_aggregation: sum
+
+      - name: average_alert_amount_inr
+        synonyms: [average amount, mean alert value]
+        description: Average ALERT_AMOUNT_INR.
+        expr: AVG(ALERT_AMOUNT_INR)
+        data_type: NUMBER
+        default_aggregation: avg
+
+
+  # ── DECISION_LEDGER ───────────────────────────────────────────────────────
+  - name: decision_ledger
+    description: >
+      Append-only AML disposition record. Every FILE and NOT-FILE decision
+      is recorded here with its rationale, rules cited, and SLA timestamp.
+      This is the primary inspection evidence for FIU-IND.
+      No row is ever updated or deleted — only appended.
+    base_table:
+      database: FIU_COPILOT
+      schema: AML
+      table: DECISION_LEDGER
+    primary_key:
+      columns:
+        - decision_id
+
+    dimensions:
+      - name: decision_id
+        synonyms: [decision, ledger entry, disposition record]
+        description: Unique UUID for each disposition decision.
+        expr: DECISION_ID
+        data_type: TEXT
+        unique: true
+
+      - name: alert_id
+        synonyms: [related alert, source alert]
+        description: Alert this disposition decision relates to.
+        expr: ALERT_ID
+        data_type: TEXT
+
+      - name: customer_ref
+        synonyms: [customer, account holder]
+        description: Anonymised customer reference.
+        expr: CUSTOMER_REF
+        data_type: TEXT
+
+      - name: disposition
+        synonyms: [outcome, decision, file or not file, PO decision]
+        description: >
+          FILE = STR filed with FIU-IND.
+          NOT_FILE = Closed with documented rationale.
+          ESCALATE = Referred to senior officer or compliance committee.
+          DEFERRED = Decision deferred pending more information (KYC update, RFI response).
+        expr: DISPOSITION
+        data_type: TEXT
+        sample_values: [FILE, NOT_FILE, ESCALATE, DEFERRED]
+
+      - name: decision_maker_id
+        synonyms: [PO, officer, who decided, Principal Officer]
+        description: ID of the Principal Officer or delegated officer who made the decision.
+        expr: DECISION_MAKER_ID
+        data_type: TEXT
+
+      - name: rationale_text
+        synonyms: [rationale, reason, justification, PO reasoning]
+        description: >
+          Free-text rationale documented by the PO. Mandatory field.
+          This is the primary defensibility evidence in an FIU-IND inspection.
+        expr: RATIONALE_TEXT
+        data_type: TEXT
+
+      - name: str_reference
+        synonyms: [STR number, FINGate reference, filing reference]
+        description: FINGate 2.0 STR reference number (populated only when DISPOSITION = FILE).
+        expr: STR_REFERENCE
+        data_type: TEXT
+
+      - name: sla_days_remaining
+        synonyms: [SLA, days left, 7 day deadline, time remaining]
+        description: >
+          Working days remaining in the 7-WD STR deadline.
+          Negative = overdue. Computed from SUSPICION_FORMED_AT.
+        expr: SLA_DAYS_REMAINING
+        data_type: NUMBER
+
+    time_dimensions:
+      - name: suspicion_formed_at
+        synonyms: [suspicion date, when suspicion arose, SLA start]
+        description: >
+          Timestamp when suspicion was formed — the SLA clock start event.
+          The 7-working-day STR deadline runs from this point.
+        expr: SUSPICION_FORMED_AT
+        data_type: TIMESTAMP_TZ
+
+      - name: decision_made_at
+        synonyms: [decision date, when decided, disposition date]
+        description: Timestamp when the FILE / NOT-FILE decision was recorded.
+        expr: DECISION_MADE_AT
+        data_type: TIMESTAMP_TZ
+
+    measures:
+      - name: total_decisions
+        synonyms: [total dispositions, number of decisions, count of decisions]
+        description: Total number of disposition records in the ledger.
+        expr: COUNT(DECISION_ID)
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: file_count
+        synonyms: [number filed, STRs filed, filings]
+        description: Count of decisions with DISPOSITION = FILE.
+        expr: COUNT_IF(DISPOSITION = 'FILE')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: not_file_count
+        synonyms: [closed no-file, not filed, closed alerts]
+        description: Count of decisions with DISPOSITION = NOT_FILE.
+        expr: COUNT_IF(DISPOSITION = 'NOT_FILE')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: deferred_count
+        synonyms: [deferred, pending more info, awaiting response]
+        description: Count of decisions with DISPOSITION = DEFERRED.
+        expr: COUNT_IF(DISPOSITION = 'DEFERRED')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: escalated_count
+        synonyms: [escalated, referred to committee]
+        description: Count of decisions with DISPOSITION = ESCALATE.
+        expr: COUNT_IF(DISPOSITION = 'ESCALATE')
+        data_type: NUMBER
+        default_aggregation: count
+
+      - name: alert_to_str_ratio
+        synonyms: [STR ratio, filing rate, alert ratio, what percentage we file,
+                   how many alerts result in STRs]
+        description: >
+          Alert-to-STR ratio: proportion of closed alerts that result in an STR filing.
+          Formula: COUNT(DISPOSITION='FILE') / NULLIF(COUNT_IF(DISPOSITION IN ('FILE','NOT_FILE')),0).
+          This is the key metric FIU-IND inspectors focus on.
+          A very high ratio suggests over-filing; a very low ratio suggests suppression.
+        expr: >
+          ROUND(
+            COUNT_IF(DISPOSITION = 'FILE') /
+            NULLIF(COUNT_IF(DISPOSITION IN ('FILE', 'NOT_FILE')), 0)
+            * 100, 2
+          )
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: avg_sla_days_remaining
+        synonyms: [average SLA, average days left, SLA health]
+        description: Average SLA days remaining across open decisions. Negative values indicate overdue cases.
+        expr: AVG(SLA_DAYS_REMAINING)
+        data_type: NUMBER
+        default_aggregation: avg
+
+      - name: overdue_decisions
+        synonyms: [overdue, past SLA, late filings, SLA breaches]
+        description: Count of decisions where SLA_DAYS_REMAINING < 0 (past 7-WD deadline).
+        expr: COUNT_IF(SLA_DAYS_REMAINING < 0)
+        data_type: NUMBER
+        default_aggregation: count
+
+
+  # ── TRANSACTIONS ──────────────────────────────────────────────────────────
+  - name: transactions
+    description: >
+      Per-alert synthetic transaction ledger. This is the governed data the
+      deterministic evidence gate and the 11-factor suspicion assessment operate
+      on. CREDIT rows per alert sum to ALERTS.ALERT_AMOUNT_INR (within 1%).
+    base_table:
+      database: FIU_COPILOT
+      schema: AML
+      table: TRANSACTIONS
+    primary_key:
+      columns:
+        - txn_id
+
+    dimensions:
+      - name: txn_id
+        synonyms: [transaction id, txn]
+        description: Unique transaction identifier (e.g. T01-1).
+        expr: TXN_ID
+        data_type: TEXT
+        unique: true
+      - name: alert_id
+        synonyms: [alert]
+        description: The alert this transaction belongs to.
+        expr: ALERT_ID
+        data_type: TEXT
+      - name: customer_ref
+        synonyms: [customer, account holder]
+        description: Anonymised customer / account holder reference.
+        expr: CUSTOMER_REF
+        data_type: TEXT
+      - name: txn_type
+        synonyms: [credit or debit, direction]
+        description: CREDIT or DEBIT.
+        expr: TXN_TYPE
+        data_type: TEXT
+        sample_values: [CREDIT, DEBIT]
+      - name: channel
+        synonyms: [payment channel, rail]
+        description: Payment channel (UPI, NEFT, RTGS, IMPS, CASH, SWIFT).
+        expr: CHANNEL
+        data_type: TEXT
+      - name: counterparty
+        synonyms: [other party, beneficiary, sender]
+        description: The other side of the transaction.
+        expr: COUNTERPARTY
+        data_type: TEXT
+      - name: is_flagged
+        synonyms: [flagged, watchlisted]
+        description: Whether the counterparty is on a watchlist / I4C registry.
+        expr: IS_FLAGGED
+        data_type: BOOLEAN
+
+    time_dimensions:
+      - name: txn_date
+        synonyms: [transaction date, value date]
+        description: Value date of the transaction.
+        expr: TXN_DATE
+        data_type: DATE
+
+    measures:
+      - name: txn_count
+        synonyms: [number of transactions]
+        description: Count of transactions.
+        expr: COUNT(TXN_ID)
+        data_type: NUMBER
+        default_aggregation: count
+      - name: total_amount_inr
+        synonyms: [total value, sum of transactions]
+        description: Sum of transaction amounts in INR.
+        expr: SUM(AMOUNT_INR)
+        data_type: NUMBER
+        default_aggregation: sum
+      - name: total_credit_inr
+        synonyms: [total credits, inflow]
+        description: Sum of CREDIT amounts in INR.
+        expr: SUM(IFF(TXN_TYPE = 'CREDIT', AMOUNT_INR, 0))
+        data_type: NUMBER
+        default_aggregation: sum
+      - name: flagged_txn_count
+        synonyms: [flagged transactions]
+        description: Count of transactions with a flagged counterparty.
+        expr: COUNT_IF(IS_FLAGGED)
+        data_type: NUMBER
+        default_aggregation: count
+
+
+# ── RELATIONSHIPS ────────────────────────────────────────────────────────────
+relationships:
+  # Cortex Analyst joins are declared from the MANY side to the ONE side; the ONE side needs a primary_key.
+  - name: ledger_to_alerts
+    left_table: decision_ledger
+    right_table: alerts
+    relationship_columns:
+      - left_column: alert_id
+        right_column: alert_id
+    join_type: left_outer
+    relationship_type: many_to_one
+
+  - name: transactions_to_alerts
+    left_table: transactions
+    right_table: alerts
+    relationship_columns:
+      - left_column: alert_id
+        right_column: alert_id
+    join_type: left_outer
+    relationship_type: many_to_one
+
+
+# ── VERIFIED QUERIES ─────────────────────────────────────────────────────────
+# These are pre-validated SQL answers the model can surface directly.
+# verified_at is an INTEGER Unix timestamp (Cortex Analyst rejects date strings).
+# Each SQL below was re-executed live against FIU_COPILOT.AML on 2026-09-30 (tests/test_semantic_model.py
+# checks the format; tests/test_live_e2e.py::test_live_verified_queries_execute runs them).
+
+verified_queries:
+
+  - name: alert_to_str_ratio_overall
+    question: What is our overall alert-to-STR ratio?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        COUNT_IF(DISPOSITION = 'FILE')                                         AS strs_filed,
+        COUNT_IF(DISPOSITION IN ('FILE', 'NOT_FILE'))                          AS closed_alerts,
+        ROUND(
+          COUNT_IF(DISPOSITION = 'FILE') * 100.0
+          / NULLIF(COUNT_IF(DISPOSITION IN ('FILE', 'NOT_FILE')), 0)
+        , 2)                                                                   AS alert_to_str_ratio_pct
+      FROM FIU_COPILOT.AML.DECISION_LEDGER
+
+  - name: open_alert_count
+    question: How many alerts are currently open?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT COUNT(*) AS open_alerts
+      FROM FIU_COPILOT.AML.ALERTS_CURRENT
+      WHERE ALERT_STATUS = 'OPEN'
+
+  - name: alerts_by_type
+    question: Show me the breakdown of alerts by type.
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        ALERT_TYPE,
+        COUNT(*)                  AS alert_count,
+        SUM(ALERT_AMOUNT_INR)     AS total_amount_inr
+      FROM FIU_COPILOT.AML.ALERTS_CURRENT
+      GROUP BY 1
+      ORDER BY alert_count DESC
+
+  - name: alerts_by_signal_source
+    question: Which alerts came from I4C versus internal rules?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        SIGNAL_SOURCE,
+        COUNT(*)                  AS alert_count,
+        SUM(ALERT_AMOUNT_INR)     AS total_amount_inr
+      FROM FIU_COPILOT.AML.ALERTS_CURRENT
+      GROUP BY 1
+      ORDER BY alert_count DESC
+
+  - name: high_value_open_alerts
+    question: Show me the top 5 open alerts by amount.
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        ALERT_ID,
+        ALERT_TYPE,
+        CUSTOMER_PROFILE,
+        ALERT_AMOUNT_INR,
+        ALERT_DATE
+      FROM FIU_COPILOT.AML.ALERTS_CURRENT
+      WHERE ALERT_STATUS = 'OPEN'
+      ORDER BY ALERT_AMOUNT_INR DESC
+      LIMIT 5
+
+  - name: proven_rules_by_category
+    question: Show me all PROVEN regulatory rules grouped by category.
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        CATEGORY,
+        COUNT(*) AS rule_count,
+        LISTAGG(RULE_ID, ', ') WITHIN GROUP (ORDER BY RULE_ID) AS rule_ids
+      FROM FIU_COPILOT.AML.REGULATORY_CORPUS
+      WHERE EVIDENCE_LEVEL = 'PROVEN'
+      GROUP BY 1
+      ORDER BY rule_count DESC
+
+  - name: str_deadline_rule
+    question: What is the STR filing deadline?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT RULE_ID, RULE_TEXT, MY_SYNTHESIS, SOURCE_DOCUMENT, EVIDENCE_LEVEL
+      FROM FIU_COPILOT.AML.REGULATORY_CORPUS
+      WHERE RULE_ID = 'STR-002'
+
+  - name: inspection_focus_rules
+    question: What does FIU-IND focus on during inspections?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT RULE_ID, SUBCATEGORY, RULE_TEXT, MY_SYNTHESIS, EVIDENCE_LEVEL
+      FROM FIU_COPILOT.AML.REGULATORY_CORPUS
+      WHERE CATEGORY = 'INSPECTION_FOCUS'
+      ORDER BY RULE_ID
+
+  - name: overdue_sla_decisions
+    question: Are there any decisions past the 7-working-day SLA?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        DECISION_ID,
+        ALERT_ID,
+        CUSTOMER_REF,
+        DISPOSITION,
+        SUSPICION_FORMED_AT,
+        SLA_DAYS_REMAINING,
+        DECISION_MAKER_ID
+      FROM FIU_COPILOT.AML.DECISION_LEDGER
+      WHERE SLA_DAYS_REMAINING < 0
+      ORDER BY SLA_DAYS_REMAINING ASC
+
+  - name: disposition_summary
+    question: Show me a summary of all disposition decisions.
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        DISPOSITION,
+        COUNT(*)  AS decision_count,
+        MIN(DECISION_MADE_AT) AS earliest,
+        MAX(DECISION_MADE_AT) AS latest
+      FROM FIU_COPILOT.AML.DECISION_LEDGER
+      GROUP BY 1
+      ORDER BY decision_count DESC
+
+  - name: corpus_coverage_by_evidence
+    question: How many rules do we have at each evidence level?
+    verified_at: 1790769600
+    verified_by: Nikhil
+    sql: >
+      SELECT
+        EVIDENCE_LEVEL,
+        COUNT(*) AS rule_count,
+        ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 1) AS pct_of_total
+      FROM FIU_COPILOT.AML.REGULATORY_CORPUS
+      GROUP BY 1
+      ORDER BY rule_count DESC

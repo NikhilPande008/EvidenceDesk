@@ -1,0 +1,4 @@
+alert_id,customer_ref,alert_date,alert_type,alert_amount_inr,signal_source,account_type,customer_profile,alert_narrative,suspicion_formed_at,rfi_triggers
+FEED-001,CUST-F1,2026-09-22,RAPID_MOVEMENT,420000,INTERNAL_RULE,SAVINGS,"Shop assistant; Rs.22K/month declared; account 2 years old","Credits of Rs.4.2L from 3 senders in 4 days; Rs.4.1L left by NEFT within 2 days of the last credit.",2026-09-29T11:00:00+05:30,RFI-001
+FEED-002,CUST-F2,2026-09-24,LARGE_CASH_DEPOSIT,950000,INTERNAL_RULE,CURRENT,"Sole proprietor, jewellery retail; Rs.2.4Cr annual turnover declared","Five cash deposits totalling Rs.9.5L between 17 and 23 September.",,
+FEED-003,CUST-F3,2026-09-25,INWARD_REMITTANCE_VELOCITY,610000,I4C,SAVINGS,"NRI; salaried abroad; account 6 years old","Four inward SWIFT remittances totalling Rs.6.1L in 24 days.",,RFI-008

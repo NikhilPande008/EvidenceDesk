@@ -1,0 +1,11 @@
+I formed suspicion in respect of customer CUST-01 (salaried employee, declared annual income ₹3.6 lakh) on 2026-08-19, following review of two credits totalling ₹5,55,000 received on 2026-08-12 (₹3,45,000 from an unidentified individual) and 2026-08-19 (₹2,10,000 from a second unidentified individual), and a same-day outward transfer of ₹5,47,000 on 2026-08-19 to UPI handle UPI-98XXXXXX76.
+
+The credits represent 15.4 times the customer's monthly declared income and arrive from counterparties not identified in the customer's KYC or any employment or business documentation on file. The account had been dormant for 18 months immediately prior to these transactions, making the sudden burst of high-value credits inconsistent with the customer's declared profile and transaction history (POE-002, POE-003, POE-005).
+
+The outward transfer of ₹5,47,000 — representing 98.6% of the received amount — was made on the same calendar day as the second credit, to UPI handle UPI-98XXXXXX76, which appears in the I4C Suspect Registry in connection with prior mule-account activity (POE-007, RFI-001, RFI-005). This pass-through pattern — receive large credits from unverified sources, immediately transfer to a flagged beneficiary — is the defining characteristic of a mule passthrough account.
+
+I considered and rejected the possibility that these credits represent a legitimate windfall, inheritance, or one-time receipt: the customer provided no documentation supporting any such event, and the immediate onward transfer of 98.6% of the received amount to an I4C-flagged counterparty is inconsistent with any innocent purpose.
+
+The KYC profile is 3 years old with unverified address and unconfirmed Aadhaar linkage; this gap does not independently ground suspicion but confirms the KYC-availability concern (POE-012).
+
+The statutory basis for this report is PMLA 2002, Section 12(1)(b). This report is filed within 7 working days of the date on which I formed suspicion.

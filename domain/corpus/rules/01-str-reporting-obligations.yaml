@@ -1,0 +1,236 @@
+# STR Reporting Obligations
+# Category: REPORTING_OBLIGATION
+# Snapshot date: 2026-09-11
+
+rules:
+
+  - id: STR-001
+    rule: >
+      A Reporting Entity must file a Suspicious Transaction Report (STR) with FIU-IND
+      whenever there are reasonable grounds to believe that a transaction involves
+      proceeds of an offence or is connected to money laundering or terrorist financing,
+      regardless of the transaction amount.
+    category: REPORTING_OBLIGATION
+    subcategory: STR_TRIGGER
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-Laundering Act, 2002 — Section 12(1)(b)"
+      url: "https://www.indiacode.nic.in/handle/123456789/2205"
+      url_verified: false
+      section: "Section 12(1)(b)"
+      accessed_date: null
+    effective_date: null  # PMLA in-force date — see gap DG-11
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The STR trigger is suspicion, not amount. No monetary floor exists. A PO who
+      declines to file because "the amount is small" is non-compliant. This is the
+      foundational rule of the Indian AML regime. Every disposition decision must
+      ask: does suspicion exist? Not: is the amount large enough?
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact PMLA in-force date (Act 15 of 2003; in force ~2005). Confirm India Code URL."
+    related_rules:
+      - STR-002
+      - STR-003
+      - STR-004
+      - POE-001
+
+  - id: STR-002
+    rule: >
+      An STR must be filed within 7 working days from the date on which the Reporting
+      Entity forms suspicion about the transaction.
+    category: REPORTING_OBLIGATION
+    subcategory: STR_DEADLINE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR filing deadline"
+      accessed_date: null
+    effective_date: null  # version date of RFG v2.2 unknown
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The 7-working-day clock starts from suspicion formation, not from the transaction
+      date. This is the SLA the product must track. FIU-IND inspectors verify whether
+      the decision was made by authorised staff within this window. Late filing without
+      documented justification is a compliance breach.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Confirm this is still 7 working days in latest FINGate 2.0 guidance. Verify RFG v2.2 publication date."
+    related_rules:
+      - STR-001
+      - INS-002
+
+  - id: STR-003
+    rule: >
+      An STR must be filed for attempted transactions — that is, transactions that were
+      attempted but not completed — where the suspicion criteria are met.
+    category: REPORTING_OBLIGATION
+    subcategory: STR_ATTEMPTED_TRANSACTIONS
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "Attempted transactions"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Attempted transactions are in scope. If a customer tries to wire funds to a
+      FATF high-risk jurisdiction and the bank stops it, an STR is still required.
+      Failure to file on attempts is a common gap FIU-IND inspectors find.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Confirm exact language in FINGate 2.0 UI for attempted transaction flag field."
+    related_rules:
+      - STR-001
+
+  - id: STR-004
+    rule: >
+      A Reporting Entity, its directors, officers and employees must not reveal to the
+      customer, or to any other person, the fact that information has been furnished to
+      FIU-IND (an STR has been filed), and must not tip off the customer once a
+      suspicion of ML/TF has formed.
+    category: TIPPING_OFF
+    subcategory: TIPPING_OFF_PROHIBITION
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-laundering (Maintenance of Records) Rules, 2005 — Rule 8(6); RBI Master Direction on KYC"
+      url: "https://fiuindia.gov.in/files/AML_Legislation/notification.html"
+      url_verified: false
+      section: "Rule 8(6) of PML Rules 2005; RBI KYC Master Direction (tipping-off and confidentiality provisions, paragraph numbers not captured)"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The decision ledger must be access-controlled; STR filing decisions must not
+      surface in any customer-facing communication or in channel data visible to the
+      subject. This creates a product constraint: the disposition UI must be
+      staff-only, not customer-facing. This entry does not state what the consequence
+      of a breach is.
+    last_verified: null
+    snapshot_date: "2026-10-05"
+    gap_notes: >
+      CORRECTED 2026-10-05 (v1.1.1). v1.1.0 cited PMLA 2002 s.12A and called tipping-off
+      a criminal offence, graded PROVEN. s.12A of the Act is "Access to information"
+      (see SB-003 gap_notes for what was read and how). Re-sourced to PML Rules Rule 8(6)
+      and the RBI KYC Master Direction, graded ASSUMED. Open: confirm where any penalty
+      for tipping-off is provided before stating one.
+    related_rules:
+      - STR-001
+
+  - id: STR-005
+    rule: >
+      There is no monetary threshold for STR filing. An STR must be filed even if the
+      suspicious transaction amount is below any routine threshold.
+    category: REPORTING_OBLIGATION
+    subcategory: STR_NO_THRESHOLD
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "Prevention of Money-Laundering Act, 2002 — Section 12(1)(b); FIU-IND FAQs"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "FAQs — STR"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: STATUTE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Explicitly stated in FIU-IND FAQs to counter the common RE misconception that
+      "small transactions don't need an STR." This is the counterpoint to CTR thresholds:
+      CTR is threshold-triggered; STR is suspicion-triggered. The product must not
+      impose any amount filter on STR eligibility.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Locate exact FAQ page URL on fiuindia.gov.in. The main site was being redesigned as of 2025 — URLs may have changed."
+    related_rules:
+      - STR-001
+      - CTR-001
+
+  - id: STR-006
+    rule: >
+      All STR filings must be made through the FINGate 2.0 portal operated by FIU-IND.
+      The earlier FINnet direct-upload mechanism has been superseded by FINGate 2.0.
+    category: REPORTING_OBLIGATION
+    subcategory: STR_FILING_CHANNEL
+    applies_to:
+      - all_reporting_entities
+    supersession:
+      supersedes: "FINnet direct-upload mechanism"
+      successor: "FINGate 2.0"
+      status: current
+      note: >
+        FINGate 2.0 is the current STR filing channel. The FINnet direct-upload
+        mechanism is superseded and must NOT be cited as the filing method. A query
+        that assumes FINnet direct upload should be qualified with this successor.
+    primary_source:
+      document: "FIU-IND — FINGate 2.0 portal; fiuindia.gov.in"
+      url: "https://fiuindia.gov.in"
+      url_verified: false
+      section: "FINGate 2.0"
+      accessed_date: null
+    effective_date: null  # FINGate 2.0 launch date unknown — NEEDS-VERIFICATION
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: "FINnet direct-upload mechanism"
+    my_synthesis: >
+      All product references to the filing channel should use "FINGate 2.0," not
+      "FINnet" (legacy). The 3-part STR structure (KYC + Transaction + Ground of
+      Suspicion) is encoded in FINGate's form fields. The Ground of Suspicion field
+      is the primary defensibility surface the product targets.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Confirm FINGate 2.0 is the current portal name and that FINnet direct upload
+      is fully deprecated. Verify FINGate 2.0 launch date. Check if the portal URL
+      is fingateservices.in or a subdomain of fiuindia.gov.in.
+    related_rules:
+      - RS-001
+      - RS-002
+      - RS-003

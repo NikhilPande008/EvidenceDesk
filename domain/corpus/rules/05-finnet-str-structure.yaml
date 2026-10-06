@@ -1,0 +1,603 @@
+# FINnet / FINGate 2.0 STR Structure and PO Evaluation Factors
+# Categories: REPORT_STRUCTURE, PO_EVALUATION
+# Snapshot date: 2026-09-11
+
+rules:
+
+  # ─── REPORT STRUCTURE ───────────────────────────────────────────────────────
+
+  - id: RS-001
+    rule: >
+      Every STR filed through FINGate 2.0 must contain three mandatory parts:
+      (a) KYC Profile, (b) Transaction Details, and (c) Ground of Suspicion.
+      All three parts are non-negotiable and mirror the FINGate schema.
+    category: REPORT_STRUCTURE
+    subcategory: STR_THREE_PARTS
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FINnet Reporting Format Guide / FINGate 2.0 — STR schema"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR — mandatory structure"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The 3-part structure is the fundamental schema. The product targets Part (c):
+      the Ground of Suspicion. Parts (a) and (b) feed the context for generating
+      a defensible, non-templated Part (c) narrative.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Confirm FINGate 2.0 retains exactly this 3-part structure. Verify exact field names in the current portal."
+    related_rules:
+      - RS-002
+      - RS-003
+
+  - id: RS-002
+    rule: >
+      Part (a) — KYC Profile — must include: customer identification (name, PAN,
+      Aadhaar linkage where applicable), address, stated occupation/business,
+      risk category assigned at onboarding, and relationship history with the RE.
+    category: REPORT_STRUCTURE
+    subcategory: STR_KYC_PROFILE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FINnet Reporting Format Guide / FINGate 2.0"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR Part (a) — KYC Profile fields"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The KYC Profile is the baseline for the PO's evaluation. The stated occupation
+      and risk category directly feed POE factors 1, 3, and 4 (business profile,
+      customer risk, income level). Inconsistencies between the KYC profile and the
+      transaction details are the primary source of suspicion narratives.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Obtain exact FINGate 2.0 field list for KYC Part. PAN/Aadhaar linkage requirements may have changed post-PMLA 2023 amendment."
+    related_rules:
+      - RS-001
+      - POE-001
+
+  - id: RS-003
+    rule: >
+      Part (b) — Transaction Details — must include: account number(s), transaction
+      dates, amounts, transaction types, counterparty details, and the channel through
+      which the transaction was conducted (branch / online / ATM / other).
+    category: REPORT_STRUCTURE
+    subcategory: STR_TRANSACTION_DETAILS
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FINnet Reporting Format Guide / FINGate 2.0"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR Part (b) — Transaction Detail fields"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Transaction details are the evidence base for Part (c). A well-drafted Ground
+      of Suspicion must cite specific transactions from Part (b) — specific dates,
+      amounts, counterparties. Generic narratives that don't reference specific
+      transactions from Part (b) are a FIU-IND quality failure.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact field list for Part (b) in current FINGate 2.0. Check if UPI / IMPS / RTGS channel codes have been added."
+    related_rules:
+      - RS-001
+      - RS-004
+
+  - id: RS-004
+    rule: >
+      Part (c) — Ground of Suspicion — is a free-text narrative field in which the
+      Principal Officer must articulate the specific reasons why this particular
+      customer's transaction pattern arouses suspicion. The narrative must be specific
+      to this customer; generic or templated language is a reportable quality failure.
+    category: REPORT_STRUCTURE
+    subcategory: STR_GROUND_OF_SUSPICION
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FINnet Reporting Format Guide v2.2; FIU-IND quality feedback circulars"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "STR Part (c) — Ground of Suspicion"
+      accessed_date: null
+    effective_date: null
+    evidence_level: PROVEN
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      This is the product's core output. A defensible Ground of Suspicion must cite:
+      the specific transaction(s), the contradiction with customer profile, the
+      red-flag indicator(s) triggered, and why alternative explanations were
+      rejected. FIU-IND specifically penalises templated narratives in inspection
+      findings.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify the exact FIU-IND language around templated narratives. Obtain a sample
+      FIU-IND quality feedback circular to cite in the product UI. This is the
+      highest-value primary source to locate.
+    related_rules:
+      - RS-001
+      - INS-004
+      - POE-001
+
+  # ─── PO EVALUATION FACTORS ──────────────────────────────────────────────────
+
+  - id: POE-001
+    rule: >
+      This product uses a structured suspicion-review framework of 11 factors
+      compiled from PMLA 2002, FIU-IND Reporting Format Guide v2.2, and RBI KYC
+      Master Direction guidance on suspicion assessment. The framework is scoped
+      to the regulatory perimeter of this product (Indian banking and financial
+      institutions under PMLA). The exact enumeration and labelling of these
+      factors as a canonical "11-factor list" has not been confirmed verbatim from
+      a single FIU-IND primary source; the product uses them as an internal
+      structured assessment aid, not as an authoritative FIU-IND mandate.
+    category: PO_EVALUATION
+    subcategory: EVALUATION_FRAMEWORK
+    applies_to:
+      - all_reporting_entities
+    regulatory_perimeter:
+      jurisdiction: India
+      statute: PMLA 2002
+      regulators: [FIU-IND, RBI]
+      entity_types: [banking_companies, financial_institutions, NBFCs]
+      excludes: [virtual_asset_service_providers, international_jurisdictions]
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2 (composite); PMLA 2002; RBI KYC Master Direction"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation framework — compiled from multiple sources"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: PRODUCT_COMPILED
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The 11 factors are not a checklist — the PO must apply each relevant factor
+      and document why it was or wasn't dispositive. A ground of suspicion that
+      addresses only 1-2 factors is weaker than one that addresses all 11 where
+      relevant. The product should surface all 11 and indicate which are relevant
+      to the specific case. The UI caption for this framework must read:
+      "structured assessment framework (product-compiled; primary-source
+      confirmation pending)" and must NOT state this is a mandated FIU-IND list.
+    last_verified: null
+    snapshot_date: "2026-09-17"
+    gap_notes: >
+      DG-19 (new): Verify whether FIU-IND RFG v2.2 enumerates exactly these 11
+      factors verbatim as a canonical suspicion-assessment list, or whether the
+      product's 11-factor framework is a synthesis from multiple guidance documents.
+      Until confirmed, the product must label this as a product-compiled framework,
+      not a mandated FIU-IND standard.
+    related_rules:
+      - POE-002
+      - POE-003
+      - POE-004
+      - POE-005
+      - POE-006
+      - POE-007
+      - POE-008
+      - POE-009
+      - POE-010
+      - POE-011
+      - POE-012
+
+  - id: POE-002
+    rule: >
+      Factor 1 — Business Profile: Does the customer's stated business or occupation
+      explain the type and volume of transactions observed?
+    category: PO_EVALUATION
+    subcategory: FACTOR_BUSINESS_PROFILE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 1"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      A salaried employee receiving large cash credits inconsistent with any
+      known business activity fails this factor. A trader whose business profile
+      matches large turnover passes. The KYC occupation field directly feeds
+      this evaluation.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name and description from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+      - RS-002
+
+  - id: POE-003
+    rule: >
+      Factor 2 — Transaction History: Is the observed transaction pattern consistent
+      with the customer's historical activity at this Reporting Entity?
+    category: PO_EVALUATION
+    subcategory: FACTOR_TRANSACTION_HISTORY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 2"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Dormant account → sudden activity (RFI-003) is a classic failure of this factor.
+      Historical baseline is the reference; the deviation is the suspicion signal.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+      - RFI-003
+
+  - id: POE-004
+    rule: >
+      Factor 3 — Customer Risk Profile: What risk category (High / Medium / Low)
+      was assigned at onboarding or at the last periodic review?
+    category: PO_EVALUATION
+    subcategory: FACTOR_RISK_PROFILE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2; RBI Master Direction on KYC"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 3"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      A High-risk customer triggers enhanced due diligence. The assigned risk category
+      should be reviewed on the transaction's merits — if a Low-risk customer exhibits
+      a High-risk pattern, the ground of suspicion should reference the mismatch
+      between the assigned category and the observed behaviour.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name and confirm risk-category taxonomy (H/M/L) in current FIU-IND/RBI guidance."
+    related_rules:
+      - POE-001
+      - RS-002
+
+  - id: POE-005
+    rule: >
+      Factor 4 — Income Level: Does the transaction amount align with the customer's
+      known or stated income level?
+    category: PO_EVALUATION
+    subcategory: FACTOR_INCOME_LEVEL
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 4"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      A daily-wage earner receiving ₹50 lakh in a single month fails this factor
+      unless there is a documented explanation (inheritance, property sale, etc.).
+      Income level feeds directly into the "why is this amount inconsistent?" part
+      of the Ground of Suspicion.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+
+  - id: POE-006
+    rule: >
+      Factor 5 — Source of Income: Is the stated or apparent source of income
+      consistent with the observed transaction?
+    category: PO_EVALUATION
+    subcategory: FACTOR_SOURCE_OF_INCOME
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 5"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Source of income is distinct from income level: a high-net-worth individual
+      (income level: passes) may still fail this factor if the source of a specific
+      large credit cannot be explained.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+
+  - id: POE-007
+    rule: >
+      Factor 6 — Beneficiary: Who is the recipient of the funds? Is the beneficiary
+      relationship explained and consistent with the customer's profile?
+    category: PO_EVALUATION
+    subcategory: FACTOR_BENEFICIARY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 6"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Unexplained beneficiary concentration (RFI-007) directly fails this factor.
+      If all outgoing transfers from multiple unrelated accounts flow to the same
+      beneficiary, that must be addressed in the Ground of Suspicion.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+      - RFI-007
+
+  - id: POE-008
+    rule: >
+      Factor 7 — Transaction Frequency: Is the frequency of transactions unusual
+      for this customer's segment or historical pattern?
+    category: PO_EVALUATION
+    subcategory: FACTOR_TRANSACTION_FREQUENCY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 7"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      The pass-through pattern (RFI-001) is both a frequency and a velocity concern.
+      Multiple credits and near-total debits in rapid succession is a frequency anomaly.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+      - RFI-001
+
+  - id: POE-009
+    rule: >
+      Factor 8 — Transaction Size: Is the transaction size unusual for this customer's
+      segment or business type?
+    category: PO_EVALUATION
+    subcategory: FACTOR_TRANSACTION_SIZE
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 8"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Transaction size must be evaluated relative to the customer's peer group
+      (same segment, similar business type), not in absolute terms. A ₹1 crore
+      transaction by a large exporter may be unremarkable; the same amount in a
+      dormant savings account is a red flag.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+
+  - id: POE-010
+    rule: >
+      Factor 9 — Transaction Complexity: Is the transaction structure unnecessarily
+      complex in a way that could be designed to obscure the source or destination
+      of funds (a layering indicator)?
+    category: PO_EVALUATION
+    subcategory: FACTOR_TRANSACTION_COMPLEXITY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 9"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Layering is the middle stage of ML. If a simple transaction could have been
+      done directly but instead involves multiple steps, intermediaries, or account
+      hops, this factor is triggered. The ground of suspicion should articulate
+      why the complexity serves no legitimate commercial purpose.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2."
+    related_rules:
+      - POE-001
+      - RFI-007
+
+  - id: POE-011
+    rule: >
+      Factor 10 — Geographies: Do the jurisdictions involved in the transaction
+      carry elevated risk, including FATF high-risk or non-cooperative jurisdictions,
+      or jurisdictions specifically identified by RBI as high-risk?
+    category: PO_EVALUATION
+    subcategory: FACTOR_GEOGRAPHIES
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2; FATF public statement"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 10"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      FATF's current "Black List" (High-Risk Jurisdictions Subject to a Call for Action)
+      and "Grey List" (Jurisdictions Under Increased Monitoring) are the reference.
+      RBI may also publish its own list. The product should maintain a current
+      jurisdiction risk list linked to FATF updates.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: >
+      Verify FATF list currency (updated three times a year). Verify whether RBI
+      maintains a separate India-specific jurisdiction risk list. Verify exact factor
+      name from FIU-IND RFG v2.2.
+    related_rules:
+      - POE-001
+      - RFI-008
+
+  - id: POE-012
+    rule: >
+      Factor 11 — KYC Availability: Are the required KYC documents present, current,
+      and consistent with the transaction profile?
+    category: PO_EVALUATION
+    subcategory: FACTOR_KYC_AVAILABILITY
+    applies_to:
+      - all_reporting_entities
+    primary_source:
+      document: "FIU-IND Reporting Format Guide v2.2; RBI Master Direction on KYC"
+      url: "https://fiuindia.gov.in/files/Downloads/Downloads.html"
+      url_verified: false
+      section: "PO evaluation factor 11"
+      accessed_date: null
+    effective_date: null
+    evidence_level: ASSUMED
+    source_authority: FIU_IND_GUIDANCE
+    corpus_version: "1.1.1"
+    review_status: AUTHOR_ASSERTED
+    owner: "Nikhil Pande (corpus maintainer)"
+    verified_by: null
+    superseded_by: null
+    replaces: null
+    my_synthesis: >
+      Missing or expired KYC is both a compliance gap in itself and a suspicion
+      amplifier. If the customer refuses to update KYC while continuing to transact,
+      that refusal is itself a red flag. The product should flag KYC gaps as a
+      separate compliance signal alongside disposition decisions.
+    last_verified: null
+    snapshot_date: "2026-09-11"
+    gap_notes: "Verify exact factor name from FIU-IND RFG v2.2. Confirm 'KYC availability' vs 'KYC completeness' terminology."
+    related_rules:
+      - POE-001
+      - RS-002

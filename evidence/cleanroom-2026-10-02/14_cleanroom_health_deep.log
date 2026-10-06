@@ -1,0 +1,31 @@
+HEALTH — FIU_COPILOT_CR.AML · warehouse FIU_WH_CR · app role FIU_APP_ROLE_CR · 2026-10-02T04:20:36Z · read-only (13 statements)
+
+✔ HEALTHY      Session is the app role with secondary roles NONE
+               role FIU_APP_ROLE_CR, secondary roles NONE, FIU_COPILOT_CR.AML on FIU_WH_CR.
+✔ HEALTHY      App role holds exactly the least-privilege grants
+               14 data grants exactly as deploy/03_grants.sql (ledger INSERT+SELECT only, no CREATE privilege) plus 2 platform-owned objects of its own Streamlit app (ownership of the app and its internal stage, service usage) and 2 read grants on the audit-export store (provisioned, opt-in). Nothing else.
+✔ HEALTHY      Nobody but the owner, the app role, ACCOUNTADMIN and (if provisioned) the audit reader holds a privilege on the ledger
+               grantees: FIU_ADMIN_ROLE_CR ['OWNERSHIP'], FIU_APP_ROLE_CR ['INSERT', 'SELECT'], FIU_AUDIT_ROLE_CR ['SELECT'] — no PUBLIC, no other role.
+✔ HEALTHY      Cortex Search service CORPUS_SEARCH is ACTIVE and indexes the expected rows
+               indexing ACTIVE, serving ACTIVE, 36 rows indexed (= PROVEN + ASSUMED; NEEDS-VERIFICATION is excluded).
+✔ HEALTHY      Cortex Search answers a query (serving, not just state)
+               served 3 results (STR-002:PROVEN, INS-002:PROVEN, CTR-002:PROVEN); none is NEEDS-VERIFICATION.
+✔ HEALTHY      Corpus version and counts match the manifest
+               corpus v1.1.0: {'ASSUMED': 21, 'NEEDS-VERIFICATION': 13, 'PROVEN': 15} = 49 rules, one version, governance columns populated, identical to the manifest.
+✔ HEALTHY      Semantic model is on the stage and byte-identical to the repository's
+               present and byte-identical to the repository's file (sha256 b4fce2a4b211…).
+✔ HEALTHY      Ledger integrity census (per-row hashes)
+               3 of 3 row(s) INTACT, 0 TAMPERED, 0 legacy.
+✔ HEALTHY      Latest ledger reconciliation (read-only)
+               CONSISTENT over 3 row(s): {'INTACT': 3}.
+✔ HEALTHY      Deletion witness: audit export reconciles with the ledger
+               an audit export exists, its chain is intact and it reconciles with the ledger (a witness, not WORM storage — ACCOUNTADMIN or a holder of both roles could alter both).
+✔ HEALTHY      Hosted Streamlit app: owner, warehouse and deployed code version
+               owner FIU_APP_ROLE_CR, warehouse FIU_WH_CR, 13/13 code files byte-identical to the source (bundle 44097f553ea800d9…). What Snowsight rendered is NOT verified by this check.
+✔ HEALTHY      Cortex Complete answers (one call)
+               answered by llama3.3-70b.
+✔ HEALTHY      Cortex Analyst answers over the semantic model (one question)
+               answered with SQL and 2 row(s).
+
+OVERALL HEALTHY: 13 healthy · 0 unavailable · 0 unverified
+HEALTHY = shown to hold now · UNAVAILABLE = shown NOT to hold · UNVERIFIED = no evidence either way (never read as healthy)

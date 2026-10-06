@@ -1,0 +1,14 @@
+# CR2, 2026-10-06, after: python3 scripts/governance_policies.py apply --apply (as the owner role)
+# probe as the owner role (a role that is not the application role)
+role FIU_ADMIN_ROLE_CR2 on FIU_COPILOT_CR2
+  TRANSACTIONS.COUNTERPARTY: 92 values read, 92 masked, 0 in clear   e.g. '*** masked ***'
+      policy attached, as far as this role can see: MASK_COUNTERPARTY
+  ALERTS.CUSTOMER_PROFILE: 19 values read, 19 masked, 0 in clear   e.g. '*** masked ***'
+      policy attached, as far as this role can see: MASK_CUSTOMER_PROFILE
+
+# probe as the application role
+role FIU_APP_ROLE_CR2 on FIU_COPILOT_CR2
+  TRANSACTIONS.COUNTERPARTY: 92 values read, 0 masked, 92 in clear   e.g. 'ABC Infrastructure Ltd'
+      policy attached, as far as this role can see: nothing visible (a role without access to the reference view sees none: this is not proof of absence)
+  ALERTS.CUSTOMER_PROFILE: 19 values read, 0 masked, 19 in clear   e.g. 'Daily labourer; Rs.10K/month declared; 3 linked '
+      policy attached, as far as this role can see: nothing visible (a role without access to the reference view sees none: this is not proof of absence)

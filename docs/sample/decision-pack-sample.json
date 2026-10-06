@@ -1,0 +1,638 @@
+{
+ "schema": "evidencedesk.decision-dossier/1",
+ "notice": "Synthetic data. This file records a decision made in a prototype; it is not a regulatory filing and does not submit anything to FIU-IND.",
+ "generated_at_utc": "2026-10-05T12:00:00.123456",
+ "app": {
+  "name": "EvidenceDesk",
+  "version": "sample: built by the real recorder against a stub database, not a hosted decision",
+  "prompt_version": "v2.2",
+  "skill_version": "v2.0"
+ },
+ "decision": {
+  "decision_id": "6cc736f2-1ba3-4c43-bb56-b17be101fc08",
+  "alert_id": "ALERT-01",
+  "customer_ref": "CUST-01",
+  "disposition": "FILE",
+  "decision_maker_id": "PO-TEST",
+  "suspicion_formed_at": "2026-10-05T12:00:00.123456",
+  "decision_made_at": "2026-10-05T12:00:00.123456",
+  "sla_days_remaining": 7,
+  "str_reference": "PENDING-FINGATEREF",
+  "rationale_text": "I formed suspicion in respect of customer CUST-01 (salaried employee, declared annual income ₹3.6 lakh) on 2026-08-19, following review of two credits totalling ₹5,55,000 received on 2026-08-12 (₹3,45,000 from an unidentified individual) and 2026-08-19 (₹2,10,000 from a second unidentified individual), and a same-day outward transfer of ₹5,47,000 on 2026-08-19 to UPI handle UPI-98XXXXXX76.\n\nThe credits represent 18.5 times the customer's monthly declared income and arrive from counterparties not identified in the customer's KYC or any employment or business documentation on file. The sudden burst of high-value credits is inconsistent with the customer's declared profile (POE-002, POE-003, POE-005).\n\nThe outward transfer of ₹5,47,000 — representing 98.6% of the received amount — was made on the same calendar day as the second credit, to UPI handle UPI-98XXXXXX76, which appears in the I4C Suspect Registry in connection with prior mule-account activity (POE-007, RFI-001, RFI-005). This pass-through pattern — receive large credits from unverified sources, immediately transfer to a flagged beneficiary — is the defining characteristic of a mule passthrough account.\n\nI considered and rejected the possibility that these credits represent a legitimate windfall, inheritance, or one-time receipt: the customer provided no documentation supporting any such event, and the immediate onward transfer of 98.6% of the received amount to an I4C-flagged counterparty is inconsistent with any innocent purpose.\n\nThe KYC profile was last verified on 2023-01-10; this gap does not independently ground suspicion but confirms the KYC-availability concern (POE-012).\n\nThe statutory basis for this report is PMLA 2002, Section 12(1)(b). This report is filed within 7 working days of the date on which I formed suspicion.",
+  "rules_cited": [
+   "STR-001",
+   "RFI-001"
+  ],
+  "rfi_triggers": [
+   "RFI-001"
+  ]
+ },
+ "ledger_row": {
+  "decision_id": "6cc736f2-1ba3-4c43-bb56-b17be101fc08",
+  "alert_id": "ALERT-01",
+  "customer_ref": "CUST-01",
+  "disposition": "FILE",
+  "decision_maker_id": "PO-TEST",
+  "suspicion_formed_at": "2026-10-05T12:00:00.123456",
+  "decision_made_at": "2026-10-05T12:00:00.123456",
+  "sla_days_remaining": 7,
+  "rationale_text": "I formed suspicion in respect of customer CUST-01 (salaried employee, declared annual income ₹3.6 lakh) on 2026-08-19, following review of two credits totalling ₹5,55,000 received on 2026-08-12 (₹3,45,000 from an unidentified individual) and 2026-08-19 (₹2,10,000 from a second unidentified individual), and a same-day outward transfer of ₹5,47,000 on 2026-08-19 to UPI handle UPI-98XXXXXX76.\n\nThe credits represent 18.5 times the customer's monthly declared income and arrive from counterparties not identified in the customer's KYC or any employment or business documentation on file. The sudden burst of high-value credits is inconsistent with the customer's declared profile (POE-002, POE-003, POE-005).\n\nThe outward transfer of ₹5,47,000 — representing 98.6% of the received amount — was made on the same calendar day as the second credit, to UPI handle UPI-98XXXXXX76, which appears in the I4C Suspect Registry in connection with prior mule-account activity (POE-007, RFI-001, RFI-005). This pass-through pattern — receive large credits from unverified sources, immediately transfer to a flagged beneficiary — is the defining characteristic of a mule passthrough account.\n\nI considered and rejected the possibility that these credits represent a legitimate windfall, inheritance, or one-time receipt: the customer provided no documentation supporting any such event, and the immediate onward transfer of 98.6% of the received amount to an I4C-flagged counterparty is inconsistent with any innocent purpose.\n\nThe KYC profile was last verified on 2023-01-10; this gap does not independently ground suspicion but confirms the KYC-availability concern (POE-012).\n\nThe statutory basis for this report is PMLA 2002, Section 12(1)(b). This report is filed within 7 working days of the date on which I formed suspicion.",
+  "rules_cited": [
+   "STR-001",
+   "RFI-001"
+  ],
+  "poe_factors_assessed": {
+   "POE-002": "clear",
+   "POE-003": "clear",
+   "POE-004": "clear",
+   "POE-005": "clear",
+   "POE-006": "clear",
+   "POE-007": "clear",
+   "POE-008": "clear",
+   "POE-009": "clear",
+   "POE-010": "clear",
+   "POE-011": "clear",
+   "POE-012": "clear"
+  },
+  "rfi_triggers": [
+   "RFI-001"
+  ],
+  "str_reference": "PENDING-FINGATEREF",
+  "metadata": {
+   "schema_version": "3",
+   "ai_recommendation": "FILE",
+   "human_decision": "FILE",
+   "override": false,
+   "override_reason": null,
+   "corpus_version": "1.1.0",
+   "regulatory_basis": {
+    "schema": "regulatory_basis/1",
+    "corpus_version": "1.1.0",
+    "snapshot_date": "2026-09-17",
+    "grade": "PROVEN_ONLY",
+    "legal_conclusion_permitted": true,
+    "requires_assumed_acknowledgement": false,
+    "proven_rule_ids": [
+     "STR-001"
+    ],
+    "assumed_rule_ids": [],
+    "excluded": [
+     {
+      "rule_id": "RFI-001",
+      "reason": "NEEDS_VERIFICATION",
+      "superseded_by": null
+     }
+    ],
+    "independently_verified_count": 0,
+    "stale_review_rule_ids": [],
+    "rules": [
+     {
+      "rule_id": "RFI-001",
+      "evidence_level": "NEEDS-VERIFICATION",
+      "review_status": "DRAFT",
+      "review_verified": false,
+      "source_authority": "INDUSTRY_PRACTICE",
+      "corpus_version": "1.1.0",
+      "snapshot_date": "2026-09-11",
+      "supersession_status": "CURRENT",
+      "superseded_by": null,
+      "usable_as_basis": false,
+      "unusable_reason": "NEEDS_VERIFICATION"
+     },
+     {
+      "rule_id": "STR-001",
+      "evidence_level": "PROVEN",
+      "review_status": "AUTHOR_ASSERTED",
+      "review_verified": false,
+      "source_authority": "STATUTE",
+      "corpus_version": "1.1.0",
+      "snapshot_date": "2026-09-11",
+      "supersession_status": "CURRENT",
+      "superseded_by": null,
+      "usable_as_basis": true,
+      "unusable_reason": null
+     }
+    ],
+    "by_evidence_level": {
+     "PROVEN": [
+      "STR-001"
+     ],
+     "NEEDS-VERIFICATION": [
+      "RFI-001"
+     ]
+    },
+    "error": null,
+    "basis_sha256": "fd1e8ecc6b7451a57faf14252097aebfea1fa8f485af1138b8bb4b599eb99180"
+   },
+   "model_name": "NOT_RUN",
+   "prompt_version": "v2.2",
+   "skill_version": "v2.0",
+   "evidence_txn_ids": [
+    "TXN-001"
+   ],
+   "evidence_snapshot_sha256": "889e158be2ed9a7db7d003de4600c43c4afb8e50422510bcf19c4897b2a6ff85",
+   "poe_assessment": [
+    {
+     "factor_id": "POE-002",
+     "assessment": "clear",
+     "evidence": "Business Profile: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-003",
+     "assessment": "triggered",
+     "evidence": "Transaction History: evidence text",
+     "evidence_txn_ids": [
+      "TXN-001"
+     ],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-004",
+     "assessment": "clear",
+     "evidence": "Customer Risk Profile: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-005",
+     "assessment": "triggered",
+     "evidence": "Income Level: evidence text",
+     "evidence_txn_ids": [
+      "TXN-001"
+     ],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-006",
+     "assessment": "clear",
+     "evidence": "Source of Income: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-007",
+     "assessment": "triggered",
+     "evidence": "Beneficiary: evidence text",
+     "evidence_txn_ids": [
+      "TXN-001"
+     ],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-008",
+     "assessment": "clear",
+     "evidence": "Transaction Frequency: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-009",
+     "assessment": "clear",
+     "evidence": "Transaction Size: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-010",
+     "assessment": "clear",
+     "evidence": "Transaction Complexity: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-011",
+     "assessment": "clear",
+     "evidence": "Geographies: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    },
+    {
+     "factor_id": "POE-012",
+     "assessment": "clear",
+     "evidence": "KYC Availability: evidence text",
+     "evidence_txn_ids": [],
+     "grounded": null
+    }
+   ],
+   "gos": {
+    "narrative_sha256": "a84a4935593c57a06827b81718cb2539888786784796ed22bc89975a5d4a0f33",
+    "status": "READY",
+    "quality_score": 10,
+    "hard_gate_passed": true,
+    "ai_output_valid": true,
+    "unsupported_claims_by_type": {},
+    "unverified_assertions": []
+   },
+   "unverified_claims_acknowledged": null,
+   "defensibility_gate": {
+    "gate_version": "1",
+    "disposition": "FILE",
+    "status": "PASS",
+    "can_record": true,
+    "blocking_codes": [],
+    "pending_codes": [],
+    "warning_codes": [],
+    "info_codes": [
+     "NEEDS_VERIFICATION_RULES_AS_TAGS",
+     "BASIS_NOT_INDEPENDENTLY_VERIFIED"
+    ],
+    "satisfied_codes": [],
+    "conditions": [
+     {
+      "code": "NEEDS_VERIFICATION_RULES_AS_TAGS",
+      "severity": "INFO",
+      "satisfied": null,
+      "message": "NEEDS-VERIFICATION rules are internal tags, never citations: RFI-001",
+      "detail": {
+       "rule_ids": [
+        "RFI-001"
+       ]
+      }
+     },
+     {
+      "code": "BASIS_NOT_INDEPENDENTLY_VERIFIED",
+      "severity": "INFO",
+      "satisfied": null,
+      "message": "None of the cited rules has been independently re-verified against its primary source (PROVEN means a source is cited).",
+      "detail": {
+       "usable": 1,
+       "independently_verified": 0
+      }
+     }
+    ],
+    "acknowledgements": {
+     "unverified_claims": null,
+     "unverified_assertion_count": 0,
+     "assumed_basis": null,
+     "assumed_rule_ids": [],
+     "override_reason_recorded": false
+    }
+   },
+   "acknowledgements": {
+    "unverified_claims": null,
+    "unverified_assertion_count": 0,
+    "assumed_basis": null,
+    "assumed_rule_ids": [],
+    "override_reason_recorded": false
+   },
+   "challenge": {
+    "against": "FILE",
+    "strength": "none",
+    "recommendation_conflict": false,
+    "counter_evidence": [],
+    "counter_evidence_total": 0,
+    "open_gap_factors": []
+   },
+   "sla_basis": "working_days_mon_fri_no_holiday_calendar_IST",
+   "feedback": {
+    "schema": "decision_feedback/1",
+    "use": "monitoring_and_future_calibration_only",
+    "ai_recommendation": "FILE",
+    "ai_response": "ACCEPTED",
+    "reason_code": null,
+    "reason_stated": false,
+    "ai_draft": {
+     "generated": false,
+     "adopted_verbatim": null
+    }
+   },
+   "decision_sequence": {
+    "prior_count": 0
+   },
+   "written_by_role": "FIU_APP_ROLE",
+   "written_by_user": "TEST_USER"
+  }
+ },
+ "ledger_row_hash": {
+  "stored": "849990a153504b586f6676bc48194a1fc5cce45649412c78ef386f00792af5c7",
+  "status_in_ledger_at_export": "INTACT"
+ },
+ "provenance": {
+  "schema_version": "3",
+  "ai_recommendation": "FILE",
+  "human_decision": "FILE",
+  "override": false,
+  "override_reason": null,
+  "corpus_version": "1.1.0",
+  "regulatory_basis": {
+   "schema": "regulatory_basis/1",
+   "corpus_version": "1.1.0",
+   "snapshot_date": "2026-09-17",
+   "grade": "PROVEN_ONLY",
+   "legal_conclusion_permitted": true,
+   "requires_assumed_acknowledgement": false,
+   "proven_rule_ids": [
+    "STR-001"
+   ],
+   "assumed_rule_ids": [],
+   "excluded": [
+    {
+     "rule_id": "RFI-001",
+     "reason": "NEEDS_VERIFICATION",
+     "superseded_by": null
+    }
+   ],
+   "independently_verified_count": 0,
+   "stale_review_rule_ids": [],
+   "rules": [
+    {
+     "rule_id": "RFI-001",
+     "evidence_level": "NEEDS-VERIFICATION",
+     "review_status": "DRAFT",
+     "review_verified": false,
+     "source_authority": "INDUSTRY_PRACTICE",
+     "corpus_version": "1.1.0",
+     "snapshot_date": "2026-09-11",
+     "supersession_status": "CURRENT",
+     "superseded_by": null,
+     "usable_as_basis": false,
+     "unusable_reason": "NEEDS_VERIFICATION"
+    },
+    {
+     "rule_id": "STR-001",
+     "evidence_level": "PROVEN",
+     "review_status": "AUTHOR_ASSERTED",
+     "review_verified": false,
+     "source_authority": "STATUTE",
+     "corpus_version": "1.1.0",
+     "snapshot_date": "2026-09-11",
+     "supersession_status": "CURRENT",
+     "superseded_by": null,
+     "usable_as_basis": true,
+     "unusable_reason": null
+    }
+   ],
+   "by_evidence_level": {
+    "PROVEN": [
+     "STR-001"
+    ],
+    "NEEDS-VERIFICATION": [
+     "RFI-001"
+    ]
+   },
+   "error": null,
+   "basis_sha256": "fd1e8ecc6b7451a57faf14252097aebfea1fa8f485af1138b8bb4b599eb99180"
+  },
+  "model_name": "NOT_RUN",
+  "prompt_version": "v2.2",
+  "skill_version": "v2.0",
+  "evidence_txn_ids": [
+   "TXN-001"
+  ],
+  "evidence_snapshot_sha256": "889e158be2ed9a7db7d003de4600c43c4afb8e50422510bcf19c4897b2a6ff85",
+  "poe_assessment": [
+   {
+    "factor_id": "POE-002",
+    "assessment": "clear",
+    "evidence": "Business Profile: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-003",
+    "assessment": "triggered",
+    "evidence": "Transaction History: evidence text",
+    "evidence_txn_ids": [
+     "TXN-001"
+    ],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-004",
+    "assessment": "clear",
+    "evidence": "Customer Risk Profile: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-005",
+    "assessment": "triggered",
+    "evidence": "Income Level: evidence text",
+    "evidence_txn_ids": [
+     "TXN-001"
+    ],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-006",
+    "assessment": "clear",
+    "evidence": "Source of Income: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-007",
+    "assessment": "triggered",
+    "evidence": "Beneficiary: evidence text",
+    "evidence_txn_ids": [
+     "TXN-001"
+    ],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-008",
+    "assessment": "clear",
+    "evidence": "Transaction Frequency: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-009",
+    "assessment": "clear",
+    "evidence": "Transaction Size: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-010",
+    "assessment": "clear",
+    "evidence": "Transaction Complexity: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-011",
+    "assessment": "clear",
+    "evidence": "Geographies: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   },
+   {
+    "factor_id": "POE-012",
+    "assessment": "clear",
+    "evidence": "KYC Availability: evidence text",
+    "evidence_txn_ids": [],
+    "grounded": null
+   }
+  ],
+  "gos": {
+   "narrative_sha256": "a84a4935593c57a06827b81718cb2539888786784796ed22bc89975a5d4a0f33",
+   "status": "READY",
+   "quality_score": 10,
+   "hard_gate_passed": true,
+   "ai_output_valid": true,
+   "unsupported_claims_by_type": {},
+   "unverified_assertions": []
+  },
+  "unverified_claims_acknowledged": null,
+  "defensibility_gate": {
+   "gate_version": "1",
+   "disposition": "FILE",
+   "status": "PASS",
+   "can_record": true,
+   "blocking_codes": [],
+   "pending_codes": [],
+   "warning_codes": [],
+   "info_codes": [
+    "NEEDS_VERIFICATION_RULES_AS_TAGS",
+    "BASIS_NOT_INDEPENDENTLY_VERIFIED"
+   ],
+   "satisfied_codes": [],
+   "conditions": [
+    {
+     "code": "NEEDS_VERIFICATION_RULES_AS_TAGS",
+     "severity": "INFO",
+     "satisfied": null,
+     "message": "NEEDS-VERIFICATION rules are internal tags, never citations: RFI-001",
+     "detail": {
+      "rule_ids": [
+       "RFI-001"
+      ]
+     }
+    },
+    {
+     "code": "BASIS_NOT_INDEPENDENTLY_VERIFIED",
+     "severity": "INFO",
+     "satisfied": null,
+     "message": "None of the cited rules has been independently re-verified against its primary source (PROVEN means a source is cited).",
+     "detail": {
+      "usable": 1,
+      "independently_verified": 0
+     }
+    }
+   ],
+   "acknowledgements": {
+    "unverified_claims": null,
+    "unverified_assertion_count": 0,
+    "assumed_basis": null,
+    "assumed_rule_ids": [],
+    "override_reason_recorded": false
+   }
+  },
+  "acknowledgements": {
+   "unverified_claims": null,
+   "unverified_assertion_count": 0,
+   "assumed_basis": null,
+   "assumed_rule_ids": [],
+   "override_reason_recorded": false
+  },
+  "challenge": {
+   "against": "FILE",
+   "strength": "none",
+   "recommendation_conflict": false,
+   "counter_evidence": [],
+   "counter_evidence_total": 0,
+   "open_gap_factors": []
+  },
+  "sla_basis": "working_days_mon_fri_no_holiday_calendar_IST",
+  "feedback": {
+   "schema": "decision_feedback/1",
+   "use": "monitoring_and_future_calibration_only",
+   "ai_recommendation": "FILE",
+   "ai_response": "ACCEPTED",
+   "reason_code": null,
+   "reason_stated": false,
+   "ai_draft": {
+    "generated": false,
+    "adopted_verbatim": null
+   }
+  },
+  "decision_sequence": {
+   "prior_count": 0
+  },
+  "written_by_role": "FIU_APP_ROLE",
+  "written_by_user": "TEST_USER"
+ },
+ "reconstruction_at_export": {
+  "row_hash": {
+   "ok": true,
+   "detail": "stored hash reproduced from the stored row"
+  }
+ },
+ "case_record": {
+  "alert": {
+   "ALERT_ID": "ALERT-01",
+   "CUSTOMER_REF": "CUST-01",
+   "ALERT_DATE": "2026-08-19",
+   "ALERT_TYPE": "MULE_PASSTHROUGH",
+   "SIGNAL_SOURCE": "I4C",
+   "ACCOUNT_TYPE": "SAVINGS",
+   "CUSTOMER_PROFILE": "Salaried employee. Declared annual income ₹3.6L. Account held since 2022. KYC last verified 2023-01-10.",
+   "ALERT_AMOUNT_INR": "555000",
+   "ALERT_NARRATIVE": "Pass-through mule pattern."
+  },
+  "transactions": [
+   {
+    "txn_id": "TXN-001",
+    "date": "2026-08-12",
+    "type": "CREDIT",
+    "amount_inr": 345000.0,
+    "channel": "UPI",
+    "counterparty": "Unidentified individual A",
+    "is_flagged": false
+   },
+   {
+    "txn_id": "TXN-002",
+    "date": "2026-08-19",
+    "type": "CREDIT",
+    "amount_inr": 210000.0,
+    "channel": "UPI",
+    "counterparty": "Unidentified individual B",
+    "is_flagged": false
+   },
+   {
+    "txn_id": "TXN-003",
+    "date": "2026-08-19",
+    "type": "DEBIT",
+    "amount_inr": 547000.0,
+    "channel": "UPI",
+    "counterparty": "UPI-98XXXXXX76 (I4C flagged)",
+    "is_flagged": true
+   }
+  ]
+ },
+ "summary": {
+  "decided_by": "PO-TEST",
+  "identity_authenticated": null,
+  "disposition": "FILE",
+  "ai_said": "FILE",
+  "ai_model": "NOT_RUN",
+  "ai_output_source": "live",
+  "overrode_ai": false,
+  "override_reason": null,
+  "basis": {
+   "grade": "PROVEN_ONLY",
+   "corpus_version": "1.1.0",
+   "snapshot_date": "2026-09-17",
+   "proven": [
+    "STR-001"
+   ],
+   "assumed": [],
+   "independently_verified": 0
+  },
+  "gate": {
+   "status": "PASS",
+   "blocking": [],
+   "warnings": [],
+   "satisfied_acknowledgements": []
+  },
+  "acknowledged": {},
+  "supersedes": null,
+  "evidence_txn_ids": [
+   "TXN-001"
+  ]
+ },
+ "dossier_sha256": "e87fd6d34fd406b89febe294375dab42eff76d189fb7905e7d65df3b5f043ef1"
+}

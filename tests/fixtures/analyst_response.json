@@ -1,0 +1,16 @@
+{
+    "message": {
+        "role": "analyst",
+        "content": [
+            {
+                "type": "text",
+                "text": "There are 2 STR filings recorded in the decision ledger."
+            },
+            {
+                "type": "sql",
+                "statement": "SELECT COUNT(*) AS filed_count FROM FIU_COPILOT.AML.DECISION_LEDGER WHERE DISPOSITION = 'FILE'"
+            }
+        ]
+    },
+    "warnings": []
+}

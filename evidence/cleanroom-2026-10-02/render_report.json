@@ -1,0 +1,23 @@
+{
+  "files": 86,
+  "files_changed": 39,
+  "names": {
+    "FIU_ADMIN_ROLE": "FIU_ADMIN_ROLE_CR",
+    "FIU_APP_ROLE": "FIU_APP_ROLE_CR",
+    "FIU_AUDIT_ROLE": "FIU_AUDIT_ROLE_CR",
+    "FIU_COPILOT": "FIU_COPILOT_CR",
+    "FIU_WH": "FIU_WH_CR"
+  },
+  "per_identifier": {
+    "FIU_ADMIN_ROLE": 26,
+    "FIU_APP_ROLE": 63,
+    "FIU_AUDIT_ROLE": 22,
+    "FIU_COPILOT": 182,
+    "FIU_WH": 18
+  },
+  "profile": "cleanroom",
+  "substitutions": 311,
+  "suffix": "CR",
+  "text_files": 83,
+  "tree_sha256": "e562efb576a3e4a2e78c6c6eb565ddbe691d134e00023804ed6b4e8347f1b7ea"
+}

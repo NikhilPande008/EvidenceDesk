@@ -1,0 +1,316 @@
+{
+ "meta": {
+  "run_utc": "2026-10-05 12:41:42Z",
+  "commit": "61e86a3",
+  "dirty": true
+ },
+ "note": "Frozen before the second round of changes to skills/grounding.py (the four S2 pattern gaps). Stress sets S2 and S3.",
+ "stress": {
+  "S2": {
+   "narratives": 42,
+   "caught": {
+    "k": 31,
+    "n": 42,
+    "rate_pct": 73.8,
+    "wilson95_pct": [
+     58.9,
+     84.7
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 9,
+     "n": 10,
+     "rate_pct": 90.0,
+     "wilson95_pct": [
+      59.6,
+      98.2
+     ]
+    },
+    "channel": {
+     "k": 3,
+     "n": 6,
+     "rate_pct": 50.0,
+     "wilson95_pct": [
+      18.8,
+      81.2
+     ]
+    },
+    "date": {
+     "k": 7,
+     "n": 8,
+     "rate_pct": 87.5,
+     "wilson95_pct": [
+      52.9,
+      97.8
+     ]
+    },
+    "entity": {
+     "k": 4,
+     "n": 5,
+     "rate_pct": 80.0,
+     "wilson95_pct": [
+      37.5,
+      96.4
+     ]
+    },
+    "geography": {
+     "k": 2,
+     "n": 5,
+     "rate_pct": 40.0,
+     "wilson95_pct": [
+      11.8,
+      76.9
+     ]
+    },
+    "identifier": {
+     "k": 3,
+     "n": 3,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      43.9,
+      100.0
+     ]
+    },
+    "profile_fact": {
+     "k": 2,
+     "n": 4,
+     "rate_pct": 50.0,
+     "wilson95_pct": [
+      15.0,
+      85.0
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  },
+  "S3": {
+   "narratives": 38,
+   "caught": {
+    "k": 27,
+    "n": 38,
+    "rate_pct": 71.1,
+    "wilson95_pct": [
+     55.2,
+     83.0
+    ]
+   },
+   "by_class": {
+    "amount": {
+     "k": 7,
+     "n": 8,
+     "rate_pct": 87.5,
+     "wilson95_pct": [
+      52.9,
+      97.8
+     ]
+    },
+    "channel": {
+     "k": 4,
+     "n": 6,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      30.0,
+      90.3
+     ]
+    },
+    "date": {
+     "k": 4,
+     "n": 6,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      30.0,
+      90.3
+     ]
+    },
+    "entity": {
+     "k": 4,
+     "n": 6,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      30.0,
+      90.3
+     ]
+    },
+    "geography": {
+     "k": 3,
+     "n": 6,
+     "rate_pct": 50.0,
+     "wilson95_pct": [
+      18.8,
+      81.2
+     ]
+    },
+    "identifier": {
+     "k": 2,
+     "n": 2,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      34.2,
+      100.0
+     ]
+    },
+    "profile_fact": {
+     "k": 2,
+     "n": 3,
+     "rate_pct": 66.7,
+     "wilson95_pct": [
+      20.8,
+      93.8
+     ]
+    },
+    "profile_income": {
+     "k": 1,
+     "n": 1,
+     "rate_pct": 100.0,
+     "wilson95_pct": [
+      20.6,
+      100.0
+     ]
+    }
+   }
+  }
+ },
+ "stress_missed": [
+  {
+   "set": "S2",
+   "id": "Y06",
+   "cls": "amount",
+   "sentence": "A payment of rupees 6,50,000 followed."
+  },
+  {
+   "set": "S2",
+   "id": "Y14",
+   "cls": "date",
+   "sentence": "On 2026-9-12 a credit arrived."
+  },
+  {
+   "set": "S2",
+   "id": "Y20",
+   "cls": "channel",
+   "sentence": "The funds were sent through a mobile wallet."
+  },
+  {
+   "set": "S2",
+   "id": "Y23",
+   "cls": "channel",
+   "sentence": "Funds were wired overseas."
+  },
+  {
+   "set": "S2",
+   "id": "Y24",
+   "cls": "channel",
+   "sentence": "The customer withdrew cash from the branch counter."
+  },
+  {
+   "set": "S2",
+   "id": "Y26",
+   "cls": "geography",
+   "sentence": "A counterparty in Lithuania was involved."
+  },
+  {
+   "set": "S2",
+   "id": "Y27",
+   "cls": "geography",
+   "sentence": "Payments went to Vanuatu."
+  },
+  {
+   "set": "S2",
+   "id": "Y28",
+   "cls": "geography",
+   "sentence": "Funds were sent to Oslo."
+  },
+  {
+   "set": "S2",
+   "id": "Y32",
+   "cls": "entity",
+   "sentence": "The beneficiary is Zenith Securities."
+  },
+  {
+   "set": "S2",
+   "id": "Y40",
+   "cls": "profile_fact",
+   "sentence": "The customer is a serving government official."
+  },
+  {
+   "set": "S2",
+   "id": "Y42",
+   "cls": "profile_fact",
+   "sentence": "The customer is 29 years old."
+  },
+  {
+   "set": "S3",
+   "id": "Z01",
+   "cls": "amount",
+   "sentence": "The account received rupees 2,40,000 from an unknown sender."
+  },
+  {
+   "set": "S3",
+   "id": "Z11",
+   "cls": "date",
+   "sentence": "On the 3rd day of September the account was used."
+  },
+  {
+   "set": "S3",
+   "id": "Z12",
+   "cls": "date",
+   "sentence": "On 2026-10-1 the account was closed."
+  },
+  {
+   "set": "S3",
+   "id": "Z15",
+   "cls": "channel",
+   "sentence": "Money was wired to a foreign account."
+  },
+  {
+   "set": "S3",
+   "id": "Z16",
+   "cls": "channel",
+   "sentence": "The customer used a mobile banking app to push funds."
+  },
+  {
+   "set": "S3",
+   "id": "Z21",
+   "cls": "geography",
+   "sentence": "Funds were transferred to Hungary."
+  },
+  {
+   "set": "S3",
+   "id": "Z23",
+   "cls": "geography",
+   "sentence": "A payment reached Casablanca."
+  },
+  {
+   "set": "S3",
+   "id": "Z26",
+   "cls": "geography",
+   "sentence": "The recipient lives in Chittagong."
+  },
+  {
+   "set": "S3",
+   "id": "Z29",
+   "cls": "entity",
+   "sentence": "Funds went to Nair & Nair."
+  },
+  {
+   "set": "S3",
+   "id": "Z32",
+   "cls": "entity",
+   "sentence": "A wallet company, PhonePe, was involved."
+  },
+  {
+   "set": "S3",
+   "id": "Z38",
+   "cls": "profile_fact",
+   "sentence": "He is a government servant."
+  }
+ ]
+}

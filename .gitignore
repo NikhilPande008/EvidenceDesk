@@ -1,0 +1,33 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# Keep the repository's public landing page, but keep working notes and
+# generated or internal Markdown documents out of new commits by default.
+*.md
+!/README.md
+!/DEPLOY.md
+!/HANDOFF.md
+!/EVIDENCE.md
+!/SECURITY.md
+!/SKILL.md
+!/evidence/**/*.md
+
+# local deployment bundle (symlinks to this machine's paths) and editor backups
+output/
+*.bak
+*.bak-*
+*.orig
+!/docs/**/*.md
+
+# Cortex Code CLI project skills (.cortex/skills/<name>/SKILL.md) are documentation of the repository's operating procedure and are tracked
+!/.cortex/
+!/.cortex/skills/
+!/.cortex/skills/**/*.md

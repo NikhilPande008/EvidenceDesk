@@ -1,0 +1,272 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "regulatory-corpus-entry",
+  "title": "Regulatory Corpus Entry",
+  "description": "Schema for a single entry in the FIU-IND AML regulatory knowledge corpus",
+  "type": "object",
+  "required": [
+    "id",
+    "rule",
+    "category",
+    "applies_to",
+    "primary_source",
+    "evidence_level",
+    "snapshot_date",
+    "source_authority",
+    "corpus_version",
+    "review_status",
+    "owner"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z]+-[0-9]{3}$",
+      "description": "Unique rule ID. Format: {CATEGORY_PREFIX}-{NNN}. E.g. STR-001, RFI-007."
+    },
+    "rule": {
+      "type": "string",
+      "minLength": 20,
+      "description": "The regulatory fact/rule stated as precisely as the source allows."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "REPORTING_OBLIGATION",
+        "REPORT_STRUCTURE",
+        "PO_EVALUATION",
+        "RED_FLAG_INDICATOR",
+        "INSPECTION_FOCUS",
+        "STATUTORY_BASIS",
+        "RECORD_RETENTION",
+        "TIPPING_OFF",
+        "MULE_ACCOUNT_CONTEXT"
+      ]
+    },
+    "subcategory": {
+      "type": "string"
+    },
+    "applies_to": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "all_reporting_entities",
+          "banking_companies",
+          "financial_institutions",
+          "intermediaries",
+          "insurance_companies",
+          "payment_system_operators"
+        ]
+      },
+      "minItems": 1
+    },
+    "primary_source": {
+      "type": "object",
+      "required": [
+        "document",
+        "url",
+        "url_verified"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "type": "string",
+          "description": "Full document name + section. E.g. 'PMLA 2002, Section 12(1)(b)'"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL to the source. Never invented — use best-known URL."
+        },
+        "url_verified": {
+          "type": "boolean",
+          "description": "true only when manually confirmed live and pointing to the right document."
+        },
+        "section": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accessed_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date",
+          "description": "ISO 8601 date. Null = not yet accessed."
+        }
+      }
+    },
+    "effective_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO 8601 date the rule came into force. Null if unknown — do NOT guess."
+    },
+    "evidence_level": {
+      "type": "string",
+      "enum": [
+        "PROVEN",
+        "ASSUMED",
+        "NEEDS-VERIFICATION"
+      ],
+      "description": "Claim-audit tag. NEEDS-VERIFICATION entries must not appear in generated output."
+    },
+    "my_synthesis": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "PO-lens interpretation. Not a source. Distinct from rule."
+    },
+    "last_verified": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "ISO 8601 date last checked against primary source. Null = never verified."
+    },
+    "snapshot_date": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 'as of' date for this entry."
+    },
+    "gap_notes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Open questions or verification tasks specific to this entry."
+    },
+    "related_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]+-[0-9]{3}$"
+      },
+      "description": "IDs of related corpus entries."
+    },
+    "source_authority": {
+      "type": "string",
+      "enum": [
+        "STATUTE",
+        "RBI_DIRECTION",
+        "FIU_IND_GUIDANCE",
+        "FIU_IND_PUBLICATION",
+        "INTERNATIONAL_STANDARD",
+        "INDUSTRY_PRACTICE",
+        "PRODUCT_COMPILED"
+      ],
+      "description": "Authority type of the PRIMARY source. PRODUCT_COMPILED = no single primary authority (e.g. POE-001, DG-19)."
+    },
+    "corpus_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Corpus release containing this rule; must equal manifest.yaml corpus_version."
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "AUTHOR_ASSERTED",
+        "VERIFIED",
+        "STALE"
+      ],
+      "description": "VERIFIED requires last_verified AND verified_by. DRAFT = NEEDS-VERIFICATION. Nothing is VERIFIED by default."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Accountable maintainer of this rule."
+    },
+    "verified_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Reviewer who re-checked the live primary source. Null until verified. `last_verified` is the verified date."
+    },
+    "superseded_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Rule ID or instrument that replaces this rule. Non-null => never shown as current."
+    },
+    "replaces": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Instrument/mechanism this rule replaces (e.g. STR-006 replaces the FINnet direct-upload mechanism)."
+    },
+    "supersession": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "supersedes": {
+          "type": "string"
+        },
+        "successor": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "regulatory_perimeter": {
+      "type": "object",
+      "description": "Which regulated entities the rule does / does not apply to (e.g. SB-004 excludes SEBI/IRDAI entities)."
+    },
+    "last_reviewed": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "ISO 8601 date the owner last REVIEWED this rule (distinct from last_verified, which is an independent re-check against the live primary source). Null = never reviewed."
+    },
+    "review_sla_days": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "description": "Days allowed between reviews. Null = the corpus policy default (manifest review_policy.max_review_age_days)."
+    },
+    "approval_status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "UNAPPROVED",
+        "APPROVED",
+        null
+      ],
+      "description": "APPROVED requires approved_by and approved_on; otherwise the rule is treated as UNAPPROVED. Approval never lifts the NEEDS-VERIFICATION or superseded exclusion."
+    },
+    "approved_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Person who approved the rule for use. Null until someone does."
+    },
+    "approved_on": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date",
+      "description": "ISO 8601 date of the approval."
+    }
+  }
+}

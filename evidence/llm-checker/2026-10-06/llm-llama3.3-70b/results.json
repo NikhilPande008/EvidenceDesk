@@ -1,0 +1,5080 @@
+{
+ "meta": {
+  "label": "llm-llama3.3-70b",
+  "run_utc": "2026-10-06 02:57:47Z",
+  "commit": "dab155d",
+  "cases": 160,
+  "model": "llama3.3-70b",
+  "workers": 4
+ },
+ "deterministic": {
+  "fabrications_caught": {
+   "k": 65,
+   "n": 80,
+   "pct": 81.2,
+   "wilson95_pct": [
+    71.3,
+    88.3
+   ]
+  },
+  "misattributions_caught": {
+   "k": 12,
+   "n": 20,
+   "pct": 60.0,
+   "wilson95_pct": [
+    38.7,
+    78.1
+   ]
+  },
+  "faithful_wrongly_flagged": {
+   "k": 0,
+   "n": 40,
+   "pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    8.8
+   ]
+  },
+  "correct_statements_wrongly_flagged": {
+   "k": 0,
+   "n": 20,
+   "pct": 0.0,
+   "wilson95_pct": [
+    0.0,
+    16.1
+   ]
+  },
+  "fabrications_caught_S2": {
+   "k": 35,
+   "n": 42,
+   "pct": 83.3,
+   "wilson95_pct": [
+    69.4,
+    91.7
+   ]
+  },
+  "fabrications_caught_S3": {
+   "k": 30,
+   "n": 38,
+   "pct": 78.9,
+   "wilson95_pct": [
+    63.6,
+    88.9
+   ]
+  }
+ },
+ "llm": {
+  "fabrications_caught": {
+   "k": 76,
+   "n": 80,
+   "pct": 95.0,
+   "wilson95_pct": [
+    87.8,
+    98.0
+   ]
+  },
+  "misattributions_caught": {
+   "k": 19,
+   "n": 20,
+   "pct": 95.0,
+   "wilson95_pct": [
+    76.4,
+    99.1
+   ]
+  },
+  "faithful_wrongly_flagged": {
+   "k": 39,
+   "n": 40,
+   "pct": 97.5,
+   "wilson95_pct": [
+    87.1,
+    99.6
+   ]
+  },
+  "correct_statements_wrongly_flagged": {
+   "k": 14,
+   "n": 20,
+   "pct": 70.0,
+   "wilson95_pct": [
+    48.1,
+    85.5
+   ]
+  },
+  "fabrications_caught_S2": {
+   "k": 39,
+   "n": 42,
+   "pct": 92.9,
+   "wilson95_pct": [
+    81.0,
+    97.5
+   ]
+  },
+  "fabrications_caught_S3": {
+   "k": 37,
+   "n": 38,
+   "pct": 97.4,
+   "wilson95_pct": [
+    86.5,
+    99.5
+   ]
+  },
+  "unusable_replies": 5,
+  "seconds_median": 22.3,
+  "seconds_max": 121.7,
+  "tokens_median": 811,
+  "models": [
+   "llama3.3-70b"
+  ]
+ },
+ "repeatability": {
+  "cases": 24,
+  "identical_every_time": 24,
+  "pct": 100.0
+ },
+ "rows": [
+  {
+   "id": "Y01",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "She was paid eight lakh fifty thousand rupees",
+      "why": "The record does not mention this amount being paid to her; it only mentions credits and debits, and the total credit amount is Rs.3,45,000"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the record also shows a fourth credit of Rs.1,40,000 on a different date"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows the account received four credits between 13 and 17 August 2026, not three"
+     }
+    ],
+    "seconds": 26.4,
+    "tokens": 819,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7ea400642dcbb3de"
+  },
+  {
+   "id": "Y02",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer transferred Rs 1.2 Cr",
+      "why": "The record does not mention this amount or any transaction involving it"
+     },
+     {
+      "claim": "The customer received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the statement implies only three credits were received"
+     },
+     {
+      "claim": "The customer transferred Rs 1.2 Cr",
+      "why": "The record does not mention this amount, the total debits are Rs.2,46,500 + Rs.94,200 = Rs.3,40,700"
+     }
+    ],
+    "seconds": 25.1,
+    "tokens": 792,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "b7600a3f496748d7"
+  },
+  {
+   "id": "Y03",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A sum of four crore rupees moved",
+      "why": "The record only mentions a total credit of Rs.3,45,000 and debits of Rs.2,46,500 and Rs.94,200, which do not add up to four crore rupees"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, not three, and the dates match but the narrative omits the fourth credit"
+     },
+     {
+      "claim": "A sum of four crore rupees moved",
+      "why": "The record does not mention any transaction or total amount close to four crore rupees"
+     }
+    ],
+    "seconds": 59.0,
+    "tokens": 813,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1c19d2e56c458e35"
+  },
+  {
+   "id": "Y04",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": null,
+    "claims": [],
+    "seconds": 120.6,
+    "tokens": null,
+    "model": null,
+    "error": "No Cortex model available in this region. Last error: 000630 (57014): Statement reached its statement or warehouse timeout of 120 second(s) and was canceled."
+   },
+   "text_sha256": "b684d6239ccdf477"
+  },
+  {
+   "id": "Y05",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The payer sent \u20b9 15,000/-",
+      "why": "The record does not mention any transaction where the payer sent \u20b9 15,000/-"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows that the account received four transactions, but the narrative only mentions three credits and does not account for the fourth transaction"
+     },
+     {
+      "claim": "The payer sent \u20b9 15,000/-",
+      "why": "The record does not mention the payer sending any amount, it only mentions credits and debits to/from the account"
+     }
+    ],
+    "seconds": 24.4,
+    "tokens": 798,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "671180dd2074c9da"
+  },
+  {
+   "id": "Y06",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A payment of rupees 6,50,000 followed",
+      "why": "No such transaction is present in the transactions JSON"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth transactio"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows that the account received four credits between 13 and 17 August 2026, not three"
+     }
+    ],
+    "seconds": 24.3,
+    "tokens": 817,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "433cb74b3a9ae2b0"
+  },
+  {
+   "id": "Y07",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds worth 12 lakh were moved",
+      "why": "The record only mentions the total credits as Rs.3,45,000 and the debits as Rs.2,46,500 and Rs.94,200, but does not explicitly state that funds worth 12 lakh were moved. The narrative likely meant to "
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, but the narrative only mentions three credits. The record also shows the dates of the credits as 13, 14, and 16 August, but the narrative implies that all three cre"
+     }
+    ],
+    "seconds": 23.4,
+    "tokens": 845,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c3b53725db06e0f2"
+  },
+  {
+   "id": "Y08",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A one-time credit of Rs 8.4 lakhs arrived",
+      "why": "The record does not mention a credit of Rs 8.4 lakhs"
+     }
+    ],
+    "seconds": 20.4,
+    "tokens": 696,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "225cac52340a3b73"
+  },
+  {
+   "id": "Y09",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "He remitted USD 12,000",
+      "why": "The record does not mention any remittance in USD"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date and amount of the fourth c"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows the account received four credits between 13 and 17 August 2026"
+     }
+    ],
+    "seconds": 24.5,
+    "tokens": 840,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d6a1036e6fa532e9"
+  },
+  {
+   "id": "Y10",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A cheque for fifty-five thousand rupees was presented",
+      "why": "The record does not mention a cheque transaction"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,10,000 is present but another credit of the same amount is not mentioned"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on specific dates, not necessarily immediately after the credits, and in that order"
+     }
+    ],
+    "seconds": 41.1,
+    "tokens": 807,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "b17fca5b010a551c"
+  },
+  {
+   "id": "Y11",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On 3rd of September the account was used",
+      "why": "The record does not mention any transaction or activity on 3rd September"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, whic"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "The record shows four credits, not three"
+     }
+    ],
+    "seconds": 40.6,
+    "tokens": 861,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "09138255f969fa2a"
+  },
+  {
+   "id": "Y12",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The transfer posted on Aug. 29",
+      "why": "The record does not mention a transfer posting on Aug. 29"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative missed one credit of Rs.1,40,000 is actually the second credit and there is another credit of Rs.1,10,000 which "
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows that the debits were made on Aug 15 and Aug 17, but the narrative does not specify the dates, it only says 'then' which is not specific"
+     }
+    ],
+    "seconds": 39.8,
+    "tokens": 863,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d8246f2890366719"
+  },
+  {
+   "id": "Y13",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On 12-09-2026 funds were sent",
+      "why": "The record does not mention this date or any transaction on this date"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit"
+     }
+    ],
+    "seconds": 38.0,
+    "tokens": 822,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "3ce18ec5dce4ea0f"
+  },
+  {
+   "id": "Y14",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "a credit arrived on 2026-9-12",
+      "why": "The record does not mention any transaction on 2026-9-12"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth transactio"
+     },
+     {
+      "claim": "the debits were made to UPI handle C, which is I4C-flagged, of Rs.2,46,500 and Rs.94,200",
+      "why": "The record supports the amounts and the flag, but the narrative does not mention the dates of these debits, which are 2026-08-15 and 2026-08-17"
+     }
+    ],
+    "seconds": 39.9,
+    "tokens": 854,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "fa430157b2c909d3"
+  },
+  {
+   "id": "Y15",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On 12 Sept 2026 the balance was cleared",
+      "why": "The record does not mention this date or the balance being cleared"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the fourth credit"
+     }
+    ],
+    "seconds": 27.7,
+    "tokens": 774,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1627952d35f87a40"
+  },
+  {
+   "id": "Y16",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On the 1st of September a credit arrived",
+      "why": "The record does not mention any transaction on September 1st"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received credits of Rs.110000.0, Rs.140000.0, and Rs.95000.0, but also mentions that the total amount is Rs.3.45L (which implies there might be more credits), and the tran"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows debits of Rs.246500.0 and Rs.94200.0, which are close but not exactly the same as the amounts in the claim"
+     }
+    ],
+    "seconds": 32.3,
+    "tokens": 845,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7513bc5aaa2cb857"
+  },
+  {
+   "id": "Y17",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "a transfer occurred on September 5th, 2026",
+      "why": "the record does not mention this date or transaction"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "the record shows four credits, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is present but another credit of Rs.1,10,000 is also present and a third credit of Rs."
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "the record shows UPI handles A, B, and D, but also shows an additional unknown UPI handle is not mentioned but the narrative does mention the three UPI handles that are present in the record"
+     }
+    ],
+    "seconds": 30.0,
+    "tokens": 848,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "412bcf6cc12d3975"
+  },
+  {
+   "id": "Y18",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On the thirtieth of August the account was emptied",
+      "why": "The record does not mention the account being emptied on the thirtieth of August"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on 15 and 17 August, but does not indicate that they were made immediately after the credits, it only shows the dates of the transactions"
+     }
+    ],
+    "seconds": 28.9,
+    "tokens": 884,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d93757dd76f04779"
+  },
+  {
+   "id": "Y19",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A SWIFT MT103 message was sent",
+      "why": "The record does not mention a SWIFT MT103 message"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on 15 and 17 August, but does not indicate that they were made immediately after the credits, only that they were made after some of the credits"
+     }
+    ],
+    "seconds": 29.5,
+    "tokens": 865,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d23396fa9260685f"
+  },
+  {
+   "id": "Y20",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The funds were sent through a mobile wallet",
+      "why": "The record only mentions UPI as the channel, not a mobile wallet"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows the amounts, but the narrative does not specify that these are the only two debits to UPI handle C, however, the record does show these two debits to UPI handle C, but the narrative d"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, the fourth one is Rs.140,000 on 14 August 2026"
+     }
+    ],
+    "seconds": 32.6,
+    "tokens": 832,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c63dbc58fd5d0663"
+  },
+  {
+   "id": "Y21",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Payments were made by credit card",
+      "why": "The record states that the transactions were made through UPI, not credit card"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,10,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "The record shows UPI handles A, B, C and D, but the narrative only mentions A, B and D, it does not mention the absence of handle C in the credits but handle C is present in the debits"
+     }
+    ],
+    "seconds": 32.9,
+    "tokens": 877,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6d008beec969f30f"
+  },
+  {
+   "id": "Y22",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "An NEFT/RTGS transfer followed",
+      "why": "The record only mentions UPI transactions, with no mention of an NEFT/RTGS transfer"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, including one of Rs.110000.0 on 2026-08-13, one of Rs.140000.0 on 2026-08-14, and one of Rs.95000.0 on 2026-08-16, but also includes another credit of Rs.110000.0 is not"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows the account received four credits between 2026-08-13 and 2026-08-16"
+     }
+    ],
+    "seconds": 30.8,
+    "tokens": 927,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "66365cd65b1335ea"
+  },
+  {
+   "id": "Y23",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": null,
+    "claims": [],
+    "seconds": 121.0,
+    "tokens": null,
+    "model": null,
+    "error": "No Cortex model available in this region. Last error: 000630 (57014): Statement reached its statement or warehouse timeout of 120 second(s) and was canceled."
+   },
+   "text_sha256": "8225e76a82af5d37"
+  },
+  {
+   "id": "Y24",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer withdrew cash from the branch counter",
+      "why": "The record does not mention the customer withdrawing cash from the branch counter"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows UPI handle C received Rs.2,46,500 on 2026-08-15 and Rs.94,200 on 2026-08-17, but the narrative does not specify the dates"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received four credits, including one of Rs.110000.0 on 2026-08-13, one of Rs.140000.0 on 2026-08-14, and one of Rs.95000.0 on 2026-08-16, but it does not mention that only"
+     }
+    ],
+    "seconds": 26.0,
+    "tokens": 862,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "5c816924636dc293"
+  },
+  {
+   "id": "Y25",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The recipient is in Tanzania",
+      "why": "The record does not mention Tanzania"
+     },
+     {
+      "claim": "UPI handle C is the recipient",
+      "why": "The record only mentions UPI handle C as the counterparty for debits, but does not specify that it is the recipient in the context of the narrative"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is present but another credit of Rs.1,10,000 is also present and a third credit of Rs."
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four credits"
+     }
+    ],
+    "seconds": 70.6,
+    "tokens": 1447,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "e01b425c81d4e5d5"
+  },
+  {
+   "id": "Y26",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A counterparty in Lithuania was involved",
+      "why": "The record does not mention Lithuania"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits one credit of Rs.1,10,000 is present but another credit of the same amount is not mentioned"
+     },
+     {
+      "claim": "UPI handle C was involved in two debits of Rs.2,46,500 and Rs.94,200",
+      "why": "The record supports this, but the narrative does not mention that these debits were made on specific dates (August 15 and August 17) as per the record"
+     }
+    ],
+    "seconds": 21.2,
+    "tokens": 813,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "0f2b9d47bb4e87f2"
+  },
+  {
+   "id": "Y27",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Payments went to Vanuatu",
+      "why": "The record does not mention Vanuatu"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,10,000 is present in the record as T01-1, Rs.1,40,000 is present as T01-2, Rs.95,0"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows that the debits of Rs.2,46,500 and Rs.94,200 were made but it does not specify that they were made 'then', the record only shows the dates of the transactions"
+     }
+    ],
+    "seconds": 27.5,
+    "tokens": 881,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "863720a43301705a"
+  },
+  {
+   "id": "Y28",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds were sent to Oslo",
+      "why": "The record does not mention Oslo"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on specific dates, not necessarily immediately after the credits, and in the order of Rs.246500 and then Rs.94200"
+     }
+    ],
+    "seconds": 27.0,
+    "tokens": 857,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "441aa3b5474bc060"
+  },
+  {
+   "id": "Y29",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A Dubai-based exchange house received funds",
+      "why": "The record does not mention a Dubai-based exchange house"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "UPI handle C received two debits of Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows UPI handle C received two debits, but it was the account that made the debits, not received them"
+     }
+    ],
+    "seconds": 20.5,
+    "tokens": 819,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "b1fc4f5d021562b8"
+  },
+  {
+   "id": "Y30",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": null,
+    "claims": [],
+    "seconds": 121.7,
+    "tokens": null,
+    "model": null,
+    "error": "No Cortex model available in this region. Last error: 000630 (57014): Statement reached its statement or warehouse timeout of 120 second(s) and was canceled."
+   },
+   "text_sha256": "8cf06a2cd27cdf60"
+  },
+  {
+   "id": "Y31",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The payee was Omkar Textiles",
+      "why": "The record does not mention Omkar Textiles"
+     },
+     {
+      "claim": "UPI handle C was the payee for both debits",
+      "why": "The record only mentions 'UPI handle C (I4C-flagged)' as the counterparty for the debits, but does not explicitly state it was the payee"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is actually the second credit and there is another credit of Rs.1,10,000 which "
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows the account received four credits between 13 and 17 August 2026"
+     }
+    ],
+    "seconds": 48.9,
+    "tokens": 1161,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "b3321b3d4f4bca5c"
+  },
+  {
+   "id": "Y32",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The beneficiary is Zenith Securities",
+      "why": "The record does not mention Zenith Securities"
+     },
+     {
+      "claim": "UPI handle C is the beneficiary",
+      "why": "The record does not explicitly state that UPI handle C is the beneficiary, it only mentions that debits were made to UPI handle C"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     }
+    ],
+    "seconds": 29.1,
+    "tokens": 814,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "24c97e21eaff0f5c"
+  },
+  {
+   "id": "Y33",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds went to Patel Brothers",
+      "why": "The record does not mention 'Patel Brothers'"
+     },
+     {
+      "claim": "UPI handle C is associated with 'Patel Brothers'",
+      "why": "The record only mentions 'UPI handle C (I4C-flagged)' but does not provide any information about 'Patel Brothers'"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is present but another credit of Rs.1,10,000 is also present and a fourth credi"
+     },
+     {
+      "claim": "The debits were made to UPI handle C which is the same as the one mentioned in the record",
+      "why": "The record supports this but the narrative does not mention the I4C-flagged detail for UPI handle C in the context of the credits and debits"
+     }
+    ],
+    "seconds": 28.2,
+    "tokens": 888,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f81cb9d8057cc52a"
+  },
+  {
+   "id": "Y34",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The recipient, M/s Joshi & Associates, was paid",
+      "why": "The record does not mention M/s Joshi & Associates"
+     },
+     {
+      "claim": "UPI handle C is associated with M/s Joshi & Associates",
+      "why": "The record only mentions UPI handle C as I4C-flagged, but does not provide any information about the recipient's name"
+     }
+    ],
+    "seconds": 17.3,
+    "tokens": 730,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "a07546787b8ce167"
+  },
+  {
+   "id": "Y35",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "identifier",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "UPI ID ravi123@paytm was used",
+      "why": "The record does not mention this UPI ID"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four credits"
+     }
+    ],
+    "seconds": 31.4,
+    "tokens": 881,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "2cd0a4fb16f03a5a"
+  },
+  {
+   "id": "Y36",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "identifier",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Mobile 98765-43210 was linked",
+      "why": "The record does not mention a mobile number being linked to the account"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is present but another credit of Rs.1,10,000 is also present and a third credit of Rs."
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four credits, not three"
+     }
+    ],
+    "seconds": 85.1,
+    "tokens": 1173,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "0f5000d73f69876c"
+  },
+  {
+   "id": "Y37",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "identifier",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Cheque number 004512 was presented",
+      "why": "The record does not mention a cheque number 004512"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four credits"
+     }
+    ],
+    "seconds": 24.4,
+    "tokens": 858,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f47859fac80f4f21"
+  },
+  {
+   "id": "Y38",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer has been a client for five years",
+      "why": "The record states the account is 14 months old, not five years"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, including two debits, and the credits are Rs.1,10,000, Rs.1,40,000, and Rs.95,000, but also a fourth credit of Rs.110000.0 is not mentioned in the narrative"
+     },
+     {
+      "claim": "The customer has been a client for five years",
+      "why": "The record states the account is 14 months old, not five years"
+     }
+    ],
+    "seconds": 23.2,
+    "tokens": 809,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ccb9f630442b550a"
+  },
+  {
+   "id": "Y39",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in March 2021",
+      "why": "The record only mentions the account is 14 months old, but does not provide the exact opening date or month"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received credits of Rs.110000.0, Rs.140000.0, and Rs.95000.0, but it does not explicitly state that these are the only credits received between 13 and 17 August 2026"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four transactions with type 'CREDIT', but one of them (T01-1, T01-2, T01-4) are from unknown UPI handles and one more credit is not mentioned in the narrative"
+     }
+    ],
+    "seconds": 25.0,
+    "tokens": 854,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "e218ae2162aace28"
+  },
+  {
+   "id": "Y40",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer is a serving government official",
+      "why": "The record states the customer is a data entry operator, not a government official"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received four credits, including one of Rs.110000.0 on 2026-08-13, one of Rs.140000.0 on 2026-08-14, and one of Rs.95000.0 on 2026-08-16, but also a fourth credit of Rs.11"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows UPI handle C received Rs.246500.0 on 2026-08-15 and Rs.94200.0 on 2026-08-17, the amounts are close but the narrative does not account for the Rs.100 difference in the second debit"
+     }
+    ],
+    "seconds": 32.2,
+    "tokens": 881,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f9e1829942f42f92"
+  },
+  {
+   "id": "Y41",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "profile_income",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Their monthly salary is \u20b995,000",
+      "why": "The record states the customer's declared monthly income is \u20b928K, not \u20b995,000"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, including two debits, and the credits are of Rs.1,10,000, Rs.1,40,000 and Rs.95,000, but also includes a credit of Rs.110000.0 on 2026-08-13, Rs.140000.0 on 2026-08"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows the account received credits on 2026-08-13, 2026-08-14, and 2026-08-16, but does not show that these are the only credits in the time period, and the narrative does not account for th"
+     }
+    ],
+    "seconds": 38.8,
+    "tokens": 911,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "dfd887c29ff40532"
+  },
+  {
+   "id": "Y42",
+   "set": "S2",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer is 29 years old",
+      "why": "The record does not mention the customer's age"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, not three, and the amounts match but the narrative omits one credit transaction"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows the amounts are correct, but it does not explicitly state that these are the only debits to UPI handle C, however, the narrative implies it by stating 'Debits of Rs.2,46,500 and Rs.94"
+     }
+    ],
+    "seconds": 19.6,
+    "tokens": 824,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "967635b4ffac7014"
+  },
+  {
+   "id": "Z01",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account received rupees 2,40,000 from an unknown sender",
+      "why": "There is no record of this transaction in the provided transactions data"
+     }
+    ],
+    "seconds": 14.9,
+    "tokens": 697,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f579fee7cdace9a0"
+  },
+  {
+   "id": "Z02",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A credit of Rs. 9.25 L appeared",
+      "why": "The record does not mention a credit of Rs. 9.25 L"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record mentions four transactions, but only three of them are credits, and the amounts match, but the narrative does not mention the fourth credit of Rs. 110,000 on August 13 is followed by anothe"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits",
+      "why": "The record shows that the account received credits on August 13, August 14, and August 16, but does not support the narrative's implication that there were only three credits in total"
+     }
+    ],
+    "seconds": 23.8,
+    "tokens": 859,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "511fc4de42318434"
+  },
+  {
+   "id": "Z03",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "He deposited INR 3,00,000/- in one go",
+      "why": "The record does not mention a single deposit of INR 3,00,000"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit which"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "The record shows four credits, not three"
+     }
+    ],
+    "seconds": 23.8,
+    "tokens": 891,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "88bdbcc51c677c6b"
+  },
+  {
+   "id": "Z04",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The total came to nearly six lakh rupees",
+      "why": "The record only mentions the total credits as Rs.3,45,000 and the total debits as Rs.2,46,500 + Rs.94,200 = Rs.3,40,700, which does not support the claim of nearly six lakh rupees"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, including a debit on 15 August and another debit on 17 August, but the narrative only mentions credits on 13, 14, and 17 August, omitting the credit on 16 August is"
+     },
+     {
+      "claim": "totalling Rs.3,45,000",
+      "why": "The record shows the credits as Rs.1,10,000 + Rs.1,40,000 + Rs.95,000 = Rs.3,45,000, but this is correct, however the narrative does not mention the fourth credit of Rs. 110000.0 on 13 August and Rs. "
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on 15 and 17 August, but the narrative does not specify the order of the transactions, it only mentions 'then' which implies a sequence that is not entirely clear"
+     }
+    ],
+    "seconds": 26.6,
+    "tokens": 1012,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "4244da01c85fb6e8"
+  },
+  {
+   "id": "Z05",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds of one crore were moved",
+      "why": "The record only mentions total credits of Rs.3,45,000 and debits of Rs.2,46,500 and Rs.94,200, which do not add up to one crore"
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, including a debit on 15 August and another debit on 17 August, but the narrative only mentions three credits and does not account for the fourth transaction"
+     },
+     {
+      "claim": "totalling Rs.3,45,000",
+      "why": "The record shows the total credits as Rs.3,45,000 (110000 + 140000 + 95000), but this is correct, however the narrative does not mention the fourth transaction which is a credit of Rs.110000 on 13 Aug"
+     }
+    ],
+    "seconds": 24.9,
+    "tokens": 893,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "067d567078017c6e"
+  },
+  {
+   "id": "Z06",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A transfer of \u20b987,500 was flagged",
+      "why": "The record does not mention a transfer of \u20b987,500 being flagged. The debits mentioned in the record are \u20b92,46,500 and \u20b994,200, but there is no mention of a \u20b987,500 transfer."
+     },
+     {
+      "claim": "Between 13 and 17 August 2026 the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows that the account received four transactions: two credits of \u20b91,10,000 and \u20b91,40,000, and then a debit, and then another credit of \u20b995,000. The narrative does not account for the debit"
+     }
+    ],
+    "seconds": 17.6,
+    "tokens": 823,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "052af8dbd7476c85"
+  },
+  {
+   "id": "Z07",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer received EUR 4,000 from abroad",
+      "why": "No such transaction is mentioned in the record"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record mentions four transactions, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is mentioned but the record also mentions another credit of Rs.1,10,000 and Rs"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record supports the amounts and the recipient, but the narrative does not mention the transaction IDs or dates, however the record does support the amounts and the recipient"
+     }
+    ],
+    "seconds": 20.2,
+    "tokens": 838,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f3411784ecb1d748"
+  },
+  {
+   "id": "Z08",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "amount",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "She paid fifteen thousand rupees in cash",
+      "why": "The record does not mention a cash payment of fifteen thousand rupees"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing a credit of Rs.1,40,000 is present but a credit of Rs.1,10,000 is present and another credit of Rs.1,40,000"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "The record shows four credits, not three"
+     }
+    ],
+    "seconds": 21.9,
+    "tokens": 856,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "534a7211bd9d9580"
+  },
+  {
+   "id": "Z09",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The credit was posted on 5/9/2026",
+      "why": "The record does not mention this date"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record mentions these amounts, but also mentions that there are four transactions, not just the three credits mentioned in the narrative"
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "The record mentions these handles, but also mentions that there is a fourth unknown UPI handle, which is not mentioned in the narrative"
+     }
+    ],
+    "seconds": 18.2,
+    "tokens": 782,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d2856d0a00007d7c"
+  },
+  {
+   "id": "Z10",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On 12 Sep. 2026, funds were moved",
+      "why": "The record does not mention this date or any transaction on this date"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is present but the narrative does not mention the fourth credit of Rs.1,40,000 is ment"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows these debits, but does not indicate that they were made immediately after the credits, only that they were made after some of the credits"
+     }
+    ],
+    "seconds": 20.5,
+    "tokens": 849,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "bb490fab5dd04786"
+  },
+  {
+   "id": "Z11",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On the 3rd day of September the account was used",
+      "why": "The record does not mention any transactions or activity on September 3rd"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, whic"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows that the debits were made on the 15th and 17th, but does not indicate that they were made immediately after the credits, or that they were made in that order"
+     }
+    ],
+    "seconds": 21.5,
+    "tokens": 873,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1a81e3e8fbb13dc0"
+  },
+  {
+   "id": "Z12",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was closed on 2026-10-1",
+      "why": "The record does not mention the account being closed on this date"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, and "
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows that the debit of Rs.2,46,500 was made before the debit of Rs.94,200, but it does not show that they were made immediately after the credits, the record shows the debits were made on "
+     }
+    ],
+    "seconds": 25.0,
+    "tokens": 903,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "554bbcd057d3fa86"
+  },
+  {
+   "id": "Z13",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The payment went out on Sept 9",
+      "why": "The record does not mention a payment on Sept 9, the dates mentioned are between 13 and 17 August 2026"
+     },
+     {
+      "claim": "three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, not three, and the amounts match but the narrative is missing one credit transaction of Rs.1,40,000 is present but the narrative does not mention the transaction id"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on 15 and 17 August, but does not imply that they were made 'then' (immediately after the credits), the narrative implies a sequence that is not present in the re"
+     }
+    ],
+    "seconds": 20.7,
+    "tokens": 848,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7d5ae43a2ac6ad0c"
+  },
+  {
+   "id": "Z14",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "On Monday 7 September the funds left",
+      "why": "The record does not mention this date or the fact that the funds left on this date"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit"
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "The record shows UPI handles A, B, and D, but also shows that there are four credits, and the fourth credit is from 'Unknown UPI handle A' is not mentioned in the narrative but 'Unknown UPI handle A' "
+     }
+    ],
+    "seconds": 22.3,
+    "tokens": 875,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "11437bc3806dbb60"
+  },
+  {
+   "id": "Z15",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Money was wired to a foreign account",
+      "why": "The record does not mention a foreign account"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200 in two separate transactions",
+      "why": "The record shows the amounts are correct, but it does not explicitly state that these are the only two transactions to UPI handle C, however the narrative implies this by using 'then'"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows the account received four transactions with type 'CREDIT', but only three of them are from unknown UPI handles"
+     }
+    ],
+    "seconds": 17.6,
+    "tokens": 780,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "a825b90fb6ee95e5"
+  },
+  {
+   "id": "Z16",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer used a mobile banking app to push funds",
+      "why": "The record does not mention the use of a mobile banking app"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record states that UPI handle C received Rs.246500.0 and Rs.94200.0, which are slightly different amounts"
+     }
+    ],
+    "seconds": 15.4,
+    "tokens": 734,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "af6db34a998f51eb"
+  },
+  {
+   "id": "Z17",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A credit card repayment was made",
+      "why": "The record does not mention a credit card repayment"
+     }
+    ],
+    "seconds": 14.1,
+    "tokens": 676,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "5ac926aa1220fe83"
+  },
+  {
+   "id": "Z18",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The funds arrived through a foreign remittance.",
+      "why": "The record does not mention the source of the funds as a foreign remittance."
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200 in two separate debits.",
+      "why": "The record shows the debits were for Rs.2,46,500 and Rs.94,200, but it does not explicitly state they were separate debits to the same handle, however, the transaction IDs and dates imply this, the ac"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows the account received four credits, not three, with amounts Rs.1,10,000, Rs.1,40,000, Rs.95,000 and the narrative does not account for the fourth credit of Rs.1,40,000"
+     }
+    ],
+    "seconds": 26.9,
+    "tokens": 920,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ee7755a24adaa5fd"
+  },
+  {
+   "id": "Z19",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Cash was withdrawn at the branch",
+      "why": "The record does not mention cash withdrawal at a branch"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative missed one credit of Rs.1,10,000 on 13 August and included only three credits"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on 15 and 17 August, but does not indicate that they were made immediately after the credits, only that they were made after some of the credits"
+     }
+    ],
+    "seconds": 21.1,
+    "tokens": 811,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6395fdb1a23dcec0"
+  },
+  {
+   "id": "Z20",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "channel",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": null,
+    "claims": [],
+    "seconds": 121.2,
+    "tokens": null,
+    "model": null,
+    "error": "No Cortex model available in this region. Last error: 000630 (57014): Statement reached its statement or warehouse timeout of 120 second(s) and was canceled."
+   },
+   "text_sha256": "87e70a874e8aa4a5"
+  },
+  {
+   "id": "Z21",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds were transferred to Hungary",
+      "why": "The record does not mention Hungary"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, whic"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on specific dates, but the narrative does not specify the dates, only that they were made 'then', implying immediately after the credits, which is not entirely ac"
+     }
+    ],
+    "seconds": 26.7,
+    "tokens": 822,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "a373b7f9c33556d2"
+  },
+  {
+   "id": "Z22",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The beneficiary bank is located in Sweden",
+      "why": "The record does not mention the location of the beneficiary bank"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the fourth credit of Rs.1,10,000 is"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows that the debits of Rs.2,46,500 and Rs.94,200 were made, but it does not show that they were made 'then', i.e., immediately after the credits, the record shows the debits were made on "
+     }
+    ],
+    "seconds": 26.1,
+    "tokens": 948,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6c4f3ef3411f209f"
+  },
+  {
+   "id": "Z23",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A payment reached Casablanca",
+      "why": "The record does not mention Casablanca"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative omits the fourth credit of Rs.110000.0 on 2026-08-13, Rs.140000.0 on 2026-08-14 and Rs.95000.0 on 2026-08-16, bu"
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "The record shows UPI handles A, B, and D, but also shows a fourth UPI handle is not mentioned in the narrative"
+     }
+    ],
+    "seconds": 22.6,
+    "tokens": 858,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "b7f9c2b08d4db836"
+  },
+  {
+   "id": "Z24",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The counterparty operates from Abu Dhabi",
+      "why": "The record does not mention Abu Dhabi"
+     },
+     {
+      "claim": "UPI handle C is the counterparty for all debits",
+      "why": "The record only mentions UPI handle C as the counterparty for two specific debits (T01-3 and T01-5), but the narrative implies it is the counterparty for all debits"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows five transactions, with three credits and two debits, but the narrative only mentions three credits"
+     }
+    ],
+    "seconds": 17.0,
+    "tokens": 769,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7bbc0bf0c199a152"
+  },
+  {
+   "id": "Z25",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Transfers went to Panama City",
+      "why": "The record does not mention Panama City"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200 on specific dates",
+      "why": "The record does not specify the dates of the debits to UPI handle C as being directly after the credits, only that they occurred on the 15th and 17th"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is mentioned but the narrative does not mention the date of the fourth transact"
+     }
+    ],
+    "seconds": 26.1,
+    "tokens": 812,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "a7ffb1a6ecc9af39"
+  },
+  {
+   "id": "Z26",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "geography",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The recipient lives in Chittagong",
+      "why": "The record does not mention the location of the recipient or UPI handle C"
+     },
+     {
+      "claim": "Three UPI credits",
+      "why": "The record shows four transactions with type 'CREDIT', but one of them is not mentioned in the narrative"
+     }
+    ],
+    "seconds": 21.0,
+    "tokens": 713,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "611d8b1c78ca429e"
+  },
+  {
+   "id": "Z27",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Money was sent to Royal Orchid Hotels Pvt Ltd",
+      "why": "The record does not mention Royal Orchid Hotels Pvt Ltd"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the fourth credit of Rs.1,10,000 is"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made to UPI handle C",
+      "why": "The record shows debits of Rs.2,46,500 and Rs.94,200 to UPI handle C (I4C-flagged), but does not specify that these debits were made 'then' (immediately after the credits), only that they were made on"
+     }
+    ],
+    "seconds": 24.3,
+    "tokens": 933,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "9f2bbf4d9124e606"
+  },
+  {
+   "id": "Z28",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Bharat Mercantile Co received funds",
+      "why": "The record does not mention Bharat Mercantile Co"
+     },
+     {
+      "claim": "three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, not three, and the amounts match but the narrative omits one credit of Rs.1,40,000 is present but another credit of Rs.1,10,000 is also present and a third credit o"
+     },
+     {
+      "claim": "UPI handles A, B and D",
+      "why": "The record shows UPI handles A, B, C and D, but the narrative only mentions A, B and D, omitting C which is not an unknown UPI handle but rather a flagged one"
+     }
+    ],
+    "seconds": 23.1,
+    "tokens": 847,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c6cfc9eadfb2055d"
+  },
+  {
+   "id": "Z29",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Funds went to Nair & Nair",
+      "why": "The record does not mention 'Nair & Nair'"
+     },
+     {
+      "claim": "UPI handle C received funds directly from the account holder's employer or as part of their income",
+      "why": "The narrative implies this by stating 'Funds went to Nair & Nair' after mentioning debits to UPI handle C, but the record does not support this implication"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four transactions with type 'CREDIT', not three"
+     }
+    ],
+    "seconds": 17.3,
+    "tokens": 770,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "fd78f1873c766387"
+  },
+  {
+   "id": "Z30",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The beneficiary was Union Exchange Corporation",
+      "why": "The record does not mention Union Exchange Corporation"
+     },
+     {
+      "claim": "UPI handle C was the beneficiary",
+      "why": "The record only mentions UPI handle C as the counterparty for debits, but does not specify it as the beneficiary"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, whic"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.94,200 were then made",
+      "why": "The record shows the debits were made on specific dates (2026-08-15 and 2026-08-17), not immediately after the credits"
+     }
+    ],
+    "seconds": 24.4,
+    "tokens": 906,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "9f542fb490f13096"
+  },
+  {
+   "id": "Z31",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Payment was made to the State Bank",
+      "why": "The record does not mention the State Bank as the recipient of any payment"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth transactio"
+     },
+     {
+      "claim": "UPI handle C, which is I4C-flagged, received the payment",
+      "why": "The record shows that UPI handle C (I4C-flagged) was the counterparty for two debits, but it does not explicitly state that it 'received the payment', only that it was the counterparty for the debits"
+     }
+    ],
+    "seconds": 19.6,
+    "tokens": 836,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "9d9b75bfd1c7faf0"
+  },
+  {
+   "id": "Z32",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "entity",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A wallet company, PhonePe, was involved",
+      "why": "The record does not mention PhonePe"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative omits the fourth credit of Rs.110000.0 on 2026-08-13 and Rs.140000.0 on 2026-08-14, and Rs.95000.0 on 2026-08-16"
+     }
+    ],
+    "seconds": 17.9,
+    "tokens": 778,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "50a53106444e6e5c"
+  },
+  {
+   "id": "Z33",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "identifier",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, not three, and the amounts are correct but the narrative omits the fourth credit of Rs.110000.0 on 2026-08-13 and Rs.140000.0 on 2026-08-14 are correctly mentioned "
+     },
+     {
+      "claim": "The linked email is rohit.sharma@gmail.com",
+      "why": "The record does not mention the linked email"
+     }
+    ],
+    "seconds": 24.6,
+    "tokens": 814,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f6f20bf4fd002f40"
+  },
+  {
+   "id": "Z34",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "identifier",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts are correct but the narrative missed one credit of Rs.1,40,000 is actually the second credit and there is another credit of Rs.1,10,000 which "
+     },
+     {
+      "claim": "The device IMEI 356938035643809 was recorded",
+      "why": "The record does not mention the device IMEI"
+     }
+    ],
+    "seconds": 22.3,
+    "tokens": 793,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "053a6bc37e847342"
+  },
+  {
+   "id": "Z35",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer has been with the bank for twelve years",
+      "why": "The record states the account is 14 months old, not twelve years"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received credits of Rs.1,10,000, Rs.1,40,000, and Rs.95,000, but also mentions a consistent salary-only baseline for 13 months prior, and the credits total Rs.3,45,000 whi"
+     },
+     {
+      "claim": "The customer has been with the bank for twelve years",
+      "why": "The record states the account is 14 months old, not twelve years"
+     }
+    ],
+    "seconds": 21.9,
+    "tokens": 823,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "668e8d68ca44a035"
+  },
+  {
+   "id": "Z36",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "profile_income",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Her declared income is Rs.1.5 lakh monthly",
+      "why": "Record states declared income is Rs.28K/month, not Rs.1.5 lakh monthly"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "Record shows four transactions, including two debits, and the credits are of Rs.1,10,000, Rs.1,40,000 and Rs.95,000, but also a fourth credit of Rs.110000.0 is mentioned in transaction T01-1, which is"
+     }
+    ],
+    "seconds": 18.4,
+    "tokens": 792,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "9acf25c01b198bf3"
+  },
+  {
+   "id": "Z37",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": true,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in the year 2018",
+      "why": "The record states the account is 14 months old, which does not support the claim of the account being opened in 2018"
+     },
+     {
+      "claim": "Three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four credits, not three, and the amounts match but the narrative is missing one credit of Rs.1,40,000 is present but the narrative does not mention the date of the fourth credit, whic"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows four credits, not three"
+     }
+    ],
+    "seconds": 37.1,
+    "tokens": 1149,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c2e8dc414b50a20a"
+  },
+  {
+   "id": "Z38",
+   "set": "S3",
+   "label": "fabricated",
+   "cls": "profile_fact",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "He is a government servant",
+      "why": "The record states the customer is a data entry operator, not a government servant"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows the account received four transactions, including two debits, and the credits were Rs.1,10,000, Rs.1,40,000, and Rs.95,000, but also a fourth credit of Rs.110000.0 is mentioned in tra"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "The record shows UPI handle C received Rs.246500.0 and Rs.94200.0, which are close but not exactly the same as the amounts stated in the narrative"
+     }
+    ],
+    "seconds": 21.3,
+    "tokens": 845,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "3ed57290ef12c7d9"
+  },
+  {
+   "id": "B1",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "credits of Rs.1.1L, Rs.1.4L and Rs.0.95L",
+      "why": "The record only mentions these amounts as part of specific transactions, but does not state that the narrative's order or grouping of these amounts is correct"
+     },
+     {
+      "claim": "Within days",
+      "why": "The record does not specify the exact timing between the credits and debits, only the dates of each transaction"
+     },
+     {
+      "claim": "none of the counterparties is documented",
+      "why": "The record does mention 'Unknown UPI handle A', 'Unknown UPI handle B', 'Unknown UPI handle D', but it does mention 'UPI handle C (I4C-flagged)' which is documented as being I4C-flagged"
+     }
+    ],
+    "seconds": 20.7,
+    "tokens": 834,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d055ebcf44a76fef"
+  },
+  {
+   "id": "B2",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "three UPI credits",
+      "why": "record shows four transactions with type 'CREDIT'"
+     },
+     {
+      "claim": "UPI handle C received Rs.2,46,500 and Rs.94,200",
+      "why": "record shows UPI handle C received Rs.2,46,500 on 2026-08-15 and Rs.94,200 on 2026-08-17, but does not explicitly state that these are the only debits to UPI handle C, however, the narrative implies t"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "record shows four transactions with type 'CREDIT'"
+     },
+     {
+      "claim": "the debits were made to UPI handle C after the credits",
+      "why": "record does not explicitly state the order of transactions, but it does show the dates, and the debits were made on 2026-08-15 and 2026-08-17, while the credits were made on 2026-08-13, 2026-08-14, 20"
+     }
+    ],
+    "seconds": 35.6,
+    "tokens": 1065,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "bca7d7d87bcf10f0"
+  },
+  {
+   "id": "B3",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer's declared income is Rs.28K per month.",
+      "why": "The record does support this, it is in the CUSTOMER PROFILE section, so this claim is actually supported."
+     },
+     {
+      "claim": "On 2026-08-13, 2026-08-14 and 2026-08-16 the account received UPI credits from unidentified UPI handles.",
+      "why": "The record does support this, it is in the TRANSACTIONS section, so this claim is actually supported."
+     },
+     {
+      "claim": "On 2026-08-15 and 2026-08-17 funds left to UPI handle C (I4C-flagged).",
+      "why": "The record does support this, it is in the TRANSACTIONS section, so this claim is actually supported."
+     }
+    ],
+    "seconds": 22.5,
+    "tokens": 811,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "e98f68ff372979cb"
+  },
+  {
+   "id": "B4",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "\u20b93.407 lakh was debited to a flagged handle",
+      "why": "The record shows two debits to a flagged handle: \u20b9246500.0 and \u20b994200.0, which sum to \u20b9340700.0, but this is not explicitly stated in the record as a single amount of \u20b93.407 lakh."
+     },
+     {
+      "claim": "Credits of \u20b93.45 lakh arrived over four days through UPI",
+      "why": "The record shows credits of \u20b9110000.0, \u20b9140000.0, and \u20b995000.0, which sum to \u20b9345000.0, but it does not explicitly state that these credits arrived over four days, although the dates in the transactio"
+     }
+    ],
+    "seconds": 21.2,
+    "tokens": 752,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "35d262862ab59865"
+  },
+  {
+   "id": "B5",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The credits total Rs.3.45L",
+      "why": "The record does not explicitly state the total amount of credits, although it can be calculated from the transaction data."
+     },
+     {
+      "claim": "98.8% of that left the account within days",
+      "why": "The record does not specify the time frame 'within days', although it does show that the debits occurred on consecutive days after the credits."
+     }
+    ],
+    "seconds": 21.2,
+    "tokens": 702,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "89ed0e0405dd0259"
+  },
+  {
+   "id": "B6",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "none of the counterparties is documented",
+      "why": "The record does not mention documentation status of counterparties, only that they are 'Unknown UPI handle A', 'Unknown UPI handle B', 'Unknown UPI handle D', and 'UPI handle C (I4C-flagged)'"
+     },
+     {
+      "claim": "The credits of Rs.3.45L are about 12 times the declared income of Rs.28K per month",
+      "why": "The record does not explicitly state the total credit amount, but it can be calculated from the transactions. However, the narrative does not provide the calculation, and the record only mentions the "
+     }
+    ],
+    "seconds": 21.3,
+    "tokens": 738,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "cc4c94c1e7c9505a"
+  },
+  {
+   "id": "F01",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit arrived on 2026-08-13",
+      "why": "The record does support this, but it is the earliest credit in the transactions listed, however the narrative implies it is the first credit ever, which the record does not confirm."
+     },
+     {
+      "claim": "The last debit on 2026-08-17",
+      "why": "The record does support a debit on this date, but it does not confirm it is the last debit ever, only the last debit in the transactions listed."
+     }
+    ],
+    "seconds": 18.5,
+    "tokens": 705,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "605a5b6edf0c8654"
+  },
+  {
+   "id": "F02",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A debit of 2,46,500 INR went to the flagged handle on an unspecified date",
+      "why": "The record only supports that a debit of 2,46,500 INR went to the flagged handle on 2026-08-15, not that it was the only such debit or that the date is irrelevant"
+     },
+     {
+      "claim": "The last debit was on 2026-08-17",
+      "why": "The record shows two debits, one on 2026-08-15 and one on 2026-08-17, but does not support that there were no other debits after 2026-08-17"
+     },
+     {
+      "claim": "Credits of \u20b91.1 lakh, Rs.1,40,000 and Rs.0.95L (total \u20b93.45 lakh) were received from unidentified UPI handles A, B and D",
+      "why": "The record supports the amounts and the UPI handles, but the narrative does not mention the credit of Rs. 0.95L was on 2026-08-16, and the total is supported by simple arithmetic"
+     }
+    ],
+    "seconds": 28.7,
+    "tokens": 879,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "83b024a976c9afc0"
+  },
+  {
+   "id": "F03",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in 2025",
+      "why": "The record only mentions the account is 14 months old, but does not provide the opening year"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and \u20b90.942 lakh went to UPI handle C",
+      "why": "The record shows debits of Rs.246500 and \u20b994200, not \u20b90.942 lakh (which is equivalent to \u20b994,200, not the same as \u20b994200)"
+     }
+    ],
+    "seconds": 17.2,
+    "tokens": 733,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ea4539f8d271b1ec"
+  },
+  {
+   "id": "F04",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit arrived on 2026-08-13 and the last debit on 2026-08-17",
+      "why": "The record does support the dates of the first credit (2026-08-13) and the last debit (2026-08-17), but this is a compound statement. The record does support that the first credit is on 2026-08-13 and"
+     },
+     {
+      "claim": "Credits of Rs.1.1L, Rs.1.4L and Rs.95,000 (total \u20b93.45 lakh) were received from unidentified UPI handles A, B and D",
+      "why": "The record does support the amounts and the UPI handles, but the narrative does not mention the total amount of the credits as being 12 times the customer's income, which is in the alert text. However"
+     }
+    ],
+    "seconds": 20.5,
+    "tokens": 876,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "eef86951138f1737"
+  },
+  {
+   "id": "F05",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on 20260813",
+      "why": "The record states the date as '2026-08-13', not '20260813'"
+     },
+     {
+      "claim": "The last debit was on August 17",
+      "why": "The record states the date as '2026-08-17', not 'August 17'"
+     },
+     {
+      "claim": "The first credit arrived on 13 Aug 2026",
+      "why": "The record states the date as '2026-08-13', not '13 Aug 2026'"
+     },
+     {
+      "claim": "The last debit on 17 August 2026",
+      "why": "The record states the date as '2026-08-17', not '17 August 2026'"
+     },
+     {
+      "claim": "The customer has been banking with us for 14 months",
+      "why": "The record states 'account 14 months old', which may not necessarily mean the customer has been banking with the institution for 14 months"
+     }
+    ],
+    "seconds": 25.2,
+    "tokens": 842,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1d48ccd485b86cec"
+  },
+  {
+   "id": "F06",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Total credits came to 345000 rupees",
+      "why": "The record shows total credits as 3.45L (which is 345000 rupees) but this is calculated from the ALERT TEXT, not directly stated in the TRANSACTIONS. However, the actual transactions show credits of 1"
+     },
+     {
+      "claim": "The account is 14 months old",
+      "why": "The record does support this claim as it is stated in the CUSTOMER PROFILE section."
+     }
+    ],
+    "seconds": 19.7,
+    "tokens": 717,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ece259b34a4cdff7"
+  },
+  {
+   "id": "F07",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Total debits were \u20b93.407 lakh",
+      "why": "The record shows total debits as \u20b9246500.0 + \u20b994200.0 = \u20b9340700.0, which is \u20b93.407 lakh, but the narrative rounds this to \u20b93.407 lakh, whereas the record does not. However, this is a minor rounding di"
+     },
+     {
+      "claim": "The first credit was on August 13",
+      "why": "The record does not state that the credit on August 13 was the first credit, only that it was a credit on that date."
+     },
+     {
+      "claim": "The last debit was on the seventeenth of August",
+      "why": "The record does not state that the debit on August 17 was the last debit, only that it was a debit on that date."
+     }
+    ],
+    "seconds": 26.1,
+    "tokens": 911,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "fd9d16ee18cf2541"
+  },
+  {
+   "id": "F08",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in June 2025",
+      "why": "The record only mentions the account is 14 months old, but does not provide the exact opening date or month."
+     }
+    ],
+    "seconds": 13.1,
+    "tokens": 606,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d5fd3a93f4899671"
+  },
+  {
+   "id": "F09",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on August 13",
+      "why": "The record only mentions the date as '2026-08-13', not 'August 13'. The format is different."
+     },
+     {
+      "claim": "The last debit was on 20260817",
+      "why": "The record mentions the date as '2026-08-17', not '20260817'. The format is different."
+     },
+     {
+      "claim": "The first credit arrived on 2026-08-13",
+      "why": "The record does mention a credit on '2026-08-13', but it does not use the word 'arrived'."
+     },
+     {
+      "claim": "The last debit on 17 August 2026",
+      "why": "The record mentions the date as '2026-08-17', not '17 August 2026'. The format is different."
+     }
+    ],
+    "seconds": 26.7,
+    "tokens": 810,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6f217f2590d6fd4b"
+  },
+  {
+   "id": "F10",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit arrived on 13 Aug 2026",
+      "why": "The record does support this, but only for one specific credit (T01-1). The narrative implies it's the first credit overall, which is supported."
+     },
+     {
+      "claim": "The last debit on 17 August 2026",
+      "why": "The record supports this for transaction T01-5, but the narrative implies it's the last debit overall, which is supported."
+     },
+     {
+      "claim": "The credits were about 12 times the declared income",
+      "why": "The record supports the total credits being Rs.3.45L and the declared income being Rs.28K/month. The calculation of 12 times the declared income is supported (3,45,000 / 28,000 \u2248 12.32), but 'about' i"
+     }
+    ],
+    "seconds": 20.9,
+    "tokens": 771,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "2eb98ac67d148816"
+  },
+  {
+   "id": "F11",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in May 2025",
+      "why": "The record only mentions the account is 14 months old, but does not provide the exact opening date or month"
+     },
+     {
+      "claim": "Debits of Rs.2,46,500 and \u20b90.942 lakh went to UPI handle C",
+      "why": "The record shows debits of Rs.246500 and Rs.94200, not \u20b90.942 lakh (which is Rs.94,200). The amount is incorrect by a factor of 1000"
+     }
+    ],
+    "seconds": 18.0,
+    "tokens": 698,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "35160cc6dbd0e558"
+  },
+  {
+   "id": "F12",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A debit of two lakh forty-six thousand five hundred rupees went to the flagged handle",
+      "why": "The record does support this, but only for one specific transaction (T01-3). The narrative implies this is the only such debit, but another debit (T01-5) also went to the flagged handle."
+     },
+     {
+      "claim": "The first credit was on 20260813",
+      "why": "The record supports the date, but the format is different (2026-08-13)."
+     },
+     {
+      "claim": "The last debit was on 17th August",
+      "why": "The record supports the date (2026-08-17), but the format is different and the day is not explicitly stated as the 17th."
+     },
+     {
+      "claim": "All of the activity was by UPI",
+      "why": "The record supports this, but it is an interpretation of the data, not a direct statement of fact. However, since all transactions in the record have a 'channel' of 'UPI', this claim is actually suppo"
+     },
+     {
+      "claim": "The customer is a data entry operator with a declared income of \u20b928,000 per month",
+      "why": "The record supports this, it is a direct copy from the customer profile."
+     }
+    ],
+    "seconds": 24.1,
+    "tokens": 883,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "18bd6785a784c99c"
+  },
+  {
+   "id": "F13",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit arrived on 13 Aug 2026",
+      "why": "The record does not specify that T01-1 is the first credit, only that it is a credit on 13 Aug 2026"
+     },
+     {
+      "claim": "The last debit on 17 August 2026",
+      "why": "The record does not specify that T01-5 is the last debit, only that it is a debit on 17 Aug 2026"
+     }
+    ],
+    "seconds": 17.7,
+    "tokens": 740,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "fc197108a438fdb8"
+  },
+  {
+   "id": "F14",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on 13.08.2026",
+      "why": "The record does not specify the format of the date. The date in the record is '2026-08-13', which may or may not be equivalent to '13.08.2026'."
+     },
+     {
+      "claim": "The last debit was on 17.08.2026",
+      "why": "The record does not specify the format of the date. The date in the record is '2026-08-17', which may or may not be equivalent to '17.08.2026'."
+     }
+    ],
+    "seconds": 33.4,
+    "tokens": 772,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ceb1361855cd2929"
+  },
+  {
+   "id": "F15",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Total credits came to three lakh forty-five thousand rupees.",
+      "why": "The record does not explicitly state the total credits, but it can be calculated from the transactions. However, the calculation yields Rs.3.45L (3,45,000) which matches the claim, but the narrative d"
+     },
+     {
+      "claim": "The customer is a data entry operator with a declared income of \u20b928,000 per month.",
+      "why": "This statement is supported by the record, so it should not be listed. Removing..."
+     }
+    ],
+    "seconds": 39.4,
+    "tokens": 730,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "87db86caeccd9ec1"
+  },
+  {
+   "id": "F16",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "98.7% of the credits left the account",
+      "why": "The record states 98.8% of the credits were passed to a counterparty flagged in I4C Suspect Registry, not that 98.7% of the credits left the account"
+     }
+    ],
+    "seconds": 17.0,
+    "tokens": 628,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6b96b922c489d8ec"
+  },
+  {
+   "id": "F17",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Debits of Rs.2,46,500 and Rs.0.942L went to UPI handle C",
+      "why": "The record states the debits were Rs.246500.0 and Rs.94200.0, not Rs.0.942L (which would be Rs.94200, but the 'L' suggests a larger amount, possibly Rs.942,000)"
+     },
+     {
+      "claim": "98.7% of the credits left the account",
+      "why": "The record states 98.8% of the credits were passed to the counterparty flagged in I4C Suspect Registry, not 98.7%"
+     }
+    ],
+    "seconds": 20.1,
+    "tokens": 760,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7d7aef900118dbd8"
+  },
+  {
+   "id": "F18",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Debits of Rs.2.465L and Rs.0.942L went to UPI handle C",
+      "why": "The record only mentions debits of Rs.246500.0 and Rs.94200.0, not Rs.2.465L and Rs.0.942L. The conversion from the record's amounts to the narrative's amounts is not a simple arithmetic operation bec"
+     },
+     {
+      "claim": "Credits of Rs.1.1L, \u20b91.4 lakh and \u20b90.95 lakh (total Rs.3,45,000)",
+      "why": "The record mentions credits of Rs.110000.0, Rs.140000.0, and Rs.95000.0. While the total of these amounts is indeed Rs.345000.0, the narrative's representation of the individual amounts as 'Rs.1.1L', "
+     }
+    ],
+    "seconds": 25.7,
+    "tokens": 864,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "55e63e9c2ab00c9d"
+  },
+  {
+   "id": "F19",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on 13.08.2026",
+      "why": "The record does not specify that the credit on 13.08.2026 was the first credit, only that it was a credit on that date"
+     },
+     {
+      "claim": "The last debit was on 20260817",
+      "why": "The record does not specify that the debit on 20260817 was the last debit, only that it was a debit on that date"
+     },
+     {
+      "claim": "A debit of 2,46,500 INR went to the flagged handle",
+      "why": "The record shows a debit of 246500.0 INR to 'UPI handle C (I4C-flagged)' on 2026-08-15, but does not confirm that this was the only such debit or that 20260817 was the date of this transaction"
+     }
+    ],
+    "seconds": 21.1,
+    "tokens": 764,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7270cb324e6d4abc"
+  },
+  {
+   "id": "F20",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 11.0,
+    "tokens": 559,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d9c77c0173738745"
+  },
+  {
+   "id": "F21",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "A debit of two lakh forty-six thousand five hundred rupees went to the flagged handle.",
+      "why": "The record shows two debits to the flagged handle: one of Rs 246500 and another of Rs 94200, but it does not show that the debit of Rs 246500 was the only debit or that it was the total amount debited"
+     }
+    ],
+    "seconds": 17.9,
+    "tokens": 670,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d8645f1facd65e48"
+  },
+  {
+   "id": "F22",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Total credits came to 345000 rupees",
+      "why": "The record shows total credits as 3.45L (which is 345000 rupees), but this is in the alert text, not the narrative's own calculation. The narrative does not provide enough information to calculate thi"
+     },
+     {
+      "claim": "All of the activity was by UPI",
+      "why": "The record does not state that all activity was by UPI, only that the transactions listed were by UPI. There may be other transactions not listed."
+     },
+     {
+      "claim": "The customer earns Rs.28,000 per month",
+      "why": "The record states the customer's declared income is Rs.28K/month, but this is not necessarily the same as what they actually earn."
+     }
+    ],
+    "seconds": 25.2,
+    "tokens": 742,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c92e2e884b344690"
+  },
+  {
+   "id": "F23",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "98.75% of the credits left the account",
+      "why": "The record states 98.8% of the credits were passed to a counterparty flagged in I4C Suspect Registry, not 98.75%"
+     }
+    ],
+    "seconds": 15.6,
+    "tokens": 643,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f978fc2b3556dd03"
+  },
+  {
+   "id": "F24",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Total credits were INR 345000",
+      "why": "The record shows total credits as 110000 + 140000 + 95000 = 345000, but the narrative does not specify the individual credits, however the total is correct, this is not an issue. However, the narrativ"
+     },
+     {
+      "claim": "Total debits were Rs.3,40,700",
+      "why": "The record shows total debits as 246500 + 94200 = 340700, which matches the narrative."
+     },
+     {
+      "claim": "The first credit was on 13th August",
+      "why": "The record supports this, the first credit was on 2026-08-13."
+     },
+     {
+      "claim": "The last debit was on the seventeenth of August",
+      "why": "The record supports this, the last debit was on 2026-08-17."
+     }
+    ],
+    "seconds": 26.0,
+    "tokens": 835,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "3dd342b0dce27557"
+  },
+  {
+   "id": "F25",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The account was opened in June 2025",
+      "why": "The record only mentions the account is 14 months old, but does not specify the opening date or month"
+     },
+     {
+      "claim": "Debits of \u20b92.465 lakh and Rs.94,200 went to UPI handle C",
+      "why": "The record shows debits of \u20b9246,500 and \u20b994,200 to UPI handle C, not \u20b92.465 lakh (although this is a minor formatting difference, the record does not use the 'lakh' unit for this transaction)"
+     }
+    ],
+    "seconds": 18.4,
+    "tokens": 725,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "a4124f9db9bd5f85"
+  },
+  {
+   "id": "F26",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer has a salary of \u20b928,000",
+      "why": "The record only mentions 'Rs.28K/month declared', which is not the same as stating the customer's actual salary"
+     },
+     {
+      "claim": "Total credits were Rs.3,45,000",
+      "why": "The record does not explicitly state the total credits, but the transactions can be summed to verify this claim. However, the record does mention 'Credits of Rs.3.45L (12x income)' in the ALERT TEXT, "
+     },
+     {
+      "claim": "Total debits were Rs.3,40,700",
+      "why": "The record does not support this claim. The transactions listed are: credit of 110000, credit of 140000, debit of 246500, credit of 95000, and debit of 94200. The total debits are 246500 + 94200 = 340"
+     }
+    ],
+    "seconds": 30.5,
+    "tokens": 857,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "be87ad81f4785a43"
+  },
+  {
+   "id": "F27",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on 13.08.2026 and the last debit was on August 17",
+      "why": "The record does not mention the last debit being on August 17, it mentions the last debit being on 2026-08-17, which is a different date format and does not specify the year of the last debit"
+     },
+     {
+      "claim": "Credits of Rs.1.1L, Rs.1,40,000 and INR 95000 (total Rs.3,45,000)",
+      "why": "The record mentions credits of Rs.110000.0, Rs.140000.0, and Rs.95000.0, which total to Rs.3,45,000.0, but the narrative does not mention the exact amounts with decimal points as in the record"
+     }
+    ],
+    "seconds": 22.4,
+    "tokens": 793,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "e2e919cd7da94d78"
+  },
+  {
+   "id": "F28",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Debits of Rs.2.465L and Rs.94,200 went to UPI handle C",
+      "why": "The record shows debits of Rs.246,500 and Rs.94,200, but the narrative rounds the first amount to Rs.2.465L, which is not exactly the same as the record"
+     },
+     {
+      "claim": "The customer has been banking with us for 14 months",
+      "why": "The record states the account is 14 months old, but does not explicitly state the customer has been banking with us for that entire time"
+     }
+    ],
+    "seconds": 19.0,
+    "tokens": 705,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1637635481b8a3d1"
+  },
+  {
+   "id": "F29",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "98.75% of the credits left the account",
+      "why": "The record states 98.8% of the credits were passed to a counterparty flagged in I4C Suspect Registry, not 98.75%"
+     }
+    ],
+    "seconds": 15.1,
+    "tokens": 669,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "cb1eeb91d838d08f"
+  },
+  {
+   "id": "F30",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer earns about Rs.28K a month.",
+      "why": "The record only mentions that the customer declared Rs.28K/month, but does not confirm that they actually earn this amount."
+     },
+     {
+      "claim": "The first credit was on August 13",
+      "why": "The record confirms this, but the narrative does not specify the year. The record does mention the year as 2026, but the narrative does not."
+     },
+     {
+      "claim": "The last debit was on 17.08.2026",
+      "why": "The record confirms the date of the last debit as 2026-08-17, but the format is different (DD.MM.YYYY vs YYYY-MM-DD)."
+     },
+     {
+      "claim": "Reference transactions T01-1, T01-2 and T01-4 (credits) and T01-3 and T01-5 (debits)",
+      "why": "The record supports the transaction IDs and types, but the narrative implies that these are the only relevant transactions, which is not stated in the record."
+     }
+    ],
+    "seconds": 27.9,
+    "tokens": 828,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "4eae9d53c4009537"
+  },
+  {
+   "id": "F31",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit arrived on 13 Aug 2026",
+      "why": "The record only mentions the date of the first credit as '2026-08-13', which does not specify the day of the week (e.g., '13 Aug 2026' implies August 13 is a specific day of the week, but the record d"
+     },
+     {
+      "claim": "The last debit on Aug 17, 2026",
+      "why": "The record mentions the date of the last debit as '2026-08-17', which does not specify the day of the week or the month abbreviation 'Aug' (the record uses '08' for August)."
+     }
+    ],
+    "seconds": 19.0,
+    "tokens": 756,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "039f949095a4e73c"
+  },
+  {
+   "id": "F32",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Credits of \u20b91.1 lakh, INR 140000 and \u20b90.95 lakh (total INR 345000)",
+      "why": "The record shows total credits of \u20b93.45L, not \u20b90.345L"
+     },
+     {
+      "claim": "The first credit arrived on 13 Aug 2026 and the last debit on 17/08/2026.",
+      "why": "The record shows the first credit arrived on 2026-08-13 and the last debit on 2026-08-17, but the format of the dates in the narrative is different"
+     },
+     {
+      "claim": "Debits of \u20b92.465 lakh and \u20b90.942 lakh went to UPI handle C",
+      "why": "The record shows debits of \u20b9246500 and \u20b994200, which is equivalent to \u20b92.465 lakh and \u20b90.942 lakh, but the narrative does not mention the transaction IDs (T01-3 and T01-5) or the channel (UPI)"
+     }
+    ],
+    "seconds": 21.1,
+    "tokens": 856,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f45de6351f291e37"
+  },
+  {
+   "id": "F33",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The customer has a salary of \u20b928,000",
+      "why": "The record states the customer's declared income is Rs.28K/month, but the narrative does not specify the time period for the salary, which could be monthly or total"
+     },
+     {
+      "claim": "Credits of Rs.1.1L, \u20b91.4 lakh and INR 95000 (total \u20b93.45 lakh) were received from unidentified UPI handles A, B and D",
+      "why": "The record supports the amounts and the UPI handles, but the narrative does not mention the date range for these transactions, which is present in the record"
+     }
+    ],
+    "seconds": 19.3,
+    "tokens": 728,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "d7e882b1663156eb"
+  },
+  {
+   "id": "F34",
+   "set": "faithful",
+   "label": "faithful",
+   "cls": "faithful",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The first credit was on 20260813",
+      "why": "The record does not specify that T01-1 is the first credit, only that it is a credit on 2026-08-13"
+     },
+     {
+      "claim": "The last debit was on 17.08.2026",
+      "why": "The record does not specify that T01-5 is the last debit, only that it is a debit on 2026-08-17"
+     },
+     {
+      "claim": "Reference transactions T01-1, T01-2 and T01-4 (credits) and T01-3 and T01-5 (debits)",
+      "why": "The record does not state that these are the only credits and debits, only that they are some of the transactions"
+     }
+    ],
+    "seconds": 17.4,
+    "tokens": 774,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ec55c663a4851570"
+  },
+  {
+   "id": "Q01",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.11,00,000 was paid to ABC Infrastructure Ltd on 2026-07-15",
+      "why": "The record shows that Rs.11,00,000 was received from ABC Infrastructure Ltd on 2026-07-15, not paid to them"
+     }
+    ],
+    "seconds": 17.6,
+    "tokens": 668,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "f06ce4dba76e2738"
+  },
+  {
+   "id": "Q02",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "DEF Engineering Pvt Ltd credited Rs.8,50,000 on 2026-06-15",
+      "why": "The record states that ABC Infrastructure Ltd credited Rs.850,000 on 2026-06-15, not DEF Engineering Pvt Ltd"
+     }
+    ],
+    "seconds": 14.9,
+    "tokens": 668,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "33f176f26a6b101f"
+  },
+  {
+   "id": "Q03",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "GHI Constructions sent Rs.9,30,000 on 2026-08-15",
+      "why": "The record shows GHI Constructions sent Rs.480,000 on 2026-07-20, not Rs.9,30,000 on 2026-08-15. The transaction of Rs.930,000 on 2026-08-15 was from DEF Engineering Pvt Ltd, not GHI Constructions."
+     }
+    ],
+    "seconds": 18.3,
+    "tokens": 708,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "809e497a9c237211"
+  },
+  {
+   "id": "Q04",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party for all credits",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "All the credits came from ABC Infrastructure Ltd.",
+      "why": "The record shows credits from multiple parties, including DEF Engineering Pvt Ltd, GHI Constructions, and JKL Roadways Pvt Ltd, in addition to ABC Infrastructure Ltd."
+     }
+    ],
+    "seconds": 13.0,
+    "tokens": 650,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "c2f79c12543c569e"
+  },
+  {
+   "id": "Q05",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong date",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "JKL Roadways Pvt Ltd paid Rs.8,20,000 on 2026-08-15",
+      "why": "The record states that JKL Roadways Pvt Ltd paid Rs.8,20,000 on 2026-08-20, not 2026-08-15"
+     }
+    ],
+    "seconds": 13.7,
+    "tokens": 680,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "4f1d2c98ac5d3fa5"
+  },
+  {
+   "id": "Q06",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "partial sum called the total",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The credits totalled Rs.4,80,000",
+      "why": "The record shows total credits of Rs.47.7L over 5 months, not Rs.4,80,000 over 2 months"
+     },
+     {
+      "claim": "The credits were over two months",
+      "why": "The record shows credits over 5 months, not 2 months"
+     }
+    ],
+    "seconds": 15.3,
+    "tokens": 690,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "49c5a51e6f1bd554"
+  },
+  {
+   "id": "Q07",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.6,20,000 left the account for DEF Engineering Pvt Ltd on 2026-06-20",
+      "why": "The record states that Rs.620,000 was credited to the account from DEF Engineering Pvt Ltd on 2026-06-20, not that it left the account"
+     }
+    ],
+    "seconds": 14.8,
+    "tokens": 681,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "fe59239a09a0c377"
+  },
+  {
+   "id": "Q08",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.4,80,000 was received from JKL Roadways Pvt Ltd",
+      "why": "The record shows that Rs.820,000 was received from JKL Roadways Pvt Ltd, not Rs.4,80,000"
+     }
+    ],
+    "seconds": 14.0,
+    "tokens": 664,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "adc1923b632ec5e1"
+  },
+  {
+   "id": "Q09",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.3,00,000 was received from City General Hospital",
+      "why": "The record states that Rs.3,00,000 was paid to City General Hospital, not received from it"
+     }
+    ],
+    "seconds": 13.7,
+    "tokens": 566,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "352551e2eb660ce8"
+  },
+  {
+   "id": "Q10",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.1,50,000 came from his father",
+      "why": "The record states that Rs.1,50,000 came from 'Brother (KYC-linked family)' on 2026-09-09, not from his father. Rs.1,20,000 came from 'Father (KYC-linked family)' on 2026-09-10."
+     }
+    ],
+    "seconds": 15.2,
+    "tokens": 601,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "11a86bf8985a7deb"
+  },
+  {
+   "id": "Q11",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.75,000 was paid to Sister on 2026-09-11",
+      "why": "The record states that Rs.75,000 was received from Sister on 2026-09-11, not paid to Sister"
+     }
+    ],
+    "seconds": 13.1,
+    "tokens": 578,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "402c3d1d9770fbc9"
+  },
+  {
+   "id": "Q12",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.1,20,000 arrived from the brother on 2026-09-10",
+      "why": "The record states that Rs.120000 arrived from the Father (KYC-linked family) on 2026-09-10, not the brother."
+     }
+    ],
+    "seconds": 13.2,
+    "tokens": 586,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "507a62c1c37216c1"
+  },
+  {
+   "id": "Q13",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong date",
+   "alert": "ALERT-02",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.4,20,000 was transferred by NEFT on 2026-08-19",
+      "why": "The record states the transfer was made on 2026-08-20, not 2026-08-19"
+     }
+    ],
+    "seconds": 14.6,
+    "tokens": 603,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "4dd31e2645aa3ffc"
+  },
+  {
+   "id": "Q14",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction",
+   "alert": "ALERT-02",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "ACCT-02-B paid out Rs.1,42,500 by NEFT",
+      "why": "The record shows that the NEFT transaction of Rs.4,20,000 was from an unspecified account to a single current account at a different bank, but it does not specify that ACCT-02-B was the account that m"
+     }
+    ],
+    "seconds": 19.3,
+    "tokens": 645,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "e15c7af884b094a7"
+  },
+  {
+   "id": "Q15",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "ratio on the wrong side",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "100% of the credits received were forwarded to flagged handle C",
+      "why": "The record shows that the debits total Rs.3,40,700 (2,46,500 + 94,200), which is approximately 98.8% of the credits received (3,45,000), not 100%"
+     },
+     {
+      "claim": "The account received three UPI credits",
+      "why": "The record shows that the account received four transactions with type 'CREDIT', but one of them (T01-2) is for Rs.1,40,000, not just three credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000"
+     }
+    ],
+    "seconds": 18.9,
+    "tokens": 801,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "8753ec09f686b693"
+  },
+  {
+   "id": "Q16",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong party",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": null,
+    "claims": [],
+    "seconds": 120.7,
+    "tokens": null,
+    "model": null,
+    "error": "No Cortex model available in this region. Last error: 000630 (57014): Statement reached its statement or warehouse timeout of 120 second(s) and was canceled."
+   },
+   "text_sha256": "953c2c6acfdeb6eb"
+  },
+  {
+   "id": "Q17",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong date",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The final debit, Rs.94,200, went to UPI handle C on 2026-08-15",
+      "why": "The record states the debit of Rs.94,200 went to UPI handle C on 2026-08-17, not 2026-08-15"
+     },
+     {
+      "claim": "The account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record states the account received four transactions, but only three of them are credits, and the amounts match, but the narrative does not mention the fourth credit"
+     }
+    ],
+    "seconds": 27.6,
+    "tokens": 813,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "850617fa4ccd42fd"
+  },
+  {
+   "id": "Q18",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "total on the wrong side",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": true,
+    "hard": false,
+    "attribution": true
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Debits totalled Rs.3.45L over five days",
+      "why": "The record shows debits totalling Rs.3,40,700 (2,46,500 + 94,200), not Rs.3.45L"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "The record shows four transactions with type 'CREDIT', not three"
+     }
+    ],
+    "seconds": 21.7,
+    "tokens": 736,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "05559fb9d04e559c"
+  },
+  {
+   "id": "Q19",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "wrong direction (cue not read)",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "UPI handle B was the recipient of Rs.1.4L",
+      "why": "The record does not show UPI handle B as the recipient of any transaction, it only shows UPI handle B as the counterparty for a credit of Rs.1,40,000"
+     }
+    ],
+    "seconds": 15.9,
+    "tokens": 716,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ffa785b35b9b9073"
+  },
+  {
+   "id": "Q20",
+   "set": "Q",
+   "label": "misattributed",
+   "cls": "two parties in one sentence",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.1.4L went from UPI handle A to UPI handle C",
+      "why": "The record does not specify the amount transferred from UPI handle A to UPI handle C. It only shows that Rs.246500 was debited to UPI handle C on 2026-08-15, but it does not specify which credit this "
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record shows four transactions, but only three of them are credits. The amounts are correct, but the narrative does not account for the fourth transaction, which is also a credit."
+     }
+    ],
+    "seconds": 24.1,
+    "tokens": 812,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "5fd7666671b82b0d"
+  },
+  {
+   "id": "R01",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "ABC Infrastructure Ltd paid Rs.11,00,000 on 2026-07-15",
+      "why": "The record states that ABC Infrastructure Ltd paid Rs.1,10,00,000 (not Rs.11,00,000) on 2026-07-15"
+     }
+    ],
+    "seconds": 15.1,
+    "tokens": 669,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "dac9bf2161610155"
+  },
+  {
+   "id": "R02",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.6,20,000 was received from DEF Engineering Pvt Ltd on 2026-06-20",
+      "why": "The record shows Rs.620000.0 was received from DEF Engineering Pvt Ltd on 2026-06-20, but the narrative claims Rs.6,20,000 which is a different formatting of the same amount, however the record does s"
+     }
+    ],
+    "seconds": 25.1,
+    "tokens": 790,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "09a2a945f5a3f2d2"
+  },
+  {
+   "id": "R03",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "The credits totalled Rs.48,00,000",
+      "why": "The record shows the total credits to be Rs.47.7L (Rs.47,70,000), not Rs.48,00,000"
+     }
+    ],
+    "seconds": 19.1,
+    "tokens": 659,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "20191f0bda9b1179"
+  },
+  {
+   "id": "R04",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.4,80,000 came from GHI Constructions on 20 July 2026",
+      "why": "The record does support the amount (Rs.480,000), the counterparty (GHI Constructions), and the date (2026-07-20), but the narrative does not mention the transaction id (T04-4) which is present in the "
+     }
+    ],
+    "seconds": 16.1,
+    "tokens": 700,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "72cf76cb08051255"
+  },
+  {
+   "id": "R05",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 12.8,
+    "tokens": 624,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "2be49ab44c902c7d"
+  },
+  {
+   "id": "R06",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "ABC Infrastructure Ltd and DEF Engineering Pvt Ltd were the two largest sources",
+      "why": "The record does not provide information about the relative sizes of the sources, only the amounts and parties involved in each transaction"
+     }
+    ],
+    "seconds": 15.8,
+    "tokens": 654,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "436697316875a425"
+  },
+  {
+   "id": "R07",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-04",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 12.1,
+    "tokens": 592,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "ed28194ae513b58a"
+  },
+  {
+   "id": "R08",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 11.4,
+    "tokens": 523,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "1e85f75afe76f315"
+  },
+  {
+   "id": "R09",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 13.2,
+    "tokens": 521,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "cde53f965016c544"
+  },
+  {
+   "id": "R10",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.75,000 arrived from Sister on 2026-09-11",
+      "why": "The record does support Rs.75,000 arriving from Sister, but it does not support that this is the only or the most relevant information about the transactions. However, the date and amount are supporte"
+     },
+     {
+      "claim": "Rs.75,000 arrived from Sister",
+      "why": "The record supports this, but the narrative omits other transactions. The narrative only mentions one of the three credits."
+     }
+    ],
+    "seconds": 24.1,
+    "tokens": 641,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "cc1c78f4cb617f57"
+  },
+  {
+   "id": "R11",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-16",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 11.2,
+    "tokens": 516,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "23070c83c5a7f421"
+  },
+  {
+   "id": "R12",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-02",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": false,
+    "claims": [],
+    "seconds": 11.1,
+    "tokens": 543,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "357f244cf9c56fa0"
+  },
+  {
+   "id": "R13",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-02",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "ACCT-02-B received a cash deposit of Rs.1,42,500 on 2026-08-19",
+      "why": "The record states that ACCT-02-B received a cash deposit of Rs.142500.0 on 2026-08-19, but the narrative claims the amount is Rs.1,42,500, which is a different formatting of the same number, however t"
+     },
+     {
+      "claim": "ACCT-02-B received a cash deposit of Rs.1,42,500",
+      "why": "The record states that ACCT-02-A and ACCT-02-C also received cash deposits of similar amounts, the narrative only mentions ACCT-02-B."
+     }
+    ],
+    "seconds": 30.0,
+    "tokens": 759,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "652d76e9b1e5f927"
+  },
+  {
+   "id": "R14",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "the record shows four credits, not three, with amounts Rs.110000.0, Rs.140000.0, and Rs.95000.0, but also a fourth credit of Rs.110000.0 is missing in the narrative"
+     },
+     {
+      "claim": "UPI handle D was the source of Rs.95,000 on 2026-08-16",
+      "why": "the record shows this is true, but the narrative also implies that UPI handle D was the only source of Rs.95,000, when in fact the record does not rule out other sources of Rs.95,000 on other dates"
+     }
+    ],
+    "seconds": 23.9,
+    "tokens": 825,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "3b1008089ef1a305"
+  },
+  {
+   "id": "R15",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "UPI handle A paid Rs.1.1L into the account on 13 August 2026.",
+      "why": "The record only mentions that there was a credit of Rs.1,10,000 from 'Unknown UPI handle A' on 13 August 2026, but it does not explicitly state that UPI handle A paid this amount. The narrative incorr"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record actually shows four credits: Rs.1,10,000, Rs.1,40,000, Rs.95,000, and no mention of the fourth credit amount is made in the narrative, but it is present in the transactions as a credit of R"
+     }
+    ],
+    "seconds": 32.6,
+    "tokens": 940,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "7de690068912d9d2"
+  },
+  {
+   "id": "R16",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "the record shows four credits, not three, with amounts Rs.110000.0, Rs.140000.0, Rs.95000.0 and no fourth amount is mentioned in the narrative but is present in the record"
+     },
+     {
+      "claim": "On 2026-08-15 the account paid Rs.2.465L to the I4C-flagged UPI handle C",
+      "why": "the record shows the debit of Rs.246500.0 on 2026-08-15, but the narrative incorrectly represents the amount as Rs.2.465L instead of Rs.2.46500 or 2.47L (2,46,500)"
+     }
+    ],
+    "seconds": 22.9,
+    "tokens": 844,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "dd53d2b93fa9707e"
+  },
+  {
+   "id": "R17",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Debits totalled Rs.3.407L over five days",
+      "why": "The record only mentions two debits, of Rs.2,46,500 and Rs.94,200, which total Rs.3,40,700, not Rs.3.407L. Also, the record does not explicitly state the time period over which the debits were made, o"
+     },
+     {
+      "claim": "the account received three UPI credits",
+      "why": "The record shows four transactions with type 'CREDIT', not three. The narrative missed the credit of Rs.1,40,000 on 2026-08-14 from 'Unknown UPI handle B' is mentioned, but another credit of the same "
+     }
+    ],
+    "seconds": 26.0,
+    "tokens": 816,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "980ef7790a977098"
+  },
+  {
+   "id": "R18",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "98.75% of the credits were forwarded to flagged handle C",
+      "why": "The record states 98.8% of the credits were passed to the counterparty flagged in I4C Suspect Registry, but the exact percentage in the narrative is different"
+     }
+    ],
+    "seconds": 17.2,
+    "tokens": 713,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "0a2d41abdd4c0865"
+  },
+  {
+   "id": "R19",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "the record shows four credits, not three, with amounts Rs.110000.0, Rs.140000.0, and two other amounts Rs.95000.0"
+     },
+     {
+      "claim": "the credits came to \u20b93.45 lakh",
+      "why": "this is supported by the record, but the narrative does not mention the fourth credit of Rs.110000.0 on 2026-08-13 and Rs.140000.0 on 2026-08-14 and Rs.95000.0 on 2026-08-16 and Rs.95000.0 on 2026-08-"
+     }
+    ],
+    "seconds": 22.1,
+    "tokens": 821,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "6602804b9dcef9ee"
+  },
+  {
+   "id": "R20",
+   "set": "R",
+   "label": "correct",
+   "cls": "correct",
+   "alert": "ALERT-01",
+   "det": {
+    "flagged": false,
+    "hard": false,
+    "attribution": false
+   },
+   "llm": {
+    "flagged": true,
+    "claims": [
+     {
+      "claim": "Rs.1.4L was sent by UPI handle B on 2026-08-14",
+      "why": "The record states that UPI handle B sent Rs.1,40,000, but it does not state that this amount is equivalent to Rs.1.4L (it is, but this requires arithmetic). However, the record does support the amount"
+     },
+     {
+      "claim": "the account received three UPI credits of Rs.1,10,000, Rs.1,40,000 and Rs.95,000",
+      "why": "The record supports the three credits, but the narrative does not mention that these credits were the only credits, the record actually supports that there were credits of Rs.1,10,000, Rs.1,40,000 and"
+     }
+    ],
+    "seconds": 53.8,
+    "tokens": 1204,
+    "model": "llama3.3-70b",
+    "error": null
+   },
+   "text_sha256": "500b36fddeb60aeb"
+  }
+ ]
+}
