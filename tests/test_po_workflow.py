@@ -548,7 +548,7 @@ POISON = [
     "002003 (42S02): SQL compilation error: Object 'FIU_COPILOT.AML.DECISION_LEDGER' does not exist or not authorized.",
     "SQL access control error: Insufficient privileges to operate on table 'REGULATORY_CORPUS'",
     "250001 (08001): Failed to connect to DB: ORGNAME-ACCT123456.snowflakecomputing.com:443. Incorrect username or password. user=jdoe password=Sup3rSecretPW!",
-    'Traceback (most recent call last):\n  File "/Users/nikhil/Hackathons/bank fraud detection/skills/core.py", line 1, in <module>\nProgrammingError: 000904 invalid identifier SELECT * FROM FIU_COPILOT.AML.ALERTS_CURRENT',
+    'Traceback (most recent call last):\n  File "/Users/jdoe/project/skills/core.py", line 1, in <module>\nProgrammingError: 000904 invalid identifier SELECT * FROM FIU_COPILOT.AML.ALERTS_CURRENT',
     "Statement reached its statement or warehouse timeout of 120 second(s) and was canceled.",
     "Cortex Complete: The model mistral-large2 has been in legacy status and is no longer available.",
     "HTTPSConnectionPool(host='ORGNAME-ACCT123456.snowflakecomputing.com', port=443): Max retries exceeded (Caused by NameResolutionError)",

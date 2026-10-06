@@ -1,0 +1,237 @@
+# Live suites against the isolated clean-room environment, re-run in full on 2026-10-06 (synthetic data)
+
+Run: `python3 scripts/deploy_snowflake.py --profile cleanroom --suffix CR2 --apply --step test`, as the owner role and then as the application role, against the clean-room environment only
+(`FIU_COPILOT_CR2`; the production database was not touched). This is the re-run that `live_suites.log` says was not done after the stale seeding constant in `tests/test_skills_smoke.py` was corrected.
+The earlier log is kept unchanged.
+
+RESULT: owner role **19 passed, 1 skipped**; application role **18 passed, 1 skipped, 1 deselected**; no failures; exit 0.
+The skipped test is the audit-export one (the optional deletion witness is not provisioned, so it skips). The deselected one is the tamper test that needs the owner role by design.
+These suites write inside a transaction and roll back; they assert that no row is left behind. Interpreter: Python 3.14.3, pytest 9.1.1.
+What this does not show: the production database `FIU_COPILOT`, which these suites were not run against; and what Snowsight renders.
+Local paths are replaced with <repo>, <tmp> and <scratch>; nothing else is changed.
+
+---
+
+<scratch>/fresh_venv/lib/python3.14/site-packages/snowflake/connector/options.py:134: UserWarning: You have an incompatible version of 'pyarrow' installed (24.0.0), please install a version that adheres to: 'pyarrow<24,>=14.0.1; python_version >= "3.14" and extra == "pandas"'
+  warn_incompatible_dep(
+RENDERED  163 files (155 text, 59 changed, 406 identifier substitutions, 0 production identifiers left) → <tmp>/fiu-copilot-build/cleanroom
+          tree sha256 636ecc17e399fec9…   names: FIU_COPILOT→FIU_COPILOT_CR2, FIU_WH→FIU_WH_CR2, FIU_ADMIN_ROLE→FIU_ADMIN_ROLE_CR2, FIU_APP_ROLE→FIU_APP_ROLE_CR2, FIU_AUDIT_ROLE→FIU_AUDIT_ROLE_CR2
+MODE: APPLY · profile cleanroom · FIU_COPILOT_CR2.AML · warehouse FIU_WH_CR2
+
+== test ==
+  as FIU_ADMIN_ROLE_CR2: -m pytest tests/test_skills_smoke.py tests/test_live_e2e.py -m live -v -s -p no:cacheprovider
+  as FIU_APP_ROLE_CR2:   -m pytest tests/test_skills_smoke.py tests/test_live_e2e.py -m live -v -s -p no:cacheprovider -k not integrity_view_detects   (the tamper test edits a row and needs the owner role by design)
+
+  ── live suites as FIU_ADMIN_ROLE_CR2 ────────────────────────────────────────
+      ============================= test session starts ==============================
+      platform darwin -- Python 3.14.3, pytest-9.1.1, pluggy-1.6.0 -- <scratch>/fresh_venv/bin/python
+      rootdir: <tmp>/fiu-copilot-build/cleanroom
+      configfile: pytest.ini
+      plugins: platformdirs-4.12.3, anyio-4.15.1
+      collecting ... collected 20 items
+      
+      tests/test_skills_smoke.py::test_connection_context 
+        connected: role=FIU_ADMIN_ROLE_CR2 warehouse=FIU_WH_CR2 FIU_COPILOT_CR2.AML
+      PASSED
+      tests/test_skills_smoke.py::test_corpus_matches_manifest 
+        corpus 1.1.1: {'ASSUMED': 23, 'PROVEN': 13, 'NEEDS-VERIFICATION': 13}; governance columns populated on all rows
+      PASSED
+      tests/test_skills_smoke.py::test_search_service_active_and_indexes_exactly_proven_and_assumed PASSED
+      tests/test_skills_smoke.py::test_alerts_and_transactions_seeded PASSED
+      tests/test_skills_smoke.py::test_regulatory_lookup_is_governed PASSED
+      tests/test_skills_smoke.py::test_recorder_write_path_is_inserted_hashed_and_rolled_back PASSED
+      tests/test_skills_smoke.py::test_analyst_available PASSED
+      tests/test_live_e2e.py::test_live_sql_literal_roundtrip_of_hostile_strings 
+        13 hostile strings (quotes, backslashes, $$, %s, unicode, 20k chars) round-tripped exactly
+      PASSED
+      tests/test_live_e2e.py::test_live_cortex_complete_reports_the_model_that_answered 
+        Cortex Complete model that answered: llama3.3-70b
+      PASSED
+      tests/test_live_e2e.py::test_live_analyst_answers_over_the_semantic_model 
+        Analyst SQL: WITH __alerts AS ( SELECT alert_id, alert_status FROM fiu_copilot_cr2.aml.alerts_current ) SELECT alert_status, COUNT(alert_id) AS alert_cou
+        rows: [{'ALERT_STATUS': 'OPEN', 'ALERT_COUNT': 19}]
+      PASSED
+      tests/test_live_e2e.py::test_live_verified_queries_execute 
+        11/11 verified queries execute live
+      PASSED
+      tests/test_live_e2e.py::test_e2e_alert_to_reconstruction[ALERT-01-FILE] 
+        ── LIVE E2E ALERT-01 (181s) ──────────────────────────────
+        1 alert              ALERT-01 MULE_PASSTHROUGH / I4C / ₹345,000 / gold=FILE
+        2 transactions       5 rows; credits ₹345,000; debits ₹340,700; flagged counterparties=1
+        3 Cortex Search      mode=cortex_search ['STR-002:PROVEN', 'INS-002:PROVEN', 'CTR-002:PROVEN', 'STR-003:PROVEN', 'SB-002:PROVEN'] basis=PROVEN_ONLY
+        4 assessment         model=llama3.3-70b attempts=1 triggered=8 (grounded 8) clear=1 insufficient=2 → AI recommends FILE
+        5 GoS draft (LLM)    status=READY score=8/10 hard_gate=True ai_output_valid=True unsupported={} unverified=[]
+        6 hard gate + QC     status=READY score=8/10 evidence_gate=True ai_output_valid=True unsupported={}
+        7 ledger row         decision_id=faf89e34-d751-408d-b95a-07735bffe900 disposition=FILE sla_days=7 row_hash=a9fff8a418a3dc56…
+        8 reconstruction     checks={'row_hash': True, 'provenance_complete': True, 'regulatory_basis_recorded': True, 'defensibility_gate_recorded': True, 'evidence_unchanged': True, 'gate_replay': True, 'override_recorded': True}
+        8b basis + gate      basis=INCLUDES_ASSUMED corpus=1.1.1 assumed=['INS-001', 'POE-003', 'POE-005', 'POE-007'] gate=PASS warnings=[]
+        8c challenge         against=FILE strength=none counter_evidence=2 (recorded by the recorder, 461 bytes)
+        9 cleanup            transaction rolled back — ledger untouched
+      PASSED
+      tests/test_live_e2e.py::test_e2e_alert_to_reconstruction[ALERT-16-NOT_FILE] 
+        ── LIVE E2E ALERT-16 (91s) ──────────────────────────────
+        1 alert              ALERT-16 MULE_PASSTHROUGH / I4C / ₹345,000 / gold=NOT_FILE
+        2 transactions       4 rows; credits ₹345,000; debits ₹300,000; flagged counterparties=0
+        3 Cortex Search      mode=cortex_search ['STR-002:PROVEN', 'INS-002:PROVEN', 'CTR-002:PROVEN', 'STR-003:PROVEN', 'SB-002:PROVEN'] basis=PROVEN_ONLY
+        4 assessment         model=llama3.3-70b attempts=1 triggered=8 (grounded 6) clear=1 insufficient=2 → AI recommends FILE
+        4b challenge         AI recommended FILE; the deterministic challenge against FILE cites ['documented_sources', 'insufficient_evidence', 'no_flagged_counterparty', 'ungrounded_factor']
+        5 closure rationale  PO-authored, grounded in the record (a CLOSE needs no GoS)
+        6 hard gate + QC     status=NEEDS_REVISION score=5/10 evidence_gate=True ai_output_valid=True unsupported={}
+        7 ledger row         decision_id=989fb8c4-3031-4113-a6c8-b3ff5bca5cd1 disposition=NOT_FILE sla_days=7 row_hash=9b241e7e4ee1fbb6…
+        8 reconstruction     checks={'row_hash': True, 'provenance_complete': True, 'regulatory_basis_recorded': True, 'defensibility_gate_recorded': True, 'evidence_unchanged': True, 'override_recorded': True}
+        8b basis + gate      basis=INCLUDES_ASSUMED corpus=1.1.1 assumed=['INS-001', 'POE-006'] gate=PASS warnings=[]
+        8c challenge         against=NOT_FILE strength=strong counter_evidence=8 (recorded by the recorder, 1309 bytes)
+        9 cleanup            transaction rolled back — ledger untouched
+      PASSED
+      tests/test_live_e2e.py::test_live_ledger_reconciliation_is_read_only_and_honest 
+        reconciliation: CONSISTENT · {} · audit export: audit export table not available (not provisioned, or not readable by this role)
+      PASSED
+      tests/test_live_e2e.py::test_live_audit_export_chain_detects_a_simulated_deletion SKIPPED
+      tests/test_live_e2e.py::test_live_integrity_view_detects_an_edited_row 
+        edited row → TAMPERED (rolled back). Ledger integrity census: []
+      PASSED
+      tests/test_live_e2e.py::test_live_health_check_runs_read_only_as_the_app_role_and_every_result_has_one_of_three_states 
+        health as FIU_APP_ROLE_CR2: deletion_witness=UNVERIFIED · complete_probe=UNVERIFIED · analyst_probe=UNVERIFIED  ({'HEALTHY': 10, 'UNAVAILABLE': 0, 'UNVERIFIED': 3})
+        application: HEALTHY — owner FIU_APP_ROLE_CR2, warehouse FIU_WH_CR2, 30/30 code files byte-identical to the source (bundle d6199ba28cdd993f…). What Snowsight rendered is NOT
+      PASSED
+      tests/test_live_e2e.py::test_live_sql_health_pack_executes_as_the_app_role_and_every_status_is_one_of_three 
+        SQL health pack: 1=HEALTHY · 2=HEALTHY · 3=HEALTHY · 4=HEALTHY · 4b=HEALTHY · 5=HEALTHY · 6=UNVERIFIED · 7=HEALTHY · 9=UNVERIFIED · 10=UNVERIFIED
+      PASSED
+      tests/test_live_e2e.py::test_app_role_can_insert_and_select_but_not_mutate_the_ledger 
+        role=FIU_APP_ROLE_CR2, secondary roles NONE: SELECT ok, INSERT ok (rolled back); {'UPDATE ledger': 'DENIED (3001)', 'DELETE ledger': 'DENIED (3001)', 'UPDATE alerts': 'DENIED (3001)', 'INSERT alerts': 'DENIED (3001)', 'READ answer key': 'DENIED (2003)'}; ledger privileges=['INSERT', 'SELECT']
+      PASSED
+      tests/test_live_e2e.py::test_deploy_verification_script_passes   as FIU_APP_ROLE_CR2 (secondary roles NONE): SELECT, INSERT(rolled back), UPDATE/DELETE WHERE 1=0 (must be denied); TRUNCATE/DROP/ALTER proven from grants, NEVER executed
+          isolated                               True
+          select_ok                              True
+          insert_ok                              True
+          update_denied                          True
+          delete_denied                          True
+          ledger_privileges                      INSERT,SELECT
+          privileges_are_exactly_insert_select   True
+          app_role_is_not_owner                  True
+          answer_key_read_denied                 True
+          answer_key_grants_to_app_role          0
+          update_msg                             SQL access control error:
+      Insufficient privileges to operate on table 'DECISION_LEDGER'. Your primary role FIU_APP_ROLE_
+          delete_msg                             SQL access control error:
+      Insufficient privileges to operate on table 'DECISION_LEDGER'. Your primary role FIU_APP_ROLE_
+          answer_key_msg                         SQL compilation error:
+      Object 'FIU_COPILOT_CR2.AML.ALERT_GOLD_LABELS' does not exist or not authorized. Your primary rol
+          truncate_drop_alter                    not executed - denied by grants (see ledger_privileges)
+          role=FIU_APP_ROLE_CR2  overall=PASS
+      PASSED
+      
+      =============================== warnings summary ===============================
+      ../../../../../../../tmp/claude-501/-Users-nikhil-Hackathons-EvidenceDesk/1d3ee08b-7551-4254-8138-84cfcfdb44d0/scratchpad/fresh_venv/lib/python3.14/site-packages/snowflake/connector/options.py:134
+        <scratch>/fresh_venv/lib/python3.14/site-packages/snowflake/connector/options.py:134: UserWarning: You have an incompatible version of 'pyarrow' installed (24.0.0), please install a version that adheres to: 'pyarrow<24,>=14.0.1; python_version >= "3.14" and extra == "pandas"'
+          warn_incompatible_dep(
+      
+      -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+      ============= 19 passed, 1 skipped, 1 warning in 323.69s (0:05:23) =============
+
+  ── live suites as FIU_APP_ROLE_CR2 ────────────────────────────────────────
+      ============================= test session starts ==============================
+      platform darwin -- Python 3.14.3, pytest-9.1.1, pluggy-1.6.0 -- <scratch>/fresh_venv/bin/python
+      rootdir: <tmp>/fiu-copilot-build/cleanroom
+      configfile: pytest.ini
+      plugins: platformdirs-4.12.3, anyio-4.15.1
+      collecting ... collected 20 items / 1 deselected / 19 selected
+      
+      tests/test_skills_smoke.py::test_connection_context 
+        connected: role=FIU_APP_ROLE_CR2 warehouse=FIU_WH_CR2 FIU_COPILOT_CR2.AML
+      PASSED
+      tests/test_skills_smoke.py::test_corpus_matches_manifest 
+        corpus 1.1.1: {'PROVEN': 13, 'ASSUMED': 23, 'NEEDS-VERIFICATION': 13}; governance columns populated on all rows
+      PASSED
+      tests/test_skills_smoke.py::test_search_service_active_and_indexes_exactly_proven_and_assumed PASSED
+      tests/test_skills_smoke.py::test_alerts_and_transactions_seeded PASSED
+      tests/test_skills_smoke.py::test_regulatory_lookup_is_governed PASSED
+      tests/test_skills_smoke.py::test_recorder_write_path_is_inserted_hashed_and_rolled_back PASSED
+      tests/test_skills_smoke.py::test_analyst_available PASSED
+      tests/test_live_e2e.py::test_live_sql_literal_roundtrip_of_hostile_strings 
+        13 hostile strings (quotes, backslashes, $$, %s, unicode, 20k chars) round-tripped exactly
+      PASSED
+      tests/test_live_e2e.py::test_live_cortex_complete_reports_the_model_that_answered 
+        Cortex Complete model that answered: llama3.3-70b
+      PASSED
+      tests/test_live_e2e.py::test_live_analyst_answers_over_the_semantic_model 
+        Analyst SQL: WITH __alerts AS ( SELECT alert_id, alert_status FROM fiu_copilot_cr2.aml.alerts_current ) SELECT alert_status, COUNT(alert_id) AS alert_cou
+        rows: [{'ALERT_STATUS': 'OPEN', 'ALERT_COUNT': 19}]
+      PASSED
+      tests/test_live_e2e.py::test_live_verified_queries_execute 
+        11/11 verified queries execute live
+      PASSED
+      tests/test_live_e2e.py::test_e2e_alert_to_reconstruction[ALERT-01-FILE] 
+        ── LIVE E2E ALERT-01 (169s) ──────────────────────────────
+        1 alert              ALERT-01 MULE_PASSTHROUGH / I4C / ₹345,000 / gold=FILE
+        2 transactions       5 rows; credits ₹345,000; debits ₹340,700; flagged counterparties=1
+        3 Cortex Search      mode=cortex_search ['STR-002:PROVEN', 'INS-002:PROVEN', 'CTR-002:PROVEN', 'STR-003:PROVEN', 'SB-002:PROVEN'] basis=PROVEN_ONLY
+        4 assessment         model=llama3.3-70b attempts=1 triggered=8 (grounded 8) clear=1 insufficient=2 → AI recommends FILE
+        5 GoS draft (LLM)    status=READY score=9/10 hard_gate=True ai_output_valid=True unsupported={} unverified=[]
+        6 hard gate + QC     status=READY score=9/10 evidence_gate=True ai_output_valid=True unsupported={}
+        7 ledger row         decision_id=a0c0e7b3-5445-4a12-9fa2-5ef864ff6049 disposition=FILE sla_days=7 row_hash=aefec88793dd040e…
+        8 reconstruction     checks={'row_hash': True, 'provenance_complete': True, 'regulatory_basis_recorded': True, 'defensibility_gate_recorded': True, 'evidence_unchanged': True, 'gate_replay': True, 'override_recorded': True}
+        8b basis + gate      basis=INCLUDES_ASSUMED corpus=1.1.1 assumed=['INS-001', 'POE-003', 'POE-005', 'POE-007'] gate=PASS warnings=[]
+        8c challenge         against=FILE strength=none counter_evidence=2 (recorded by the recorder, 461 bytes)
+        9 cleanup            transaction rolled back — ledger untouched
+      PASSED
+      tests/test_live_e2e.py::test_e2e_alert_to_reconstruction[ALERT-16-NOT_FILE] 
+        ── LIVE E2E ALERT-16 (83s) ──────────────────────────────
+        1 alert              ALERT-16 MULE_PASSTHROUGH / I4C / ₹345,000 / gold=NOT_FILE
+        2 transactions       4 rows; credits ₹345,000; debits ₹300,000; flagged counterparties=0
+        3 Cortex Search      mode=cortex_search ['STR-002:PROVEN', 'INS-002:PROVEN', 'CTR-002:PROVEN', 'STR-003:PROVEN', 'SB-002:PROVEN'] basis=PROVEN_ONLY
+        4 assessment         model=llama3.3-70b attempts=1 triggered=8 (grounded 6) clear=1 insufficient=2 → AI recommends FILE
+        4b challenge         AI recommended FILE; the deterministic challenge against FILE cites ['documented_sources', 'insufficient_evidence', 'no_flagged_counterparty', 'ungrounded_factor']
+        5 closure rationale  PO-authored, grounded in the record (a CLOSE needs no GoS)
+        6 hard gate + QC     status=NEEDS_REVISION score=5/10 evidence_gate=True ai_output_valid=True unsupported={}
+        7 ledger row         decision_id=3cf69654-ae08-4075-be1f-842a485466e0 disposition=NOT_FILE sla_days=7 row_hash=eff1ad730a96f5b3…
+        8 reconstruction     checks={'row_hash': True, 'provenance_complete': True, 'regulatory_basis_recorded': True, 'defensibility_gate_recorded': True, 'evidence_unchanged': True, 'override_recorded': True}
+        8b basis + gate      basis=INCLUDES_ASSUMED corpus=1.1.1 assumed=['INS-001', 'POE-006'] gate=PASS warnings=[]
+        8c challenge         against=NOT_FILE strength=strong counter_evidence=8 (recorded by the recorder, 1312 bytes)
+        9 cleanup            transaction rolled back — ledger untouched
+      PASSED
+      tests/test_live_e2e.py::test_live_ledger_reconciliation_is_read_only_and_honest 
+        reconciliation: CONSISTENT · {} · audit export: audit export table not available (not provisioned, or not readable by this role)
+      PASSED
+      tests/test_live_e2e.py::test_live_audit_export_chain_detects_a_simulated_deletion SKIPPED
+      tests/test_live_e2e.py::test_live_health_check_runs_read_only_as_the_app_role_and_every_result_has_one_of_three_states 
+        health as FIU_APP_ROLE_CR2: deletion_witness=UNVERIFIED · complete_probe=UNVERIFIED · analyst_probe=UNVERIFIED  ({'HEALTHY': 10, 'UNAVAILABLE': 0, 'UNVERIFIED': 3})
+        application: HEALTHY — owner FIU_APP_ROLE_CR2, warehouse FIU_WH_CR2, 30/30 code files byte-identical to the source (bundle d6199ba28cdd993f…). What Snowsight rendered is NOT
+      PASSED
+      tests/test_live_e2e.py::test_live_sql_health_pack_executes_as_the_app_role_and_every_status_is_one_of_three 
+        SQL health pack: 1=HEALTHY · 2=HEALTHY · 3=HEALTHY · 4=HEALTHY · 4b=HEALTHY · 5=HEALTHY · 6=UNVERIFIED · 7=HEALTHY · 9=UNVERIFIED · 10=UNVERIFIED
+      PASSED
+      tests/test_live_e2e.py::test_app_role_can_insert_and_select_but_not_mutate_the_ledger 
+        role=FIU_APP_ROLE_CR2, secondary roles NONE: SELECT ok, INSERT ok (rolled back); {'UPDATE ledger': 'DENIED (3001)', 'DELETE ledger': 'DENIED (3001)', 'UPDATE alerts': 'DENIED (3001)', 'INSERT alerts': 'DENIED (3001)', 'READ answer key': 'DENIED (2003)'}; ledger privileges=['INSERT', 'SELECT']
+      PASSED
+      tests/test_live_e2e.py::test_deploy_verification_script_passes   as FIU_APP_ROLE_CR2 (secondary roles NONE): SELECT, INSERT(rolled back), UPDATE/DELETE WHERE 1=0 (must be denied); TRUNCATE/DROP/ALTER proven from grants, NEVER executed
+          isolated                               True
+          select_ok                              True
+          insert_ok                              True
+          update_denied                          True
+          delete_denied                          True
+          ledger_privileges                      INSERT,SELECT
+          privileges_are_exactly_insert_select   True
+          app_role_is_not_owner                  True
+          answer_key_read_denied                 True
+          answer_key_grants_to_app_role          0
+          update_msg                             SQL access control error:
+      Insufficient privileges to operate on table 'DECISION_LEDGER'. Your primary role FIU_APP_ROLE_
+          delete_msg                             SQL access control error:
+      Insufficient privileges to operate on table 'DECISION_LEDGER'. Your primary role FIU_APP_ROLE_
+          answer_key_msg                         SQL compilation error:
+      Object 'FIU_COPILOT_CR2.AML.ALERT_GOLD_LABELS' does not exist or not authorized. Your primary rol
+          truncate_drop_alter                    not executed - denied by grants (see ledger_privileges)
+          role=FIU_APP_ROLE_CR2  overall=PASS
+      PASSED
+      
+      =============================== warnings summary ===============================
+      ../../../../../../../tmp/claude-501/-Users-nikhil-Hackathons-EvidenceDesk/1d3ee08b-7551-4254-8138-84cfcfdb44d0/scratchpad/fresh_venv/lib/python3.14/site-packages/snowflake/connector/options.py:134
+        <scratch>/fresh_venv/lib/python3.14/site-packages/snowflake/connector/options.py:134: UserWarning: You have an incompatible version of 'pyarrow' installed (24.0.0), please install a version that adheres to: 'pyarrow<24,>=14.0.1; python_version >= "3.14" and extra == "pandas"'
+          warn_incompatible_dep(
+      
+      -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+      ====== 18 passed, 1 skipped, 1 deselected, 1 warning in 296.76s (0:04:56) ======
+
+DONE
+exit=0

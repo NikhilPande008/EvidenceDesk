@@ -11,7 +11,7 @@ Records of the runs behind the numbers in the top-level README. All data is synt
 | `heldout-gcc/` | The prediction, the first measurement and the frozen-rule hash for the three alerts written after the nexus rule was frozen |
 | `governance/` | The opt-in column-masking probe, run in the isolated environment and then removed |
 | `feed-load/` | The feed loader's write path, run live inside a rolled-back transaction |
-| `cleanroom-2026-10-06/` | The live suites and the health report on the isolated environment after the redeploy |
+| `cleanroom-2026-10-06/` | The live suites and the health report on the isolated environment after the redeploy: the first run (with its one stale-constant failure per role) and the full re-run after the correction |
 | `cleanroom-2026-10-02/` | One file: three real ledger rows that the offline hash check reads (`tests/test_dossier.py`) |
 | `coco/` | The Cortex Code CLI protocol. No session is recorded |
 

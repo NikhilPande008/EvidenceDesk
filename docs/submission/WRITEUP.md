@@ -18,6 +18,14 @@ free-text case notes. *(ASSUMED: our description of current practice; a pilot wo
 The Principal Officer, and the financial-crime operations team that prepares each decision, in an Indian bank or in a global capability centre (GCC) that works its alerts. *(ASSUMED: fit not reviewed by a practitioner.)*
 India only: PMLA, PML Rules, FIU-IND, RBI. A question about another regime is screened and usually declined, not guessed.
 
+## Who pays, and why a global capability centre *(ASSUMED, A5: nobody has been asked)*
+
+- **Buyer.** The head of financial-crime compliance (the Principal Officer's own function) in an Indian bank, or the operations lead of a global capability centre that works a parent institution's alerts. We have spoken to neither.
+- **What they would be buying.** A decision record that can be reconstructed and checked. Not detection, and not time saved: no time-saved figure is claimed because none was measured (S5).
+- **How it would be paid for.** Unknown. It runs on a Snowflake account, so the running cost would be Snowflake consumption on an account the buyer already holds. Whether a licence fee on top is acceptable is untested, and there is no price and no pricing evidence.
+- **Why a centre if the scope is India only.** The assumption is that a centre often works alerts for more than one regime, which makes a lookup that declines what it cannot support more useful there than in a single-regime team. That is our reasoning, not a finding.
+- **What would settle it.** Two or three conversations (a Principal Officer, a centre operations lead) about what they use today and what they would stop using, then the pilot in `docs/PILOT_PROTOCOL.md`. Neither has happened.
+
 ## What it does
 
 1. **Queue.** Alerts ranked by nine published factors, with the seven-working-day clock where the feed supplies a suspicion time. The app never infers one.
@@ -46,7 +54,7 @@ The hard part was not the model call. It was deciding what the application may s
 
 | | Result |
 |---|---|
-| Offline suite, fresh clone | 603 passed, 20 skipped (P1) |
+| Offline suite, fresh clone | 605 passed, 20 skipped on Python 3.11 and 3.14, with the pinned versions and at the lowest Streamlit the requirements allow (P1) |
 | Faithful narratives wrongly blocked | 0 of 70 and 0 of 69 (P3) |
 | Unseen fabrication phrasings caught | 30 of 38, 78.9% (P4). The in-distribution figure is not quoted |
 | Real model over 19 alerts | 19 of 19 assessments valid; 19 of 19 drafts passed the gate; 0 unsupported facts; median 78 s per assessment (P10) |

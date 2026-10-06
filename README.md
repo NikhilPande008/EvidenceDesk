@@ -43,10 +43,10 @@ Every figure was produced on 5 or 6 October 2026 by a command listed in this rep
 
 | What | Result | Evidence |
 |---|---|---|
-| Offline test suite | 603 passed, 20 skipped (the 20 are live tests that need Snowflake credentials) | `python -m pytest tests -q` |
-| Live suites on the redeployed clean room (Snowflake, Cortex), 6 October | As run: owner role 18 passed, 1 skipped, 1 failed; app role 17 passed, 1 skipped, 1 failed. The one failure in each was a stale constant (the earlier 16-alert label counts) in a seeding test, since corrected; that test alone passes in both roles. **The full suites were not re-run after the correction.** The ALERT-01 and ALERT-16 end-to-end cases passed in both roles, and nothing was recorded to the ledger | `evidence/cleanroom-2026-10-06/live_suites.log` |
+| Offline test suite | 605 passed. The 20 live tests are skipped without Snowflake credentials, and deselected by `-m "not live"`. Run on Python 3.11 and 3.14 with the versions in `constraints.txt`, and with Streamlit 1.61.0, the lowest version the requirements allow. One UI test fails on Streamlit 1.56 to 1.60, so those are excluded | `pip install -r requirements.txt -c constraints.txt` then `python -m pytest tests -q -m "not live"` |
+| Live suites on the redeployed clean room (Snowflake, Cortex), 6 October | First run: owner role 18 passed, 1 skipped, 1 failed; app role 17 passed, 1 skipped, 1 failed. The one failure in each was a stale constant (the earlier 16-alert label counts) in a seeding test. **Full re-run after the correction: owner role 19 passed, 1 skipped; app role 18 passed, 1 skipped, 1 deselected; no failures.** The skipped test needs the optional deletion witness, which is not provisioned. Clean-room database only; the production database and Snowsight rendering were not covered | `evidence/cleanroom-2026-10-06/live_suites.log` (first run, kept unchanged) and `live_suites_rerun.log` |
 | Least privilege: app role cannot update, delete or read the answer key | RBAC proof `overall = PASS`; ledger privileges exactly INSERT, SELECT; answer key unreadable, 0 grants | `deploy/04_verify_ledger_rbac.sql` |
-| Hosted app matches the source | 30 of 30 code files byte-identical after the redeploy on 6 October, with the saved responses included; health 10 healthy, 0 unavailable, 3 unverified (deletion witness, one billed model call, one billed Analyst call). What Snowsight renders is still not verified | `evidence/cleanroom-2026-10-06/live_suites.log` |
+| Hosted app matches the source | 30 of 30 code files byte-identical after the redeploy on 6 October, with the saved responses included; health 10 healthy, 0 unavailable, 3 unverified (deletion witness, one billed model call, one billed Analyst call). One deployed file, `skills/readiness.py` (limitation text only), has changed since, so the hosted copy matches the source again only after the next redeploy. What Snowsight renders is still not verified | `evidence/cleanroom-2026-10-06/live_suites.log` |
 | Regulatory lookup, calibration set (thresholds were set on it) | 22 of 22 off-scope refused; 20 of 20 answerable answered (6 October, 98 queries across all sets, none served by the keyword fallback) | `evidence/retrieval-gold/2026-10-06/` |
 | Regulatory lookup, holdout written after the generic foreign-regime screen was built, measured once | **11 of 12 off-scope refused**, 8 of 8 answerable answered; the one miss is a question about the Cayman Islands. The earlier holdouts are regression records: 4 of 6 off-scope refused on 5 October before the screen existed, 6 of 6 after it (the screen was built after seeing the two misses) | `evidence/retrieval-gold/2026-10-05/holdout3_first_measurement/` and `evidence/retrieval-gold/2026-10-06/` |
 | Evidence gate, faithful narratives wrongly blocked | 0 of 70 (ALERT-01), 0 of 69 (the other 14 alerts with real rows; re-run on 6 October after the three Gulf-remittance alerts were added, which the validator was never tuned on) | `evidence/fabrication-benchmark/2026-10-06/` |
@@ -63,8 +63,9 @@ The in-distribution catch rate (154 of 154) is deliberately not in this table: t
 
 - **Legal accuracy.** No rule in the corpus has been independently verified (0 of 49). PROVEN means a primary source is cited by the corpus author. On 5 October two rules (SB-003, STR-004) were found citing a PMLA section as the tipping-off provision when that section is "Access to information". They are re-sourced to the PML Rules and downgraded to ASSUMED, and the correction is kept in the corpus.
 - **Accuracy on real cases, volumes, or time saved.** The data is synthetic and the labels are one author's. No hands-on timing exists.
-- **A rendered Snowsight session.** The hosted app is byte-identical to the source, but what Snowsight shows, and what `st.user` returns there, has not been observed.
+- **A rendered Snowsight session.** The hosted clean-room app was byte-identical to the source at the 6 October redeploy, but what Snowsight shows, and what `st.user` returns there, has not been observed.
 - **Cortex Code CLI.** The repository carries five Cortex Code CLI skill files in [`.cortex/skills/`](.cortex/skills/), kept consistent with the scripts they name by a test. No Cortex Code CLI session is recorded, so none is claimed ([`evidence/coco/`](evidence/coco/README.md) says how one would be). The code was written with an AI coding assistant (Claude Code).
+- **A buyer, a price, or why a global capability centre.** Who would pay, and how, is an assumption (A5 in the claim audit, and a labelled section in the writeup). Nobody has been asked.
 - **Production readiness.** No penetration test and no row-access policy. Two decisions written at the same moment on one alert cannot be prevented here (the ledger is append-only and uniqueness is not enforced on this account); they are detected and reported as `CONCURRENT_DECISIONS`. Column masking exists as an opt-in script and was checked only in the isolated environment. See [SECURITY.md](SECURITY.md).
 
 ## What it does not do
@@ -102,9 +103,9 @@ The **My cases** page provides a four-step guide:
 ## Run, validate, reproduce
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt -c constraints.txt   # constraints.txt = the exact versions the suite was run on
 python -m py_compile streamlit_app.py skills/*.py scripts/*.py tests/*.py
-python -m pytest tests -q -p no:cacheprovider                      # offline gate, no Snowflake needed
+python -m pytest tests -q -m "not live" -p no:cacheprovider        # offline gate. -m "not live" matters: with credentials in .env a plain pytest also runs the live tests against that database
 python scripts/eval_fabrication_benchmark.py --write                # evidence gate benchmark (offline)
 python scripts/deploy_snowflake.py --profile cleanroom --suffix CR2 # PLAN of an isolated clean-room deploy; add --apply to execute
 python scripts/eval_retrieval_gold.py --write                       # live retrieval evaluation (needs credentials, app role)
@@ -123,6 +124,8 @@ The test suite is the behavioural source of truth. Documentation explains intend
 - [DEPLOY.md](DEPLOY.md): minimal safe setup and deployment guidance.
 - [SECURITY.md](SECURITY.md): prototype security boundaries and production requirements.
 - [EVIDENCE.md](EVIDENCE.md): validation approach and evidence limits.
+- [ARCHITECTURE.md](ARCHITECTURE.md), [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) and [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md): what is implemented, simulated or only required for production, rendered from `skills/readiness.py` so a document cannot say more than the code does.
+- [DEMO_RUNBOOK.md](DEMO_RUNBOOK.md): the three-minute demo, the fallbacks and the judge questions.
 - [HANDOFF.md](HANDOFF.md): contributor handoff and release checklist.
 - [docs/DATA_CONTRACT.md](docs/DATA_CONTRACT.md): the alert and transaction feed an institution supplies, and what the loader refuses.
 - [docs/PILOT_PROTOCOL.md](docs/PILOT_PROTOCOL.md): how a pilot would measure what this prototype does not claim.

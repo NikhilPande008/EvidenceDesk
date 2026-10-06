@@ -1,12 +1,14 @@
 # FIU-IND AML Decision-Defensibility Copilot
-# Install: pip install -r requirements.txt
+# Install: pip install -r requirements.txt -c constraints.txt   (constraints.txt holds the exact versions the offline suite was run on)
 
 # Snowflake connectivity (connector for local runs / scripts / tests; Snowpark for Streamlit-in-Snowflake)
 snowflake-connector-python>=3.6.0,<5
 snowflake-snowpark-python>=1.15.0,<2
 
-# Streamlit (Streamlit-in-Snowflake bundles its own; pin the local dev version). AppTest (UI tests) needs >=1.28.
-streamlit>=1.32.0,<2
+# Streamlit (Streamlit-in-Snowflake bundles its own; this is the local version). The UI tests use AppTest, and on 1.56 to 1.60
+# test_queue_filters_survive_case_navigation fails inside AppTest's own widget-state handling (a KeyError, not an assertion about the app);
+# the whole offline suite passes on 1.61.0 and on 1.65.0. Versions below 1.61 were not run and are not claimed.
+streamlit>=1.61.0,<2
 
 # Config / secrets
 python-dotenv>=1.0.0,<2

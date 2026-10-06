@@ -1,16 +1,48 @@
+# ---- Secrets and local configuration: never committed ----
 .env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.key
+secrets.toml
+connections.toml
+
+# ---- Python and tooling caches ----
 __pycache__/
 *.pyc
 *.pyo
-.DS_Store
 *.egg-info/
 dist/
 build/
 .venv/
 venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Keep the repository's public landing page, but keep working notes and
-# generated or internal Markdown documents out of new commits by default.
+# ---- Editor, operating-system and assistant files ----
+.DS_Store
+.idea/
+.vscode/
+.claude/
+.cursor/
+*.swp
+
+# ---- Local deployment bundle (symlinks to this machine's paths) and editor backups ----
+output/
+*.bak
+*.bak-*
+*.orig
+
+# ---- Evidence that is deliberately not published ----
+# Raw model replies (the replies the application ships are in skills/saved_responses_data.py) and the per-case results of the model-as-checker comparison.
+evidence/**/raw_responses.json
+evidence/llm-checker/**/results.json
+
+# ---- Markdown: ignored by default, then the documents a reviewer needs are let back in ----
 *.md
 !/README.md
 !/DEPLOY.md
@@ -18,16 +50,29 @@ venv/
 !/EVIDENCE.md
 !/SECURITY.md
 !/SKILL.md
+!/ARCHITECTURE.md
+!/KNOWN_LIMITATIONS.md
+!/PRODUCTION_READINESS.md
+!/DEMO_RUNBOOK.md
+!/docs/**/*.md
 !/evidence/**/*.md
 
-# local deployment bundle (symlinks to this machine's paths) and editor backups
-output/
-*.bak
-*.bak-*
-*.orig
-!/docs/**/*.md
-
-# Cortex Code CLI project skills (.cortex/skills/<name>/SKILL.md) are documentation of the repository's operating procedure and are tracked
+# Cortex Code CLI project skills (.cortex/skills/<name>/SKILL.md) document the repository's operating procedure and are tracked
 !/.cortex/
 !/.cortex/skills/
 !/.cortex/skills/**/*.md
+
+# ---- Working notes, prompts, plans and design specs: not part of the submission ----
+# (the *.md rule already covers them; they are listed so the intent is visible and survives a change to that rule)
+/CONTEXT.md
+/DECISIONS.md
+/DEPLOYMENT_PROOF.md
+/DOMAIN.md
+/IMPLEMENTATION_PLAN.md
+/IMPLEMENTATION_PROMPT.md
+/QUALITY_HARDENING_PROMPT.md
+/RECOVERY.md
+/TASKS.md
+/TECHNICAL_AUDIT.md
+/design/
+/domain/scenarios/

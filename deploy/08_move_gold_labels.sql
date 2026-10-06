@@ -5,6 +5,7 @@
 -- could ask the copilot for "the correct answer". After this migration the labels are in ALERT_GOLD_LABELS, which the app role cannot read.
 --
 -- Run as FIU_ADMIN_ROLE, in this order. Idempotent up to STEP 3.
+--   STEP 0   if the account also predates deploy/09_alert_feed_suspicion_time.sql, run that first. The schema step (alerts.sql) comments on the column 09 adds and stops without it.
 --   STEP 1-2 (this file, below)  create the table and copy the labels, if the old column still exists.
 --   STEP 2b  re-run the views and the semantic model:   python3 scripts/deploy_snowflake.py --step ddl     and     python3 scripts/upload_semantic_model.py
 --            (ALERTS_CURRENT must stop selecting the column before it can be dropped.)
@@ -39,7 +40,7 @@ BEGIN
 END;
 $$;
 
-SELECT GOLD_DISPOSITION, COUNT(*) AS N FROM ALERT_GOLD_LABELS GROUP BY 1 ORDER BY 1;   -- expect CONTESTED 4, FILE 9, NOT_FILE 3 (16 in all)
+SELECT GOLD_DISPOSITION, COUNT(*) AS N FROM ALERT_GOLD_LABELS GROUP BY 1 ORDER BY 1;   -- expect CONTESTED 4, FILE 9, NOT_FILE 3 (16 in all) on an account seeded before the Gulf-remittance alerts; setup_alerts.py then adds ALERT-17 to ALERT-19, giving CONTESTED 4, FILE 10, NOT_FILE 5 (19)
 
 -- STEP 3 (uncomment ONLY after STEP 2b: the view no longer selects the column)
 -- ALTER TABLE ALERTS DROP CONSTRAINT CHK_GOLD_DISP;

@@ -15,8 +15,10 @@ EvidenceDesk is a synthetic-data AML investigation and decision-defensibility pr
 
 ```bash
 python -m py_compile streamlit_app.py skills/*.py scripts/*.py tests/*.py
-python -m pytest tests -q -p no:cacheprovider
+python -m pytest tests -q -m "not live" -p no:cacheprovider
 ```
+
+Use `-m "not live"`. With credentials in `.env`, a plain `pytest tests` also runs the live tests against whichever database `.env` names, which may not be the one you meant.
 
 Run any Snowflake-connected checks only in an authorised non-production environment. Review generated plans before applying them. Keep live results, logs, screenshots, and customer-specific operating procedures outside the public repository.
 

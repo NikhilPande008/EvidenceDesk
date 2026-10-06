@@ -1,0 +1,13 @@
+# Exact versions the offline suite was last run on (6 October 2026, fresh virtualenv, Python 3.11 and 3.14).
+# Use with:  pip install -r requirements.txt -c constraints.txt
+# requirements.txt gives the supported ranges; this file gives the one combination that is known to pass. tests/test_dependency_pins.py keeps the two consistent.
+streamlit==1.65.0
+pandas==3.0.6
+snowflake-connector-python==4.8.0
+snowflake-snowpark-python==1.55.1
+python-dotenv==1.2.4
+PyYAML==6.0.3
+jsonschema==4.26.0
+requests==2.34.2
+pytest==9.1.1
+markdown-it-py==4.2.0
