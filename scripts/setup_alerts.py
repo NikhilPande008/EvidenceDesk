@@ -559,10 +559,11 @@ IST = timezone(timedelta(hours=5, minutes=30))
 
 def suspicion_formed_at(wd_ago: int, now: datetime | None = None) -> datetime:
     """10:30 IST on the working day `wd_ago` Mon-Fri days before the last working day on or before `now` (so a seed loaded on a weekend still shows what
-    the offset says). wd_ago 0 is half an hour ago."""
+    the offset says). wd_ago 0 is half an hour ago, but never earlier than midnight IST today: ten past midnight would otherwise put it on the previous
+    day and a clock that has not started to run would already show a working day used."""
     now = (now or datetime.now(IST)).astimezone(IST)
     if wd_ago <= 0:
-        return (now - timedelta(minutes=30)).replace(second=0, microsecond=0)
+        return max((now - timedelta(minutes=30)).replace(second=0, microsecond=0), datetime.combine(now.date(), time(0, 0), tzinfo=IST))
     day = now.date()
     while day.weekday() >= 5:
         day -= timedelta(days=1)

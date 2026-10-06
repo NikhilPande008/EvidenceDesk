@@ -143,7 +143,8 @@ def test_the_twin_pair_differs_by_evidence_not_by_label():
 
 def test_the_seeded_clock_gives_a_live_mix_of_deadlines_from_whatever_moment_the_seed_runs():
     for now in (dt.datetime(2026, 10, 5, 18, 54, tzinfo=seed.IST), dt.datetime(2026, 10, 10, 12, 0, tzinfo=seed.IST), dt.datetime(2026, 10, 11, 9, 0, tzinfo=seed.IST),
-                dt.datetime(2026, 11, 3, 7, 30, tzinfo=seed.IST)):                                        # a Monday evening, a Saturday, a Sunday, a Tuesday morning
+                dt.datetime(2026, 11, 3, 7, 30, tzinfo=seed.IST),
+                dt.datetime(2026, 11, 3, 0, 10, tzinfo=seed.IST), dt.datetime(2026, 11, 2, 0, 10, tzinfo=seed.IST)):   # a Monday evening, a Saturday, a Sunday, a Tuesday morning, and ten past midnight on a Tuesday and on a Monday
         left = {aid: sla_days_remaining(seed.suspicion_formed_at(n, now), now) for aid, n in seed.SUSPICION_WD_AGO.items()}
         assert left == {aid: 7 - n for aid, n in seed.SUSPICION_WD_AGO.items()}, (now, left)
         assert min(left.values()) < 0 and 0 in left.values() and max(left.values()) == 7, left

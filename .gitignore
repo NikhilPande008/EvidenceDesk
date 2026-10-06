@@ -76,3 +76,6 @@ evidence/llm-checker/**/results.json
 /TECHNICAL_AUDIT.md
 /design/
 /domain/scenarios/
+
+# macOS folder metadata, listed last so that no re-include rule above can bring it back
+**/.DS_Store

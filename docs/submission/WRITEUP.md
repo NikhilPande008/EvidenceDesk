@@ -13,10 +13,14 @@ an optional labelled AI proposal, checks that run on the record and not on the m
 When an alert fires, someone has to decide whether to report it to FIU-IND within seven working days, and later show an inspector why they did or did not. The reasoning usually lives in email, spreadsheets and
 free-text case notes. *(ASSUMED: our description of current practice; a pilot would confirm it.)* A model that drafts a narrative adds a second risk: it can state an amount, a date or a place the record does not hold.
 
+FIU-IND's own 2024-25 annual report gives the scale and the stakes: 4,34,668 STRs were filed in the year (434,668), and the report describes a Rs.1,66,25,000 penalty on a commercial bank whose findings included deficient alert management and non-filing of STRs (printed pages 20, 50 and 51; read on 2026-10-07, details in `evidence/public-sources/`). The report does not say how any institution documents its decisions, so the description of current practice above stays ASSUMED.
+
 ## Who it is for
 
 The Principal Officer, and the financial-crime operations team that prepares each decision, in an Indian bank or in a global capability centre (GCC) that works its alerts. *(ASSUMED: fit not reviewed by a practitioner.)*
 India only: PMLA, PML Rules, FIU-IND, RBI. A question about another regime is screened and usually declined, not guessed.
+
+How an alert becomes a decision, and where each part of the product acts on that path, is on one page ([`docs/REAL_WORLD_FIT.md`](../REAL_WORLD_FIT.md)), built from the corpus rules the application already carries, each with its evidence level. India hosts 2,117 global capability centres employing about 2.36 million people (Zinnov and Nasscom, FY26, cited on that page). That is the size of the sector. It says nothing about how many centres work AML alerts, so fit stays ASSUMED. The same page lists what the product does not do yet: it records who decided but not who prepared the case, it covers one regime, and it has seen no real feed.
 
 ## Who pays, and why a global capability centre *(ASSUMED, A5: nobody has been asked)*
 
@@ -24,7 +28,7 @@ India only: PMLA, PML Rules, FIU-IND, RBI. A question about another regime is sc
 - **What they would be buying.** A decision record that can be reconstructed and checked. Not detection, and not time saved: no time-saved figure is claimed because none was measured (S5).
 - **How it would be paid for.** Unknown. It runs on a Snowflake account, so the running cost would be Snowflake consumption on an account the buyer already holds. Whether a licence fee on top is acceptable is untested, and there is no price and no pricing evidence.
 - **Why a centre if the scope is India only.** The assumption is that a centre often works alerts for more than one regime, which makes a lookup that declines what it cannot support more useful there than in a single-regime team. That is our reasoning, not a finding.
-- **What would settle it.** Two or three conversations (a Principal Officer, a centre operations lead) about what they use today and what they would stop using, then the pilot in `docs/PILOT_PROTOCOL.md`. Neither has happened.
+- **What would settle it.** Two or three conversations (a Principal Officer, a centre operations lead) about what they use today and what they would stop using, then the pilot in `docs/PILOT_PROTOCOL.md`. Neither has happened. The script, the questions and an informal timing exercise are ready in `docs/practitioner/INTERVIEW_KIT.md`.
 
 ## What it does
 
@@ -79,7 +83,7 @@ A check that runs on the record is worth more than a better prompt. Measuring th
 ## What is next
 
 A maintained jurisdiction-risk reference with an owner, and new held-out alerts to test a rule that uses it. A practitioner review of the corpus rules (0 of 49 independently verified). A pilot on a real alert feed
-(`docs/DATA_CONTRACT.md`, `docs/PILOT_PROTOCOL.md`). Recorded Cortex Code CLI sessions. Prevention of concurrent decisions where the account supports it. Row-level access, which needs an entitlement source.
+(`docs/DATA_CONTRACT.md`, `docs/PILOT_PROTOCOL.md`). Three practitioner conversations and an informal timing exercise (`docs/practitioner/INTERVIEW_KIT.md`; none has happened). Recorded Cortex Code CLI sessions. Prevention of concurrent decisions where the account supports it. Row-level access, which needs an entitlement source.
 
 ## Not claimed
 

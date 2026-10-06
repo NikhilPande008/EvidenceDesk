@@ -16,6 +16,10 @@ A detector firing is not a decision. EvidenceDesk is the workspace where a Princ
 
 **Where it stops.** India only (PMLA, PML Rules, FIU-IND, RBI). A GCC often serves several regimes; a question about another one is screened and usually declined, not guessed, and every lookup shows its scope. No time-saved figure is claimed, because none has been measured.
 
+## Why it matters
+
+FIU-IND's 2024-25 annual report records 4,34,668 suspicious transaction reports filed in the year (434,668), and describes a penalty of Rs.1,66,25,000 on a commercial bank whose findings included deficient alert management and non-filing of STRs (printed pages 20, 50 and 51). The report does not say how any institution documents its decisions, so what EvidenceDesk replaces remains our assumption. Sources and limits: [docs/REAL_WORLD_FIT.md](docs/REAL_WORLD_FIT.md).
+
 ## Purpose
 
 An AML decision-defensibility and investigation copilot. Fraud and mule-risk signals are generated or ingested by other systems; this application investigates, prioritises, explains and supports a defensible disposition by a Principal Officer, and records why.
@@ -129,6 +133,8 @@ The test suite is the behavioural source of truth. Documentation explains intend
 - [HANDOFF.md](HANDOFF.md): contributor handoff and release checklist.
 - [docs/DATA_CONTRACT.md](docs/DATA_CONTRACT.md): the alert and transaction feed an institution supplies, and what the loader refuses.
 - [docs/PILOT_PROTOCOL.md](docs/PILOT_PROTOCOL.md): how a pilot would measure what this prototype does not claim.
+- [docs/REAL_WORLD_FIT.md](docs/REAL_WORLD_FIT.md): the path of one alert from the rules the corpus carries, where the product acts on it, public context with sources, and the gaps the path shows.
+- [docs/practitioner/INTERVIEW_KIT.md](docs/practitioner/INTERVIEW_KIT.md): the 15-minute practitioner script and an informal timing exercise. Nothing in it has been run.
 - [docs/submission/WRITEUP.md](docs/submission/WRITEUP.md) and [docs/submission/CLAIM_AUDIT.md](docs/submission/CLAIM_AUDIT.md): the submission writeup, and every headline claim labelled PROVEN, STUBBED or ASSUMED with its evidence.
 
 ## License
