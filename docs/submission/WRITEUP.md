@@ -59,7 +59,7 @@ The hard part was not the model call. It was deciding what the application may s
 - **"Grounded" is not "supported".** The first real replay showed the model triggering a beneficiary factor on the legitimate twin while citing real transaction ids. We added a record test that can only discount a factor, and
   it works on ALERT-16. It also moved a FILE-labelled alert (ALERT-04) to REVIEW. We kept both results.
 - **We wrote three new alerts after freezing that rule, and it failed on them.** The model recommended FILE for two legitimate Gulf-remittance alerts. The cause is a missing jurisdiction list and a too-permissive cross-border clause.
-  We recorded our prediction before the run, did not change the rule afterwards, and made a test fail if anyone does without saying so (P13).
+  We wrote our prediction down before the run (the commit history that showed the order was later squashed, so it can no longer be checked from git), did not change the rule afterwards, and made a test fail if anyone does without saying so (P13, A4).
 - **A model as a checker looked better and was worse.** It caught more fabrications and wrongly objected to most true narratives. The gate stays deterministic.
 - **Cortex statement timeouts.** A full replay lost three alerts and two drafts to 120-second timeouts. The application failed closed, as designed, and a retry completed the record. Both runs are kept.
 - **Concurrency.** Two decisions on one alert at the same moment cannot be prevented on this account (no locking, no enforced uniqueness, hybrid tables unavailable). They are detected and reported. *(STUBBED, S1: no live race was run.)*

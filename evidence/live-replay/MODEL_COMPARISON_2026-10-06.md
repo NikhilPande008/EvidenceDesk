@@ -3,7 +3,7 @@
 **Synthetic data, one run per model, assessment step only (`--no-draft`), the 16 seeded alerts, `FIU_COPILOT_CR2`, temperature 0, structured outputs on, no fallback allowed.
 Nothing was recorded to the ledger. The labels were written by the same author as the alerts and the validator, so none of this is accuracy on real cases.**
 
-Sources: `2026-10-05/model-llama3.1-8b/`, `2026-10-05/model-claude-sonnet-4-5/`, `2026-10-06/model-llama3.3-70b/` (each has `summary.md`, `results.json`, `raw_responses.json`).
+Sources: `2026-10-05/model-llama3.1-8b/`, `2026-10-05/model-claude-sonnet-4-5/`, `2026-10-06/model-llama3.3-70b/` (each has `summary.md` and `results.json`; the raw model replies are not kept in the repository).
 
 ## Result
 

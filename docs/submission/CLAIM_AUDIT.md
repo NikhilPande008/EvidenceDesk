@@ -1,11 +1,11 @@
 # Claim audit: EvidenceDesk submission package
 
-**CLAIM AUDIT, 2026-10-06, repository at the commit after `89d7fdc`.** Synthetic data throughout. Every label means what it says:
+**CLAIM AUDIT, 2026-10-06, repository as of this date.** (The history was later squashed into one commit, so commit ids inside the evidence records no longer resolve.) Synthetic data throughout. Every label means what it says:
 **PROVEN** = reproduced in the current environment from a clean state, evidence path named. **STUBBED** = implemented, not verified end to end or only in a non-representative state, and said so
 wherever it is mentioned. **ASSUMED** = believed, not checked, and labelled where it appears.
 
 ```
-PROVEN: 17 | STUBBED: 8 | ASSUMED: 3 | DELETED (never claimed): 7
+PROVEN: 17 | STUBBED: 8 | ASSUMED: 4 | DELETED (never claimed): 7
 Blocking (must fix before ship): none open. Three wording defects were found and fixed during this audit (listed at the end).
 Non-blocking: the 8 STUBBED items must be framed as "what is next", not "what it does".
 Verdict: SHIP, with the labels below carried into the writeup, the README and the demo.
@@ -15,8 +15,8 @@ Verdict: SHIP, with the labels below carried into the writeup, the README and th
 
 | # | Claim | Evidence (and how it was reproduced) |
 |---|---|---|
-| P1 | The offline suite passes: 603 passed, 20 skipped (the 20 are live tests needing credentials) | Fresh `git clone` of HEAD into a fresh virtualenv, `pip install -r requirements.txt`, `python -m pytest tests -q`, 2026-10-06, on Python 3.14 and on Python 3.11 (the version CI uses; a 3.12-only f-string slipped past the 3.14 run once and `tests/test_python_311_syntax.py` now guards it) |
-| P2 | All 46 standalone suites listed in CI exit 0 from that clean clone, and the code compiles | Same clone, each `python tests/<name>.py` |
+| P1 | The offline suite passes: 603 passed, 20 skipped (the 20 are live tests needing credentials) | A clean copy of the repository's files as they stand, fresh virtualenv, `pip install -r requirements.txt`, `python -m pytest tests -q`, 2026-10-06, on Python 3.11 and on Python 3.14. A 3.12-only f-string slipped past a 3.14 run once; `tests/test_python_311_syntax.py` now guards it |
+| P2 | Every test file under `tests/` that can run on its own (50) exits 0 without credentials, and all code compiles on Python 3.11 | The same clean copy, `python tests/<name>.py` for each file with a `__main__` block. Two of the 50 are the live suites and skip without credentials |
 | P3 | The evidence gate wrongly blocked 0 of 70 faithful narratives for ALERT-01 and 0 of 69 for the other 14 alerts with real rows | `evidence/fabrication-benchmark/2026-10-06/` (offline, re-run today). The author wrote both validator and narratives |
 | P4 | On a set written before round 2 and never tuned on, the gate caught 30 of 38 fabricated narratives (78.9%, 95% interval 63.6 to 88.9) | Same folder; 27 of 38 before the last fixes in `.../2026-10-05/baseline_before_round2.json`. The in-distribution 154 of 154 is not quoted |
 | P5 | Mis-attribution check, first measurement on a fresh set: 14 of 20 (70.0%); 12 of 20 on today's code after two post-hoc changes | `.../2026-10-05/attribution_q_first_measurement.json` and today's run |
@@ -46,13 +46,14 @@ Verdict: SHIP, with the labels below carried into the writeup, the README and th
 | S7 | What Snowsight renders | Never observed. Screenshots are from the app running locally against the same environment |
 | S8 | The queue's live deadlines | Seeded as working-day offsets from the load moment, so they look live whenever the seed runs; they are not a real feed |
 
-## ASSUMED (labelled as such in the README)
+## ASSUMED (labelled as such where each appears)
 
 | # | Claim | Why it is only assumed |
 |---|---|---|
 | A1 | The product fits a Principal Officer and operations team in an Indian bank or a GCC | The README says "our assumption; a pilot would confirm it". No practitioner has reviewed it |
 | A2 | The corpus is legally accurate | 0 of 49 rules independently verified. PROVEN means a primary source is cited by the corpus author |
 | A3 | Descriptions of the filing portal and the FIU-IND report structure | From the corpus, author-asserted, not checked against the live regulator documents |
+| A4 | The three Gulf-remittance alerts and the prediction about them were written after the nexus rule was frozen and before the first model run on them | The author's statement, the header of `PREDICTION.md`, and a hash guard that shows the rule has not changed since. The commit order that once showed it was lost when the history was squashed, so the order can no longer be checked from git |
 
 ## Never claimed (deleted or refused)
 

@@ -134,5 +134,5 @@ This table says where each phase's project artifacts live. It is a map of this r
 |---|---|---|
 | **Plan** | Corpus schema design, stack architecture, skill contracts | SCHEMA.md, SNOWFLAKE-FIT.md, this file |
 | **Development** | YAML rule files, SQL DDL, Cortex Search service CREATE, skill system prompts | domain/corpus/rules/, export/ddl/, skill prompts/ |
-| **Execution** | Populated REGULATORY_CORPUS table, working Cortex Search queries, demo walkthrough of alert → disposition | Demo screenshots, SQL outputs, `evidence/cleanroom-2026-10-02/`, `evidence/retrieval-gold/` |
+| **Execution** | Populated REGULATORY_CORPUS table, working Cortex Search queries, demo walkthrough of alert → disposition | Demo screenshots, SQL outputs, `evidence/cleanroom-2026-10-06/`, `evidence/retrieval-gold/` |
 | **Test** | Cortex Search returns cited rules; NEEDS-VERIFICATION excluded; out-of-scope questions abstain; quality-checker scores; DECISION_LEDGER append-only for the application role (the owner role can still delete rows); PO factor coverage | tests/corpus_retrieval_tests.sql, tests/test_scope_guard.py, `scripts/eval_retrieval_gold.py`, test scenarios |

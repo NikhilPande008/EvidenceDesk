@@ -2,8 +2,8 @@
 
 **Synthetic data. Three alerts, one run, one model (`llama3.3-70b`, no fallback), temperature 0, structured outputs on, assessment and draft, `FIU_COPILOT_CR2`.
 Nothing was recorded to the ledger. The labels are the author's expectation.**
-Raw evidence: `evidence/live-replay/2026-10-06/heldout-gcc-first-measurement/` (`results.json`, `summary.md`, `raw_responses.json`).
-The prediction was committed before this run: [`PREDICTION.md`](PREDICTION.md) (commit `0ee1155`).
+Raw evidence: `evidence/live-replay/2026-10-06/heldout-gcc-first-measurement/` (`results.json`, `summary.md`; the raw model replies are not kept in the repository).
+The prediction was written, and committed, before the first model run on these alerts: [`PREDICTION.md`](PREDICTION.md). The repository's history was later squashed into one commit, so that order can no longer be checked from git; what remains is the statement in `PREDICTION.md`, the run timestamps in the evidence folders, and the hash guard in `frozen_rule.json`, which shows the rule has not changed since.
 
 ## Result
 

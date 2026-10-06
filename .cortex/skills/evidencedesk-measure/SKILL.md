@@ -11,7 +11,7 @@ description: Run EvidenceDesk's offline tests and measurement harnesses and repo
 FIU_SKIP_DOTENV=1 python3 -m pytest tests -q
 ```
 
-The standalone suites listed in `.github/workflows/ci.yml` are part of the gate too. Report passed, failed and skipped counts as printed. A skipped test is not a pass.
+Most test files under `tests/` also run on their own, without pytest (`python tests/<name>.py`); those standalone runs are part of the gate too. Report passed, failed and skipped counts as printed. A skipped test is not a pass.
 
 ## Harnesses (need the clean-room environment and a role that can call Cortex)
 

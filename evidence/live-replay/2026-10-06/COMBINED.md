@@ -5,7 +5,7 @@ The labels are the author's expectation. None of this is accuracy on real cases.
 
 ## Where the numbers come from
 
-- `results.json`, `summary.md`, `raw_responses.json` in this folder: the full run over all 19 alerts. **16 of 19 assessments were valid.** ALERT-17, ALERT-18 and ALERT-19 produced no result
+- `results.json` and `summary.md` in this folder (the raw model replies are not kept in the repository): the full run over all 19 alerts. **16 of 19 assessments were valid.** ALERT-17, ALERT-18 and ALERT-19 produced no result
   (Cortex statement timeout or cancellation), ALERT-05's draft call errored, and ALERT-09's draft was blocked because its quality-check call timed out (the application failed closed, as it should).
   That run is kept exactly as it came out.
 - `retry-of-timed-out-alerts/`: a second run of ALERT-05, 09, 17, 18, 19 only. 5 of 5 valid, 5 drafts, all passed the hard gate first time.

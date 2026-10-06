@@ -7,6 +7,7 @@ Run the REAL model over every seeded alert through the same code the hosted app 
   python3 scripts/eval_live_replay.py --alerts ALERT-01,ALERT-16 --no-draft
   python3 scripts/eval_live_replay.py --write --write-saved         # also turn this run's replies into skills/saved_responses_data.py
   python3 scripts/eval_live_replay.py --saved-from evidence/live-replay/<date>   # build that module from an earlier run (no Snowflake)
+      # needs that run's raw_responses.json, which --write produces and the repository does not keep: skills/saved_responses_data.py already holds the shipped replies
 
 For each alert: load the alert and its transactions from Snowflake (as the app does), call suspicion_evaluator (11-factor assessment,
 one Cortex Complete call), check every triggered factor against the record, then call ground_of_suspicion_writer (the draft narrative

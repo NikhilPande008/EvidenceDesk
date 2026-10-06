@@ -2,7 +2,7 @@
 
 **Synthetic data. 160 cases the author wrote, a validator the author wrote, a checking prompt the author wrote, one run per model, temperature 0, structured output, no fallback model.
 Counts with Wilson 95% intervals. None of this is accuracy in the field.**
-Sources: `llm-llama3.3-70b/` and `llm-claude-sonnet-4-5/` (each has `results.json` and `summary.md`); harness `scripts/eval_llm_checker.py`; the validator-only arm is `python3 scripts/eval_llm_checker.py --offline`.
+Sources: `llm-llama3.3-70b/` and `llm-claude-sonnet-4-5/` (each has a `summary.md`; the per-case `results.json` files are not kept in the repository); harness `scripts/eval_llm_checker.py`; the validator-only arm is `python3 scripts/eval_llm_checker.py --offline`.
 
 The alternative to the deterministic evidence gate is a second model call that reads the case record and the draft and lists what the record does not support. Both were put
 on the same cases. "Flagged" means the checker listed at least one unsupported statement.

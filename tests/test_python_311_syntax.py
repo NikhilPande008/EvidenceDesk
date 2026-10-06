@@ -1,5 +1,5 @@
 """
-The code must stay valid on Python 3.11, the version CI compiles with, even when it is written and tested on a newer interpreter.
+The code must stay valid on Python 3.11, the version the project's CI used, even when it is written and tested on a newer interpreter.
 
 Python 3.12 (PEP 701) lets an f-string reuse its own quote character inside {...}, put a backslash there, and spread an expression over lines. 3.11 rejects all three with a
 SyntaxError that a developer on 3.12 or later never sees. On 3.12 and later this test reads the tokens and reports those constructs; on 3.11 the compiler itself is the check
