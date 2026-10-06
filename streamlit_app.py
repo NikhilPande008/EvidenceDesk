@@ -653,16 +653,17 @@ def _judge_demo_path():
             ("3", "Test the evidence gate", "Add an unsupported filing fact and see the deterministic block.", "Open evidence gate", "case_gate"),
             ("4", "Record and reconstruct a decision", "The officer records the outcome, then opens the ledger dossier.", "Open decision archive", "ledger"),
         )
-        for col, (number, title, detail, action, key) in zip(st.columns(4), steps):
-            with col:
-                st.markdown(f"**{number}. {title}**")
-                st.caption(detail)
-                if st.button(action, key=f"judge_demo_{key}", use_container_width=True):
-                    if key == "ledger":
-                        st.session_state["_goto"] = "Decision Ledger"
-                    else:
-                        _open_demo_case("ALERT-01")
-                    st.rerun()
+        # One row of columns each for the titles, the details and the buttons: a row is as tall as its tallest cell, so the buttons line up however the titles wrap.
+        titles, details, buttons = st.columns(4), st.columns(4), st.columns(4)
+        for i, (number, title, detail, action, key) in enumerate(steps):
+            titles[i].markdown(f"**{number}. {title}**")
+            details[i].caption(detail)
+            if buttons[i].button(action, key=f"judge_demo_{key}", use_container_width=True):
+                if key == "ledger":
+                    st.session_state["_goto"] = "Decision Ledger"
+                else:
+                    _open_demo_case("ALERT-01")
+                st.rerun()
 
 
 def _render_priority(pr: dict, quality: dict | None = None):
